@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/libthezzz">
+        <file>icons/request-delete.svg</file>
+        <file>icons/request-get.svg</file>
+        <file>icons/request-head.svg</file>
+        <file>icons/request-patch.svg</file>
+        <file>icons/request-post.svg</file>
+        <file>icons/request-put.svg</file>
+        <file>icons/request-options.svg</file>
+    </qresource>
+</RCC>

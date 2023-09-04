@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name[]=theZzz Blueprint
+GenericName[]=REST Client
+Exec=thezzz-blueprint %U
+Icon=com.vicr123.thezzz_blueprint
+StartupWMClass=theZzz

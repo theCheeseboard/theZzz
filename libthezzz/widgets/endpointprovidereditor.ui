@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EndpointProviderEditor</class>
+ <widget class="QWidget" name="EndpointProviderEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>371</width>
+    <height>51</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QComboBox" name="method">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>GET</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-get.svg</normaloff>:/libthezzz/icons/request-get.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>POST</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-post.svg</normaloff>:/libthezzz/icons/request-post.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>PUT</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-put.svg</normaloff>:/libthezzz/icons/request-put.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>PATCH</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-patch.svg</normaloff>:/libthezzz/icons/request-patch.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DELETE</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-delete.svg</normaloff>:/libthezzz/icons/request-delete.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OPTIONS</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-options.svg</normaloff>:/libthezzz/icons/request-options.svg</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>HEAD</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../libthezzz_icons.qrc">
+           <normaloff>:/libthezzz/icons/request-head.svg</normaloff>:/libthezzz/icons/request-head.svg</iconset>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="endpointEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frame">
+         <bool>false</bool>
+        </property>
+        <property name="placeholderText">
+         <string>Endpoint</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="sendButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="mail-send">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="singlePixelHorizontalLine">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../libthezzz_icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
