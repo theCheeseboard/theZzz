@@ -6,6 +6,8 @@ struct ZzzReplyPrivate {
         QString verb;
         QNetworkRequest request;
         QNetworkReply* reply;
+
+        QByteArray body;
 };
 
 ZzzReply::ZzzReply(QString verb, QNetworkRequest request, QNetworkReply* reply, QObject* parent) :
@@ -14,6 +16,11 @@ ZzzReply::ZzzReply(QString verb, QNetworkRequest request, QNetworkReply* reply, 
     d->verb = verb;
     d->request = request;
     d->reply = reply;
+
+    connect(reply, &QNetworkReply::readyRead, this, [reply, this] {
+        d->body.append(reply->readAll());
+        emit updated();
+    });
 }
 
 ZzzReply::~ZzzReply() {
@@ -26,4 +33,8 @@ QString ZzzReply::verb() {
 
 QUrl ZzzReply::url() {
     return d->reply->url();
+}
+
+QByteArray ZzzReply::body() {
+    return d->body;
 }

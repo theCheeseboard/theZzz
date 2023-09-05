@@ -22,6 +22,7 @@ set(SOURCES
     widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
     widgets/endpointprovidereditor.cpp widgets/endpointprovidereditor.ui
     widgets/zzzreplyviewer.cpp widgets/zzzreplyviewer.ui
+    widgets/zzzreplyinspector.cpp widgets/zzzreplyinspector.ui
 
     libthezzz_icons.qrc
 )
@@ -46,13 +47,15 @@ set(HEADERS
     widgets/zzzrequesteditor.h
     widgets/endpointprovidereditor.h
     widgets/zzzreplyviewer.h
+    widgets/zzzreplyinspector.h
 )
 
 set(PRIVATE_HEADERS
 
 )
 
-add_library(libthezzz SHARED ${SOURCES} ${HEADERS} ${PRIVATE_HEADERS})
+add_library(libthezzz SHARED ${SOURCES} ${HEADERS} ${PRIVATE_HEADERS}
+    widgets/replyinspector/replybodywidget.h widgets/replyinspector/replybodywidget.cpp widgets/replyinspector/replybodywidget.ui)
 cntp_init(libthezzz 20)
 set_target_properties(libthezzz PROPERTIES
         OUTPUT_NAME thezzz

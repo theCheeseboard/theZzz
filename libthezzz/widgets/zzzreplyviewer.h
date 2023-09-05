@@ -18,6 +18,9 @@ class ZzzReplyViewer : public QWidget {
 
         ZzzReplyManagerPtr replyManager();
 
+    private slots:
+        void on_replyList_currentIndexChanged(int index);
+
     private:
         Ui::ZzzReplyViewer* ui;
         ZzzReplyViewerPrivate* d;

@@ -2,6 +2,7 @@
 #include "ui_zzzreplyviewer.h"
 
 #include "zzzreply.h"
+#include "zzzreplyinspector.h"
 #include "zzzreplymanager.h"
 
 struct ZzzReplyViewerPrivate {
@@ -16,7 +17,13 @@ ZzzReplyViewer::ZzzReplyViewer(QWidget* parent) :
     d->replyManager = (new ZzzReplyManager())->sharedFromThis();
 
     connect(d->replyManager.data(), &ZzzReplyManager::newReply, this, [this](ZzzReplyPtr reply) {
-        ui->replyList->addItem(QStringLiteral("%1 %2").arg(reply->verb(), reply->url().toString()));
+        ui->replyList->insertItem(0, QStringLiteral("%1 %2").arg(reply->verb(), reply->url().toString()));
+
+        auto inspector = new ZzzReplyInspector(reply);
+        ui->stackedWidget->insertWidget(0, inspector);
+
+        ui->replyList->setCurrentIndex(0);
+        ui->stackedWidget->setCurrentWidget(inspector);
     });
 }
 
@@ -27,4 +34,8 @@ ZzzReplyViewer::~ZzzReplyViewer() {
 
 ZzzReplyManagerPtr ZzzReplyViewer::replyManager() {
     return d->replyManager;
+}
+
+void ZzzReplyViewer::on_replyList_currentIndexChanged(int index) {
+    ui->stackedWidget->setCurrentIndex(index);
 }

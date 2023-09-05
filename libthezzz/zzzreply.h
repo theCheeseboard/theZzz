@@ -17,7 +17,10 @@ class ZzzReply : public QObject,
         QString verb();
         QUrl url();
 
+        QByteArray body();
+
     signals:
+        void updated();
 
     private:
         ZzzReplyPrivate* d;
