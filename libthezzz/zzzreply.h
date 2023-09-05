@@ -17,6 +17,12 @@ class ZzzReply : public QObject,
         QString verb();
         QUrl url();
 
+        bool finished();
+        int statusCode();
+        QString reasonPhrase();
+
+        quint64 requestTime();
+
         QByteArray body();
 
     signals:

@@ -19,6 +19,8 @@ class ZzzReplyInspector : public QWidget {
     private:
         Ui::ZzzReplyInspector* ui;
         ZzzReplyInspectorPrivate* d;
+
+        void updateReply();
 };
 
 #endif // ZZZREPLYINSPECTOR_H
