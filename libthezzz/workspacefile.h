@@ -4,14 +4,16 @@
 #include "forwarddeclares.h"
 #include "providers/headersprovider.h"
 #include "providers/requestcontainerprovider.h"
+#include "providers/zzzprovides.h"
 #include <QObject>
+
+typedef ZzzProvides<HeadersProvider, RequestContainerProvider> WorkspaceFileZzzProvides;
 
 class QNetworkAccessManager;
 struct WorkspaceFilePrivate;
 class WorkspaceFile : public QObject,
                       public ZzzSharedFromThis<WorkspaceFile>,
-                      public HeadersProvider,
-                      public RequestContainerProvider {
+                      public WorkspaceFileZzzProvides {
         Q_OBJECT
     public:
         explicit WorkspaceFile(QObject* parent = nullptr);
@@ -24,6 +26,7 @@ class WorkspaceFile : public QObject,
 
     signals:
         void requestsChanged();
+        void dataChanged();
 
     private:
         WorkspaceFilePrivate* d;

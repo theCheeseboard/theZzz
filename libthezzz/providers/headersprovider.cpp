@@ -3,7 +3,8 @@
 struct HeadersProviderPrivate {
 };
 
-HeadersProvider::HeadersProvider() {
+HeadersProvider::HeadersProvider(WorkspaceFile* parent) :
+    ZzzProvider(parent) {
     d = new HeadersProviderPrivate();
 }
 
@@ -11,9 +12,13 @@ HeadersProvider::~HeadersProvider() {
     delete d;
 }
 
-void HeadersProvider::loadHeadersJson(QJsonObject obj) {
+QString HeadersProvider::jsonKey() {
+    return QStringLiteral("headers");
 }
 
-QJsonObject HeadersProvider::headersToJson() {
+void HeadersProvider::loadJson(QJsonObject obj) {
+}
+
+QJsonObject HeadersProvider::toJson() {
     return {};
 }

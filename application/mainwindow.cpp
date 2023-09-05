@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 
 #include "landingpage.h"
+#include <QCoroCore>
+#include <QFileDialog>
+#include <QStandardPaths>
 #include <tapplication.h>
 #include <tcsdtools.h>
 #include <thelpmenu.h>
@@ -77,6 +80,57 @@ void MainWindow::on_actionExit_triggered() {
 }
 
 void MainWindow::on_actionNew_Workspace_triggered() {
+    this->newTab();
+}
+
+void MainWindow::on_actionSave_triggered() {
+    auto browser = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+    if (!browser) return;
+
+    if (browser->currentFile().isEmpty()) {
+        this->on_actionSave_As_triggered();
+        return;
+    }
+
+    browser->saveWorkspace(browser->currentFile());
+}
+
+QCoro::Task<> MainWindow::on_actionSave_As_triggered() {
+    auto browser = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+    if (!browser) co_return;
+
+    QFileDialog dialog(this);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setDirectory(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+    dialog.setNameFilters({tr("theZzz Workspace (*.zzz)")});
+    dialog.open();
+
+    const auto result = co_await qCoro(&dialog, &QFileDialog::finished);
+    if (result == QFileDialog::Rejected) co_return;
+
+    QString path = dialog.selectedFiles().constFirst();
+    browser->saveWorkspace(path);
+}
+
+QCoro::Task<> MainWindow::on_actionOpen_Workspace_triggered() {
+    QFileDialog dialog(this);
+    dialog.setAcceptMode(QFileDialog::AcceptOpen);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setDirectory(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+    dialog.setNameFilters({tr("theZzz Workspace (*.zzz)")});
+    dialog.open();
+
+    const auto result = co_await qCoro(&dialog, &QFileDialog::finished);
+    if (result == QFileDialog::Rejected) co_return;
+
+    QString path = dialog.selectedFiles().constFirst();
+    auto browser = this->newTab();
+
+    browser->openWorkspace(path);
+}
+
+ZzzWorkspaceEditor* MainWindow::newTab() {
     auto* browser = new ZzzWorkspaceEditor(this);
     auto* initialBrowserTab = new tWindowTabberButton(QIcon(), tr("New Workspace"), ui->stackedWidget, browser);
 
@@ -91,4 +145,5 @@ void MainWindow::on_actionNew_Workspace_triggered() {
     d->tabButtons.insert(browser, initialBrowserTab);
 
     ui->stackedWidget->addWidget(browser);
+    return browser;
 }

@@ -4,11 +4,15 @@
 #include "ranges/trange.h"
 #include "zzzrequest.h"
 #include "zzzrequesteditor.h"
+#include <QFile>
+#include <QJsonDocument>
 #include <workspacefile.h>
 
 struct ZzzWorkspaceEditorPrivate {
         WorkspaceFilePtr workspaceFile;
         QTreeWidgetItem* workspaceItem;
+
+        QString filePath;
 };
 
 ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
@@ -27,6 +31,11 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
     connect(d->workspaceFile.data(), &WorkspaceFile::requestsChanged, this, [this] {
         this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
     });
+    connect(d->workspaceFile.data(), &WorkspaceFile::dataChanged, this, [this] {
+        if (!d->filePath.isEmpty()) {
+            this->saveWorkspace(d->filePath);
+        }
+    });
     this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
 
     ui->leftWidget->setFixedWidth(300);
@@ -35,6 +44,38 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
 ZzzWorkspaceEditor::~ZzzWorkspaceEditor() {
     delete d;
     delete ui;
+}
+
+QString ZzzWorkspaceEditor::currentFile() {
+    return d->filePath;
+}
+
+void ZzzWorkspaceEditor::saveWorkspace(QString filePath) {
+    auto data = QJsonDocument(d->workspaceFile->toJson()).toJson();
+
+    QFile file(filePath);
+    file.open(QFile::WriteOnly);
+    file.write(data);
+    file.close();
+
+    d->filePath = filePath;
+}
+
+void ZzzWorkspaceEditor::openWorkspace(QString filePath) {
+    QFile file(filePath);
+    file.open(QFile::ReadOnly);
+    auto data = file.readAll();
+    file.close();
+
+    QJsonParseError error;
+    auto json = QJsonDocument::fromJson(data, &error);
+    if (error.error != QJsonParseError::NoError) {
+        // TODO: Show an error
+        return;
+    }
+
+    d->workspaceFile->loadJson(json.object());
+    d->filePath = filePath;
 }
 
 void ZzzWorkspaceEditor::on_newRequestButton_clicked() {

@@ -9,7 +9,7 @@ struct WorkspaceFilePrivate {
 };
 
 WorkspaceFile::WorkspaceFile(QObject* parent) :
-    QObject{parent}, RequestContainerProvider{this} {
+    QObject{parent}, WorkspaceFileZzzProvides(this) {
     d = new WorkspaceFilePrivate();
 
     Q_INIT_RESOURCE(libthezzz_icons);
@@ -22,11 +22,12 @@ WorkspaceFile::~WorkspaceFile() {
 }
 
 void WorkspaceFile::loadJson(QJsonObject object) {
+    WorkspaceFileZzzProvides::loadJson(object);
+    emit requestsChanged();
 }
 
 QJsonObject WorkspaceFile::toJson() {
-    QJsonObject obj;
-    return obj;
+    return WorkspaceFileZzzProvides::toJson();
 }
 
 QNetworkAccessManager* WorkspaceFile::networkAccessManager() {

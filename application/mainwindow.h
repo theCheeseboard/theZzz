@@ -1,12 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QCoroTask>
 #include <QMainWindow>
 
 namespace Ui {
     class MainWindow;
 }
 
+class ZzzWorkspaceEditor;
 class RepositoryBrowser;
 struct MainWindowPrivate;
 class MainWindow : public QMainWindow {
@@ -25,9 +27,17 @@ class MainWindow : public QMainWindow {
 
         void on_actionNew_Workspace_triggered();
 
+        void on_actionSave_triggered();
+
+        QCoro::Task<> on_actionSave_As_triggered();
+
+        QCoro::Task<> on_actionOpen_Workspace_triggered();
+
     private:
         Ui::MainWindow* ui;
         MainWindowPrivate* d;
+
+        ZzzWorkspaceEditor* newTab();
 
         void updateMenuItems();
 };

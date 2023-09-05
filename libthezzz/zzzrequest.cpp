@@ -10,7 +10,7 @@ struct ZzzRequestPrivate {
 };
 
 ZzzRequest::ZzzRequest(WorkspaceFilePtr workspace, QObject* parent) :
-    QObject{parent} {
+    QObject{parent}, ZzzRequestZzzProvides(workspace.data()) {
     d = new ZzzRequestPrivate();
     d->treeWidgetItem = new QTreeWidgetItem();
     d->treeWidgetItem->setText(0, tr("New Request"));
@@ -49,4 +49,10 @@ ZzzReplyPtr ZzzRequest::execute() {
 
 QTreeWidgetItem* ZzzRequest::treeWidgetItem() {
     return d->treeWidgetItem;
+}
+
+QJsonObject ZzzRequest::toJson() {
+    auto json = ZzzRequestZzzProvides::toJson();
+    json.insert("type", "request");
+    return json;
 }

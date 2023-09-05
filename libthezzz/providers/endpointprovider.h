@@ -1,13 +1,14 @@
 #ifndef ENDPOINTPROVIDER_H
 #define ENDPOINTPROVIDER_H
 
+#include "zzzprovider.h"
 #include <QString>
 
 struct EndpointProviderPrivate;
 
-class EndpointProvider {
+class EndpointProvider : public ZzzProvider<EndpointProvider> {
     public:
-        EndpointProvider();
+        EndpointProvider(WorkspaceFile* parent);
         ~EndpointProvider();
 
         QString verb();
@@ -18,6 +19,12 @@ class EndpointProvider {
 
     private:
         EndpointProviderPrivate* d;
+
+        // ZzzProvider interface
+    public:
+        QString jsonKey();
+        void loadJson(QJsonObject obj);
+        QJsonObject toJson();
 };
 
 #endif // ENDPOINTPROVIDER_H

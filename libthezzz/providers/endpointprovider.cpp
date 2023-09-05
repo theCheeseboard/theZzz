@@ -1,11 +1,14 @@
 #include "endpointprovider.h"
 
+#include "workspacefile.h"
+
 struct EndpointProviderPrivate {
         QString verb = QStringLiteral("GET");
         QString endpoint;
 };
 
-EndpointProvider::EndpointProvider() {
+EndpointProvider::EndpointProvider(WorkspaceFile* parent) :
+    ZzzProvider(parent) {
     d = new EndpointProviderPrivate();
 }
 
@@ -19,6 +22,7 @@ QString EndpointProvider::verb() {
 
 void EndpointProvider::setVerb(QString verb) {
     d->verb = verb;
+    emit this->workspace()->dataChanged();
 }
 
 QString EndpointProvider::endpoint() {
@@ -27,4 +31,21 @@ QString EndpointProvider::endpoint() {
 
 void EndpointProvider::setEndpoint(QString endpoint) {
     d->endpoint = endpoint;
+    emit this->workspace()->dataChanged();
+}
+
+QString EndpointProvider::jsonKey() {
+    return QStringLiteral("endpoint");
+}
+
+void EndpointProvider::loadJson(QJsonObject obj) {
+    d->verb = obj.value("verb").toString();
+    d->endpoint = obj.value("endpoint").toString();
+}
+
+QJsonObject EndpointProvider::toJson() {
+    return {
+        {"verb",     d->verb    },
+        {"endpoint", d->endpoint}
+    };
 }

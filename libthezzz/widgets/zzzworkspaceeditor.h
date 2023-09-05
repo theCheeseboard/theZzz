@@ -17,6 +17,10 @@ class ZzzWorkspaceEditor : public QWidget {
         explicit ZzzWorkspaceEditor(QWidget* parent = nullptr);
         ~ZzzWorkspaceEditor();
 
+        QString currentFile();
+        void saveWorkspace(QString filePath);
+        void openWorkspace(QString filePath);
+
     private slots:
         void on_newRequestButton_clicked();
 

@@ -12,6 +12,8 @@ set(SOURCES
     zzzreply.cpp
     zzzreplymanager.cpp
 
+    providers/zzzprovider.cpp
+    providers/zzzprovides.cpp
     providers/headersprovider.cpp
     providers/requestcontainerprovider.cpp
     providers/endpointprovider.cpp
@@ -34,6 +36,8 @@ set(HEADERS
     zzzreply.h
     zzzreplymanager.h
 
+    providers/zzzprovider.h
+    providers/zzzprovides.h
     providers/headersprovider.h
     providers/requestcontainerprovider.h
     providers/endpointprovider.h

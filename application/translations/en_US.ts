@@ -44,51 +44,81 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="174"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="183"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="157"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="188"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="205"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="172"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="175"/>
+        <location filename="../mainwindow.ui" line="175"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="184"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="175"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="177"/>
+        <location filename="../mainwindow.ui" line="178"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="186"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="180"/>
-        <location filename="../mainwindow.cpp" line="81"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="179"/>
+        <location filename="../mainwindow.ui" line="183"/>
+        <location filename="../mainwindow.cpp" line="135"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="188"/>
         <source>New Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="183"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="181"/>
+        <location filename="../mainwindow.ui" line="186"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="190"/>
         <source>Ctrl+Shift+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="188"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="183"/>
+        <location filename="../mainwindow.ui" line="191"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="192"/>
         <source>Open Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="191"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="185"/>
+        <location filename="../mainwindow.ui" line="194"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="194"/>
         <source>Ctrl+O</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="199"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="196"/>
+        <source>Save As</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="202"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="198"/>
+        <source>Ctrl+Shift+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="207"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="200"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="210"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="202"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="106"/>
+        <location filename="../mainwindow.cpp" line="121"/>
+        <source>theZzz Workspace (*.zzz)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

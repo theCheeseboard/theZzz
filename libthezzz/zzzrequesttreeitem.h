@@ -1,6 +1,7 @@
 #ifndef ZZZREQUESTTREEITEM_H
 #define ZZZREQUESTTREEITEM_H
 
+#include "providers/zzzprovides.h"
 #include <QSharedPointer>
 #include <QTreeWidgetItem>
 
