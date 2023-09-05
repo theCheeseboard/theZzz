@@ -2,8 +2,10 @@
 
 #include "zzzrequest.h"
 #include <QJsonObject>
+#include <QNetworkAccessManager>
 
 struct WorkspaceFilePrivate {
+        QNetworkAccessManager networkAccessManager;
 };
 
 WorkspaceFile::WorkspaceFile(QObject* parent) :
@@ -12,7 +14,7 @@ WorkspaceFile::WorkspaceFile(QObject* parent) :
 
     Q_INIT_RESOURCE(libthezzz_icons);
 
-    this->addRequest((new ZzzRequest())->sharedFromThis());
+    this->addRequest((new ZzzRequest(this->sharedFromThis()))->sharedFromThis());
 }
 
 WorkspaceFile::~WorkspaceFile() {
@@ -25,4 +27,8 @@ void WorkspaceFile::loadJson(QJsonObject object) {
 QJsonObject WorkspaceFile::toJson() {
     QJsonObject obj;
     return obj;
+}
+
+QNetworkAccessManager* WorkspaceFile::networkAccessManager() {
+    return &d->networkAccessManager;
 }

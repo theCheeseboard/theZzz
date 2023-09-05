@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -98,7 +98,48 @@
      </widget>
     </item>
     <item>
-     <widget class="tStackedWidget" name="stackedWidget"/>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="tStackedWidget" name="stackedWidget"/>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="maximumSize">
+         <size>
+          <width>1</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="ZzzReplyViewer" name="replyViewer" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -107,7 +148,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1200</width>
      <height>43</height>
     </rect>
    </property>
@@ -165,6 +206,12 @@
    <class>tWindowTabber</class>
    <extends>QWidget</extends>
    <header location="global">twindowtabber.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ZzzReplyViewer</class>
+   <extends>QWidget</extends>
+   <header>widgets/zzzreplyviewer.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

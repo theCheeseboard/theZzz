@@ -33,3 +33,7 @@ void EndpointProviderEditor::on_endpointEdit_textChanged(const QString& arg1) {
 void EndpointProviderEditor::on_method_currentTextChanged(const QString& arg1) {
     d->endpointProvider->setVerb(arg1);
 }
+
+void EndpointProviderEditor::on_sendButton_clicked() {
+    emit execute();
+}

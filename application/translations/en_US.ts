@@ -44,50 +44,50 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="145"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="174"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="116"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="159"/>
+        <location filename="../mainwindow.ui" line="157"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="188"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="131"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="146"/>
+        <location filename="../mainwindow.ui" line="172"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="175"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="134"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="148"/>
+        <location filename="../mainwindow.ui" line="175"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="177"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="139"/>
-        <location filename="../mainwindow.cpp" line="78"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="150"/>
+        <location filename="../mainwindow.ui" line="180"/>
+        <location filename="../mainwindow.cpp" line="81"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="179"/>
         <source>New Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="142"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="152"/>
+        <location filename="../mainwindow.ui" line="183"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="181"/>
         <source>Ctrl+Shift+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="147"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="154"/>
+        <location filename="../mainwindow.ui" line="188"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="183"/>
         <source>Open Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="150"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="156"/>
+        <location filename="../mainwindow.ui" line="191"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="185"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>

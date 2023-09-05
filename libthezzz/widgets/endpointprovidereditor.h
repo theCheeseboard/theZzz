@@ -23,6 +23,11 @@ class EndpointProviderEditor : public QWidget {
 
         void on_method_currentTextChanged(const QString& arg1);
 
+        void on_sendButton_clicked();
+
+    signals:
+        void execute();
+
     private:
         Ui::EndpointProviderEditor* ui;
         EndpointProviderEditorPrivate* d;

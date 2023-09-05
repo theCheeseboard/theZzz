@@ -22,6 +22,9 @@ class ZzzWorkspaceEditor : public QWidget {
 
         void on_treeWidget_itemSelectionChanged();
 
+    signals:
+        void addReply(ZzzReplyPtr reply);
+
     private:
         Ui::ZzzWorkspaceEditor* ui;
         ZzzWorkspaceEditorPrivate* d;

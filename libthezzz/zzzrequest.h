@@ -7,6 +7,7 @@
 #include "zzzrequesttreeitem.h"
 #include <QObject>
 
+class QNetworkReply;
 struct ZzzRequestPrivate;
 class ZzzRequest : public QObject,
                    public ZzzSharedFromThis<ZzzRequest>,
@@ -15,8 +16,10 @@ class ZzzRequest : public QObject,
                    public EndpointProvider {
         Q_OBJECT
     public:
-        explicit ZzzRequest(QObject* parent = nullptr);
+        explicit ZzzRequest(WorkspaceFilePtr workspace, QObject* parent = nullptr);
         ~ZzzRequest();
+
+        ZzzReplyPtr execute();
 
     signals:
 

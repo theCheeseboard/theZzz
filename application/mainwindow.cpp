@@ -9,6 +9,7 @@
 #include <tpopover.h>
 #include <twindowtabberbutton.h>
 #include <widgets/zzzworkspaceeditor.h>
+#include <zzzreplymanager.h>
 
 struct MainWindowPrivate {
         tCsdTools csd;
@@ -63,6 +64,8 @@ MainWindow::MainWindow(QWidget* parent) :
     ui->stackedWidget->setDefaultWidget(landingPage);
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
     this->setWindowIcon(tApplication::applicationIcon());
+
+    ui->replyViewer->setFixedWidth(400);
 }
 
 MainWindow::~MainWindow() {
@@ -78,6 +81,7 @@ void MainWindow::on_actionNew_Workspace_triggered() {
     auto* initialBrowserTab = new tWindowTabberButton(QIcon(), tr("New Workspace"), ui->stackedWidget, browser);
 
     ui->stackedWidget->addWidget(browser);
+    connect(browser, &ZzzWorkspaceEditor::addReply, ui->replyViewer->replyManager().data(), &ZzzReplyManager::pushReply);
     //    connect(browser, &ZzzWorkspaceEditor::titleChanged, this, [=] {
     //        initialBrowserTab->setText(browser->title());
     //    });

@@ -52,6 +52,9 @@
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
+        <property name="rootIsDecorated">
+         <bool>false</bool>
+        </property>
         <attribute name="headerVisible">
          <bool>false</bool>
         </attribute>

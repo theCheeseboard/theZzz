@@ -6,6 +6,7 @@
 #include "providers/requestcontainerprovider.h"
 #include <QObject>
 
+class QNetworkAccessManager;
 struct WorkspaceFilePrivate;
 class WorkspaceFile : public QObject,
                       public ZzzSharedFromThis<WorkspaceFile>,
@@ -18,6 +19,8 @@ class WorkspaceFile : public QObject,
 
         void loadJson(QJsonObject object);
         QJsonObject toJson();
+
+        QNetworkAccessManager* networkAccessManager();
 
     signals:
         void requestsChanged();

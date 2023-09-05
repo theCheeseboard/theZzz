@@ -8,6 +8,7 @@
 
 struct ZzzWorkspaceEditorPrivate {
         WorkspaceFilePtr workspaceFile;
+        QTreeWidgetItem* workspaceItem;
 };
 
 ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
@@ -17,13 +18,18 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
 
     d = new ZzzWorkspaceEditorPrivate();
     d->workspaceFile = (new WorkspaceFile())->sharedFromThis();
+    d->workspaceItem = new QTreeWidgetItem();
+    d->workspaceItem->setText(0, tr("Workspace"));
+    d->workspaceItem->setData(0, Qt::UserRole, QVariant::fromValue(d->workspaceFile));
+
+    ui->treeWidget->addTopLevelItem(d->workspaceItem);
 
     connect(d->workspaceFile.data(), &WorkspaceFile::requestsChanged, this, [this] {
-        this->updateRequests(ui->treeWidget->invisibleRootItem(), d->workspaceFile.dynamicCast<RequestContainerProvider>());
+        this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
     });
-    this->updateRequests(ui->treeWidget->invisibleRootItem(), d->workspaceFile.dynamicCast<RequestContainerProvider>());
+    this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
 
-    ui->leftWidget->setFixedWidth(400);
+    ui->leftWidget->setFixedWidth(300);
 }
 
 ZzzWorkspaceEditor::~ZzzWorkspaceEditor() {
@@ -32,7 +38,7 @@ ZzzWorkspaceEditor::~ZzzWorkspaceEditor() {
 }
 
 void ZzzWorkspaceEditor::on_newRequestButton_clicked() {
-    d->workspaceFile->addRequest((new ZzzRequest())->sharedFromThis());
+    d->workspaceFile->addRequest((new ZzzRequest(d->workspaceFile))->sharedFromThis());
 }
 
 void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContainerProviderPtr containerProvider) {
@@ -53,16 +59,22 @@ void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContai
 
         rootItem->addChild(item);
     }
+
+    d->workspaceItem->setExpanded(true);
 }
 
 void ZzzWorkspaceEditor::on_treeWidget_itemSelectionChanged() {
     auto items = ui->treeWidget->selectedItems();
     if (items.length() == 0) {
     } else if (items.length() == 1) {
-        auto request = items.constFirst()->data(0, Qt::UserRole).value<ZzzRequestPtr>();
-        if (!request) return;
+        QSharedPointer<QObject> request = items.constFirst()->data(0, Qt::UserRole).value<ZzzRequestPtr>();
+        if (!request) {
+            request = items.constFirst()->data(0, Qt::UserRole).value<WorkspaceFilePtr>();
+            if (!request) return;
+        }
 
         auto editor = new ZzzRequestEditor(request);
+        connect(editor, &ZzzRequestEditor::addReply, this, &ZzzWorkspaceEditor::addReply);
         ui->stackedWidget->addWidget(editor);
         ui->stackedWidget->setCurrentWidget(editor);
     } else {

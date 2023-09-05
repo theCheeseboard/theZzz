@@ -13,8 +13,13 @@ class ZzzRequestEditor : public QWidget {
         Q_OBJECT
 
     public:
-        explicit ZzzRequestEditor(ZzzRequestPtr request, QWidget* parent = nullptr);
+        explicit ZzzRequestEditor(QSharedPointer<QObject> request, QWidget* parent = nullptr);
         ~ZzzRequestEditor();
+
+        void executeRequest();
+
+    signals:
+        void addReply(ZzzReplyPtr reply);
 
     private:
         Ui::ZzzRequestEditor* ui;

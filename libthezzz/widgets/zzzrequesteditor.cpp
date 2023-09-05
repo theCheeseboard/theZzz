@@ -2,13 +2,14 @@
 #include "ui_zzzrequesteditor.h"
 
 #include "providers/endpointprovider.h"
+
 #include "zzzrequest.h"
 
 struct ZzzRequestEditorPrivate {
-        ZzzRequestPtr request;
+        QSharedPointer<QObject> request;
 };
 
-ZzzRequestEditor::ZzzRequestEditor(ZzzRequestPtr request, QWidget* parent) :
+ZzzRequestEditor::ZzzRequestEditor(QSharedPointer<QObject> request, QWidget* parent) :
     QWidget(parent),
     ui(new Ui::ZzzRequestEditor) {
     ui->setupUi(this);
@@ -20,9 +21,19 @@ ZzzRequestEditor::ZzzRequestEditor(ZzzRequestPtr request, QWidget* parent) :
     } else {
         ui->endpointProvider->setVisible(false);
     }
+
+    connect(ui->endpointProvider, &EndpointProviderEditor::execute, this, &ZzzRequestEditor::executeRequest);
 }
 
 ZzzRequestEditor::~ZzzRequestEditor() {
     delete d;
     delete ui;
+}
+
+void ZzzRequestEditor::executeRequest() {
+    auto request = d->request.dynamicCast<ZzzRequest>();
+    if (!request) return;
+
+    auto reply = request->execute();
+    emit addReply(reply);
 }

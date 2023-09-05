@@ -7,8 +7,11 @@
     class x;               \
     typedef QSharedPointer<x> x##Ptr;
 
+FORWARD_DECLARE(WorkspaceFile)
+FORWARD_DECLARE(ZzzReply)
 FORWARD_DECLARE(ZzzRequest)
 FORWARD_DECLARE(ZzzRequestTreeItem)
+FORWARD_DECLARE(ZzzReplyManager)
 
 FORWARD_DECLARE(RequestContainerProvider)
 FORWARD_DECLARE(EndpointProvider)

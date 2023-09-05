@@ -9,6 +9,8 @@ set(SOURCES
     workspacefile.cpp
     zzzrequesttreeitem.cpp
     zzzrequest.cpp
+    zzzreply.cpp
+    zzzreplymanager.cpp
 
     providers/headersprovider.cpp
     providers/requestcontainerprovider.cpp
@@ -17,6 +19,7 @@ set(SOURCES
     widgets/zzzworkspaceeditor.cpp widgets/zzzworkspaceeditor.ui
     widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
     widgets/endpointprovidereditor.cpp widgets/endpointprovidereditor.ui
+    widgets/zzzreplyviewer.cpp widgets/zzzreplyviewer.ui
 
     libthezzz_icons.qrc
 )
@@ -28,6 +31,8 @@ set(HEADERS
     workspacefile.h
     zzzrequesttreeitem.h
     zzzrequest.h
+    zzzreply.h
+    zzzreplymanager.h
 
     providers/headersprovider.h
     providers/requestcontainerprovider.h
@@ -36,6 +41,7 @@ set(HEADERS
     widgets/zzzworkspaceeditor.h
     widgets/zzzrequesteditor.h
     widgets/endpointprovidereditor.h
+    widgets/zzzreplyviewer.h
 )
 
 set(PRIVATE_HEADERS
