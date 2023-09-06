@@ -28,6 +28,7 @@ ZzzReplyPtr ZzzRequest::execute() {
     auto mgr = d->workspace->networkAccessManager();
 
     QNetworkRequest request;
+    request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
     request.setUrl(this->endpoint());
 
     for (auto header : this->allImplicitHeaders()) {

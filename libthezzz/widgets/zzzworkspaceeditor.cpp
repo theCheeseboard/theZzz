@@ -38,6 +38,8 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
         if (!d->filePath.isEmpty()) {
             this->saveWorkspace(d->filePath);
         }
+
+        ui->treeWidget->viewport()->update();
     });
     this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
 
@@ -143,12 +145,13 @@ tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* pa
 
     auto fontMetrics = option.fontMetrics;
 
-    if (auto request = index.data(Qt::UserRole).value<ZzzRequestPtr>()) {
-        QRectF titleRect;
-        titleRect.setHeight(fontMetrics.height());
-        titleRect.setWidth(initialRect.width() - 6);
-        titleRect.moveCenter(initialRect.center());
+    QRectF titleRect;
+    titleRect.setHeight(fontMetrics.height());
+    titleRect.setWidth(initialRect.width() - 12);
+    titleRect.moveCenter(initialRect.center());
+    titleRect.moveTop(initialRect.top() + 6);
 
+    if (auto request = index.data(Qt::UserRole).value<ZzzRequestPtr>()) {
         QRectF iconRect;
         iconRect.setSize({16, 16});
         iconRect.moveLeft(titleRect.left());
@@ -169,7 +172,8 @@ tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* pa
             painter->drawPixmap(drawBounds.toRect(), icon.pixmap(drawBounds.size().toSize()));
         });
         paintCalculator.addRect(supplementaryTextRect, [painter, index, option, request, fontMetrics](QRectF drawBounds) {
-            auto text = fontMetrics.elidedText(request->endpoint(), Qt::ElideRight, drawBounds.width());
+            auto text = fontMetrics.elidedText(request->calculateUrl().path(), Qt::ElideRight, drawBounds.width());
+            if (text.isEmpty()) text = QStringLiteral("/");
 
             painter->save();
             painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
@@ -177,11 +181,6 @@ tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* pa
             painter->restore();
         });
     } else if (auto workspace = index.data(Qt::UserRole).value<WorkspaceFilePtr>()) {
-        QRectF titleRect;
-        titleRect.setHeight(fontMetrics.height());
-        titleRect.setWidth(initialRect.width() - 6);
-        titleRect.moveCenter(initialRect.center());
-
         paintCalculator.addRect(titleRect, [painter, index, option](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, index.data(Qt::DisplayRole).toString());

@@ -120,6 +120,14 @@ QString ZzzReply::reasonPhrase() {
     }
 }
 
+QNetworkReply::NetworkError ZzzReply::networkError() {
+    return d->reply->error();
+}
+
+QString ZzzReply::readableNetworkError() {
+    return d->reply->errorString();
+}
+
 quint64 ZzzReply::requestTime() {
     return d->msecsRequestTime;
 }

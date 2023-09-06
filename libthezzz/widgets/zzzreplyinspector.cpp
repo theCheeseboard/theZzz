@@ -31,14 +31,32 @@ ZzzReplyInspector::~ZzzReplyInspector() {
 }
 
 void ZzzReplyInspector::updateReply() {
+    ui->errorWidget->setVisible(false);
     if (d->reply->finished()) {
+        ui->timingsLabel->setVisible(true);
+        ui->timingsLabel->setText(tr("in %n msec", nullptr, d->reply->requestTime()));
+
         auto statusCode = d->reply->statusCode();
 
+        if (d->reply->networkError() && statusCode == 0) {
+            ui->statusCodeLabel->setVisible(false);
+            ui->statusTextLabel->setText(tr("Fail"));
+            QPalette pal = ui->statusCodeWidget->palette();
+            pal.setColor(QPalette::Window, QColor(100, 0, 0));
+            pal.setColor(QPalette::WindowText, Qt::white);
+            ui->statusCodeWidget->setPalette(pal);
+            ui->statusCodeWidget->setAutoFillBackground(true);
+
+            ui->errorWidget->setPalette(pal);
+            ui->errorText->setText(d->reply->readableNetworkError());
+            ui->errorWidget->setVisible(true);
+
+            return;
+        }
+
         ui->statusCodeLabel->setVisible(true);
-        ui->timingsLabel->setVisible(true);
         ui->statusCodeLabel->setText(QString::number(statusCode));
         ui->statusTextLabel->setText(d->reply->reasonPhrase());
-        ui->timingsLabel->setText(tr("in %n msec", nullptr, d->reply->requestTime()));
 
         QPalette pal = ui->statusCodeWidget->palette();
         if (statusCode <= 199) {
