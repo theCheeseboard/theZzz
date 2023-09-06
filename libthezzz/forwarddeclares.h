@@ -16,6 +16,8 @@ FORWARD_DECLARE(ZzzReplyManager)
 FORWARD_DECLARE(RequestContainerProvider)
 FORWARD_DECLARE(EndpointProvider)
 
+FORWARD_DECLARE(ProviderEditor)
+
 #undef FORWARD_DECLARE
 
 template<typename T> class ZzzSharedFromThis : public QEnableSharedFromThis<T> {

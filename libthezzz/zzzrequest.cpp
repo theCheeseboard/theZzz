@@ -34,13 +34,13 @@ ZzzReplyPtr ZzzRequest::execute() {
     if (this->verb() == "GET") {
         networkReply = mgr->get(request);
     } else if (this->verb() == "POST") {
-        networkReply = mgr->post(request, QByteArray());
+        networkReply = mgr->post(request, this->body());
     } else if (this->verb() == "PUT") {
-        networkReply = mgr->put(request, QByteArray());
+        networkReply = mgr->put(request, this->body());
     } else if (this->verb() == "DELETE") {
         networkReply = mgr->deleteResource(request);
     } else {
-        networkReply = mgr->sendCustomRequest(request, this->verb().toUtf8(), QByteArray());
+        networkReply = mgr->sendCustomRequest(request, this->verb().toUtf8(), this->body());
     }
 
     auto reply = new ZzzReply(this->verb(), request, networkReply);
@@ -51,8 +51,8 @@ QTreeWidgetItem* ZzzRequest::treeWidgetItem() {
     return d->treeWidgetItem;
 }
 
-QJsonObject ZzzRequest::toJson() {
-    auto json = ZzzRequestZzzProvides::toJson();
+QJsonValue ZzzRequest::toJson() {
+    auto json = ZzzRequestZzzProvides::toJson().toObject();
     json.insert("type", "request");
     return json;
 }

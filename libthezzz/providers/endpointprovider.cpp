@@ -38,13 +38,14 @@ QString EndpointProvider::jsonKey() {
     return QStringLiteral("endpoint");
 }
 
-void EndpointProvider::loadJson(QJsonObject obj) {
-    d->verb = obj.value("verb").toString();
-    d->endpoint = obj.value("endpoint").toString();
+void EndpointProvider::loadJson(QJsonValue obj) {
+    auto object = obj.toObject();
+    d->verb = object.value("verb").toString();
+    d->endpoint = object.value("endpoint").toString();
 }
 
-QJsonObject EndpointProvider::toJson() {
-    return {
+QJsonValue EndpointProvider::toJson() {
+    return QJsonObject{
         {"verb",     d->verb    },
         {"endpoint", d->endpoint}
     };

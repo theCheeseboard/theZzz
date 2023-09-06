@@ -2,13 +2,14 @@
 #define ZZZREQUEST_H
 
 #include "forwarddeclares.h"
+#include "providers/bodyprovider.h"
 #include "providers/endpointprovider.h"
 #include "providers/headersprovider.h"
 #include "providers/zzzprovides.h"
 #include "zzzrequesttreeitem.h"
 #include <QObject>
 
-typedef ZzzProvides<HeadersProvider, EndpointProvider> ZzzRequestZzzProvides;
+typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider> ZzzRequestZzzProvides;
 
 class QNetworkReply;
 struct ZzzRequestPrivate;
@@ -34,7 +35,7 @@ class ZzzRequest : public QObject,
 
         // ZzzProvides interface
     public:
-        QJsonObject toJson();
+        QJsonValue toJson();
 };
 
 typedef QSharedPointer<ZzzRequest> ZzzRequestPtr;

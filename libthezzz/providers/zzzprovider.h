@@ -4,9 +4,12 @@
 #include "forwarddeclares.h"
 #include <QJsonObject>
 
+class ZzzProviderBase {
+};
+
 struct ZzzProviderPrivate;
 template<typename T>
-class ZzzProvider {
+class ZzzProvider : public ZzzProviderBase {
     public:
         ZzzProvider(WorkspaceFile* parent) {
             _parent = parent;
@@ -19,12 +22,16 @@ class ZzzProvider {
         }
 
         virtual QString jsonKey() = 0;
-        virtual void loadJson(QJsonObject obj) = 0;
-        virtual QJsonObject toJson() = 0;
+        virtual void loadJson(QJsonValue obj) = 0;
+        virtual QJsonValue toJson() = 0;
+
+        virtual QList<ProviderEditor*> editor() {
+            return {};
+        }
 
     protected:
         void loadJsonProvider(QJsonObject obj) {
-            dynamic_cast<T*>(this)->T::loadJson(obj.value(this->jsonKey()).toObject());
+            dynamic_cast<T*>(this)->T::loadJson(obj.value(this->jsonKey()));
         }
         QJsonObject saveJsonProvider() {
             return {

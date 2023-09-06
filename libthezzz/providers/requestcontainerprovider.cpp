@@ -31,10 +31,10 @@ QString RequestContainerProvider::jsonKey() {
     return QStringLiteral("requests");
 }
 
-void RequestContainerProvider::loadJson(QJsonObject obj) {
+void RequestContainerProvider::loadJson(QJsonValue obj) {
     d->requests.clear();
 
-    auto requests = obj.value("requests").toArray();
+    auto requests = obj.toObject().value("requests").toArray();
     for (auto request : requests) {
         auto requestObj = request.toObject();
         if (requestObj.value("type") == "request") {
@@ -45,7 +45,7 @@ void RequestContainerProvider::loadJson(QJsonObject obj) {
     }
 }
 
-QJsonObject RequestContainerProvider::toJson() {
+QJsonValue RequestContainerProvider::toJson() {
     QJsonArray requests;
     for (auto request : d->requests) {
         if (auto zrq = request.dynamicCast<ZzzRequest>()) {
@@ -53,7 +53,7 @@ QJsonObject RequestContainerProvider::toJson() {
         }
     }
 
-    return {
+    return QJsonObject{
         {"requests", requests}
     };
 }

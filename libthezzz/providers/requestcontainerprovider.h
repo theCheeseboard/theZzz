@@ -21,8 +21,8 @@ class RequestContainerProvider : public ZzzProvider<RequestContainerProvider> {
         // ZzzProvider interface
     public:
         QString jsonKey();
-        void loadJson(QJsonObject obj);
-        QJsonObject toJson();
+        void loadJson(QJsonValue obj);
+        QJsonValue toJson();
 };
 
 #endif // REQUESTCONTAINERPROVIDER_H

@@ -16,9 +16,9 @@ QString HeadersProvider::jsonKey() {
     return QStringLiteral("headers");
 }
 
-void HeadersProvider::loadJson(QJsonObject obj) {
+void HeadersProvider::loadJson(QJsonValue obj) {
 }
 
-QJsonObject HeadersProvider::toJson() {
-    return {};
+QJsonValue HeadersProvider::toJson() {
+    return QJsonObject{};
 }

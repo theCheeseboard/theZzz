@@ -54,7 +54,7 @@ QString ZzzWorkspaceEditor::currentFile() {
 }
 
 void ZzzWorkspaceEditor::saveWorkspace(QString filePath) {
-    auto data = QJsonDocument(d->workspaceFile->toJson()).toJson();
+    auto data = QJsonDocument(d->workspaceFile->toJson().toObject()).toJson();
 
     QFile file(filePath);
     file.open(QFile::WriteOnly);

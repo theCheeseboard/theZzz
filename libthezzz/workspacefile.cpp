@@ -24,12 +24,12 @@ WorkspaceFile::~WorkspaceFile() {
     delete d;
 }
 
-void WorkspaceFile::loadJson(QJsonObject object) {
-    WorkspaceFileZzzProvides::loadJson(object);
+void WorkspaceFile::loadJson(QJsonValue object) {
+    WorkspaceFileZzzProvides::loadJson(object.toObject());
     emit requestsChanged();
 }
 
-QJsonObject WorkspaceFile::toJson() {
+QJsonValue WorkspaceFile::toJson() {
     return WorkspaceFileZzzProvides::toJson();
 }
 

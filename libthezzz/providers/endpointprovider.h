@@ -23,8 +23,8 @@ class EndpointProvider : public ZzzProvider<EndpointProvider> {
         // ZzzProvider interface
     public:
         QString jsonKey();
-        void loadJson(QJsonObject obj);
-        QJsonObject toJson();
+        void loadJson(QJsonValue obj);
+        QJsonValue toJson();
 };
 
 #endif // ENDPOINTPROVIDER_H

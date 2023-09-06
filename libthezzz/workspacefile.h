@@ -19,8 +19,8 @@ class WorkspaceFile : public QObject,
         explicit WorkspaceFile(QObject* parent = nullptr);
         ~WorkspaceFile();
 
-        void loadJson(QJsonObject object);
-        QJsonObject toJson();
+        void loadJson(QJsonValue object);
+        QJsonValue toJson();
 
         QNetworkAccessManager* networkAccessManager();
 

@@ -8,8 +8,14 @@
 
 QJsonObject operator<<(const QJsonObject& first, const QJsonObject& second);
 
+class ZzzProvidesBase {
+    public:
+        virtual QList<ProviderEditor*> editors() = 0;
+};
+
 template<typename... Providers>
-class ZzzProvides : public Providers... {
+class ZzzProvides : public ZzzProvidesBase,
+                    public Providers... {
     public:
         ZzzProvides(WorkspaceFile* parent) :
             Providers(parent)... {
@@ -19,8 +25,15 @@ class ZzzProvides : public Providers... {
             (Providers::loadJsonProvider(obj), ...);
         }
 
-        virtual QJsonObject toJson() {
-            return (... << Providers::saveJsonProvider());
+        virtual QJsonValue toJson() {
+            return QJsonObject((... << Providers::saveJsonProvider()));
+        }
+
+        virtual QList<ProviderEditor*> editors() {
+            QList<ProviderEditor*> editor;
+            (editor << ... << Providers::editor());
+            editor.removeAll(nullptr);
+            return editor;
         }
 };
 
