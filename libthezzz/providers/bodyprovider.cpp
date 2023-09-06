@@ -44,3 +44,9 @@ QJsonValue BodyProvider::toJson() {
 QList<ProviderEditor*> BodyProvider::editor() {
     return {new BodyProviderEditor(this)};
 }
+
+ZzzHeaders BodyProvider::implicitHeaders() {
+    return {
+        {QStringLiteral("Content-Length").toUtf8(), QStringLiteral("%1").arg(d->body.length()).toUtf8()},
+    };
+}

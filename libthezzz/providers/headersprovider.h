@@ -27,6 +27,7 @@ class HeadersProvider : public ZzzProvider<HeadersProvider> {
         // ZzzProvider interface
     public:
         QList<ProviderEditor*> editor();
+        ZzzHeaders implicitHeaders();
 };
 
 #endif // HEADERSPROVIDER_H

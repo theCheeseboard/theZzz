@@ -17,6 +17,8 @@ class EndpointProvider : public ZzzProvider<EndpointProvider> {
         QString endpoint();
         void setEndpoint(QString endpoint);
 
+        QUrl calculateUrl();
+
     private:
         EndpointProviderPrivate* d;
 
@@ -25,6 +27,7 @@ class EndpointProvider : public ZzzProvider<EndpointProvider> {
         QString jsonKey();
         void loadJson(QJsonValue obj);
         QJsonValue toJson();
+        ZzzHeaders implicitHeaders();
 };
 
 #endif // ENDPOINTPROVIDER_H

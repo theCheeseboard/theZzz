@@ -2,6 +2,7 @@
 #define ZZZPROVIDER_H
 
 #include "forwarddeclares.h"
+#include "zzzhelpers.h"
 #include <QJsonObject>
 
 class ZzzProviderBase {
@@ -26,6 +27,10 @@ class ZzzProvider : public ZzzProviderBase {
         virtual QJsonValue toJson() = 0;
 
         virtual QList<ProviderEditor*> editor() {
+            return {};
+        }
+
+        virtual ZzzHeaders implicitHeaders() {
             return {};
         }
 

@@ -2,6 +2,7 @@
 
 #include "widgets/providereditor/headerprovidereditor.h"
 #include "workspacefile.h"
+#include <QApplication>
 #include <QJsonArray>
 
 struct HeadersProviderPrivate {
@@ -53,4 +54,13 @@ QJsonValue HeadersProvider::toJson() {
 
 QList<ProviderEditor*> HeadersProvider::editor() {
     return {new HeaderProviderEditor(this)};
+}
+
+ZzzHeaders HeadersProvider::implicitHeaders() {
+    return {
+        {QStringLiteral("User-Agent").toUtf8(),      QStringLiteral("thezzz/%1").arg(qApp->applicationVersion()).toUtf8()},
+        {QStringLiteral("Accept").toUtf8(),          QStringLiteral("*/*").toUtf8()                                      },
+        {QStringLiteral("Accept-Encoding").toUtf8(), QStringLiteral("gzip, deflate").toUtf8()                            },
+        {QStringLiteral("Connection").toUtf8(),      QStringLiteral("keep-alive").toUtf8()                               },
+    };
 }

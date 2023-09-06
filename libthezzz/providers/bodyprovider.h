@@ -21,6 +21,7 @@ class BodyProvider : public ZzzProvider<BodyProvider> {
         void loadJson(QJsonValue obj);
         QJsonValue toJson();
         QList<ProviderEditor*> editor();
+        ZzzHeaders implicitHeaders();
 };
 
 #endif // BODYPROVIDER_H

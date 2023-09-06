@@ -30,6 +30,11 @@ ZzzReplyPtr ZzzRequest::execute() {
     QNetworkRequest request;
     request.setUrl(this->endpoint());
 
+    for (auto header : this->allImplicitHeaders()) {
+        request.setRawHeader(header.first, header.second);
+    }
+
+    // TODO: Concatenate multiple headers correctly
     for (auto header : this->headers()) {
         request.setRawHeader(header.first, header.second);
     }

@@ -34,6 +34,10 @@ void EndpointProvider::setEndpoint(QString endpoint) {
     emit this->workspace()->dataChanged();
 }
 
+QUrl EndpointProvider::calculateUrl() {
+    return d->endpoint;
+}
+
 QString EndpointProvider::jsonKey() {
     return QStringLiteral("endpoint");
 }
@@ -48,5 +52,11 @@ QJsonValue EndpointProvider::toJson() {
     return QJsonObject{
         {"verb",     d->verb    },
         {"endpoint", d->endpoint}
+    };
+}
+
+ZzzHeaders EndpointProvider::implicitHeaders() {
+    return {
+        {QStringLiteral("Host").toUtf8(), this->calculateUrl().host().toUtf8()},
     };
 }

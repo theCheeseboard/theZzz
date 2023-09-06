@@ -32,6 +32,18 @@ int HeaderProviderEditor::order() {
 void HeaderProviderEditor::updateData() {
     ui->headersList->clear();
 
+    auto providesBase = dynamic_cast<ZzzProvidesBase*>(d->headersProvider);
+    for (auto header : providesBase->allImplicitHeaders()) {
+        auto item = new QTreeWidgetItem();
+        item->setData(0, Qt::UserRole, false);
+        item->setText(0, header.first);
+        item->setText(1, header.second);
+        item->setFlags(Qt::ItemIsSelectable);
+        item->setForeground(0, this->palette().color(QPalette::Disabled, QPalette::WindowText));
+        item->setForeground(1, this->palette().color(QPalette::Disabled, QPalette::WindowText));
+        ui->headersList->addTopLevelItem(item);
+    }
+
     for (auto header : d->headersProvider->headers()) {
         auto item = new QTreeWidgetItem();
         item->setData(0, Qt::UserRole, true);
