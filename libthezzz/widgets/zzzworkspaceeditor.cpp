@@ -2,10 +2,12 @@
 #include "ui_zzzworkspaceeditor.h"
 
 #include "ranges/trange.h"
+#include "zzzhelpers.h"
 #include "zzzrequest.h"
 #include "zzzrequesteditor.h"
 #include <QFile>
 #include <QJsonDocument>
+#include <QPainter>
 #include <workspacefile.h>
 
 struct ZzzWorkspaceEditorPrivate {
@@ -27,6 +29,7 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
     d->workspaceItem->setData(0, Qt::UserRole, QVariant::fromValue(d->workspaceFile));
 
     ui->treeWidget->addTopLevelItem(d->workspaceItem);
+    ui->treeWidget->setItemDelegate(new ZzzWorkspaceEditorRequestDelegate(this));
 
     connect(d->workspaceFile.data(), &WorkspaceFile::requestsChanged, this, [this] {
         this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
@@ -120,4 +123,84 @@ void ZzzWorkspaceEditor::on_treeWidget_itemSelectionChanged() {
         ui->stackedWidget->setCurrentWidget(editor);
     } else {
     }
+}
+
+ZzzWorkspaceEditorRequestDelegate::ZzzWorkspaceEditorRequestDelegate(QObject* parent) :
+    QStyledItemDelegate(parent) {
+}
+
+tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
+    auto size = QStyledItemDelegate::sizeHint(option, index);
+    size.setWidth(option.widget->width());
+
+    auto initialRect = option.rect;
+    initialRect.setSize(size);
+
+    tPaintCalculator paintCalculator;
+    paintCalculator.setPainter(painter);
+    paintCalculator.setDrawBounds(initialRect);
+    paintCalculator.setLayoutDirection(option.direction);
+
+    auto fontMetrics = option.fontMetrics;
+
+    if (auto request = index.data(Qt::UserRole).value<ZzzRequestPtr>()) {
+        QRectF titleRect;
+        titleRect.setHeight(fontMetrics.height());
+        titleRect.setWidth(initialRect.width() - 6);
+        titleRect.moveCenter(initialRect.center());
+
+        QRectF iconRect;
+        iconRect.setSize({16, 16});
+        iconRect.moveLeft(titleRect.left());
+        iconRect.moveTop(titleRect.bottom() + 6);
+
+        QRectF supplementaryTextRect;
+        supplementaryTextRect.setHeight(fontMetrics.height());
+        supplementaryTextRect.moveCenter(iconRect.center());
+        supplementaryTextRect.moveLeft(iconRect.right() + 3);
+        supplementaryTextRect.setRight(titleRect.right());
+
+        paintCalculator.addRect(titleRect, [painter, index, option](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, index.data(Qt::DisplayRole).toString());
+        });
+        paintCalculator.addRect(iconRect, [painter, index, request](QRectF drawBounds) {
+            auto icon = ZzzHelpers::iconForVerb(request->verb());
+            painter->drawPixmap(drawBounds.toRect(), icon.pixmap(drawBounds.size().toSize()));
+        });
+        paintCalculator.addRect(supplementaryTextRect, [painter, index, option, request, fontMetrics](QRectF drawBounds) {
+            auto text = fontMetrics.elidedText(request->endpoint(), Qt::ElideRight, drawBounds.width());
+
+            painter->save();
+            painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
+            painter->drawText(drawBounds, text);
+            painter->restore();
+        });
+    } else if (auto workspace = index.data(Qt::UserRole).value<WorkspaceFilePtr>()) {
+        QRectF titleRect;
+        titleRect.setHeight(fontMetrics.height());
+        titleRect.setWidth(initialRect.width() - 6);
+        titleRect.moveCenter(initialRect.center());
+
+        paintCalculator.addRect(titleRect, [painter, index, option](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, index.data(Qt::DisplayRole).toString());
+        });
+    }
+
+    return paintCalculator;
+}
+
+void ZzzWorkspaceEditorRequestDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
+    option.widget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, option.widget);
+
+    auto paintCalculator = this->paintCalculator(painter, option, index);
+    paintCalculator.setPainter(painter);
+    paintCalculator.performPaint();
+}
+
+QSize ZzzWorkspaceEditorRequestDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
+    auto paintCalculator = this->paintCalculator(nullptr, option, index);
+    auto size = paintCalculator.sizeWithMargins().toSize();
+    return size;
 }

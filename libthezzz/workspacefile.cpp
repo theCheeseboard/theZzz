@@ -1,6 +1,8 @@
 #include "workspacefile.h"
 
+#include "zzznetworkcache.h"
 #include "zzzrequest.h"
+#include <QAbstractNetworkCache>
 #include <QJsonObject>
 #include <QNetworkAccessManager>
 
@@ -11,6 +13,7 @@ struct WorkspaceFilePrivate {
 WorkspaceFile::WorkspaceFile(QObject* parent) :
     QObject{parent}, WorkspaceFileZzzProvides(this) {
     d = new WorkspaceFilePrivate();
+    d->networkAccessManager.setCache(new ZzzNetworkCache(this));
 
     Q_INIT_RESOURCE(libthezzz_icons);
 

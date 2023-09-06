@@ -2,7 +2,9 @@
 #define ZZZWORKSPACEEDITOR_H
 
 #include "forwarddeclares.h"
+#include <QStyledItemDelegate>
 #include <QWidget>
+#include <tpaintcalculator.h>
 
 namespace Ui {
     class ZzzWorkspaceEditor;
@@ -34,6 +36,20 @@ class ZzzWorkspaceEditor : public QWidget {
         ZzzWorkspaceEditorPrivate* d;
 
         void updateRequests(QTreeWidgetItem* rootItem, RequestContainerProviderPtr containerProvider);
+};
+
+class ZzzWorkspaceEditorRequestDelegate : public QStyledItemDelegate {
+        Q_OBJECT
+    public:
+        ZzzWorkspaceEditorRequestDelegate(QObject* parent = nullptr);
+
+    private:
+        tPaintCalculator paintCalculator(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
+        // QAbstractItemDelegate interface
+    public:
+        void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+        QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 };
 
 #endif // ZZZWORKSPACEEDITOR_H
