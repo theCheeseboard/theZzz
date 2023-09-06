@@ -3,6 +3,8 @@
 
 #include <QIcon>
 
+typedef QList<std::pair<QByteArray, QByteArray>> ZzzHeaders;
+
 namespace ZzzHelpers {
     QIcon iconForVerb(QString verb);
 };

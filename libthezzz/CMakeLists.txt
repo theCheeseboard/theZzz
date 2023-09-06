@@ -73,7 +73,8 @@ set(PRIVATE_HEADERS
 )
 
 add_library(libthezzz SHARED ${SOURCES} ${HEADERS} ${PRIVATE_HEADERS}
-    widgets/providereditor/providereditor.h widgets/providereditor/providereditor.cpp)
+    widgets/providereditor/providereditor.h widgets/providereditor/providereditor.cpp
+    widgets/providereditor/headerprovidereditor.h widgets/providereditor/headerprovidereditor.cpp widgets/providereditor/headerprovidereditor.ui)
 cntp_init(libthezzz 20)
 set_target_properties(libthezzz PROPERTIES
         OUTPUT_NAME thezzz

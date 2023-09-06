@@ -1,6 +1,7 @@
 #ifndef HEADERSPROVIDER_H
 #define HEADERSPROVIDER_H
 
+#include "zzzhelpers.h"
 #include "zzzprovider.h"
 #include <QJsonObject>
 
@@ -11,6 +12,9 @@ class HeadersProvider : public ZzzProvider<HeadersProvider> {
         HeadersProvider(WorkspaceFile* parent);
         ~HeadersProvider();
 
+        ZzzHeaders headers();
+        void setHeaders(ZzzHeaders headers);
+
     private:
         HeadersProviderPrivate* d;
 
@@ -19,6 +23,10 @@ class HeadersProvider : public ZzzProvider<HeadersProvider> {
         QString jsonKey();
         void loadJson(QJsonValue obj);
         QJsonValue toJson();
+
+        // ZzzProvider interface
+    public:
+        QList<ProviderEditor*> editor();
 };
 
 #endif // HEADERSPROVIDER_H

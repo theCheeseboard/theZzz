@@ -30,6 +30,10 @@ ZzzReplyPtr ZzzRequest::execute() {
     QNetworkRequest request;
     request.setUrl(this->endpoint());
 
+    for (auto header : this->headers()) {
+        request.setRawHeader(header.first, header.second);
+    }
+
     QNetworkReply* networkReply;
     if (this->verb() == "GET") {
         networkReply = mgr->get(request);
