@@ -2,10 +2,10 @@
 #define ZZZREPLY_H
 
 #include "forwarddeclares.h"
+#include <QNetworkReply>
 #include <QObject>
 
 class QNetworkRequest;
-class QNetworkReply;
 struct ZzzReplyPrivate;
 class ZzzReply : public QObject,
                  public ZzzSharedFromThis<ZzzReply> {
@@ -23,6 +23,7 @@ class ZzzReply : public QObject,
 
         quint64 requestTime();
 
+        QList<QNetworkReply::RawHeaderPair> headers();
         QByteArray body();
 
     signals:

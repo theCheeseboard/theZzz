@@ -2,6 +2,7 @@
 #include "ui_zzzreplyinspector.h"
 
 #include "replyinspector/replybodywidget.h"
+#include "replyinspector/replyheaderswidget.h"
 #include "zzzreply.h"
 #include <QToolButton>
 
@@ -16,25 +17,9 @@ ZzzReplyInspector::ZzzReplyInspector(ZzzReplyPtr reply, QWidget* parent) :
     d = new ZzzReplyInspectorPrivate();
     d->reply = reply;
 
-    auto bodyInspector = new ReplyBodyWidget(reply, this);
-    ui->stackedWidget->addWidget(bodyInspector);
-
-    auto bodyButton = new QToolButton();
-    bodyButton->setText(QStringLiteral("bdy"));
-    bodyButton->setCheckable(true);
-    bodyButton->setAutoExclusive(true);
-    bodyButton->setChecked(true);
-    connect(bodyButton, &QToolButton::triggered, this, [this, bodyInspector] {
-        ui->stackedWidget->setCurrentWidget(bodyInspector);
-    });
-    ui->buttonsLayout->addWidget(bodyButton);
-
-    connect(ui->stackedWidget, &QStackedWidget::currentChanged, this, [this, bodyButton, bodyInspector] {
-        auto widget = ui->stackedWidget->currentWidget();
-        if (widget == bodyInspector) {
-            bodyButton->setChecked(true);
-        }
-    });
+    this->addReplyInspectorWidget(new ReplyHeadersWidget(reply, this));
+    this->addReplyInspectorWidget(new ReplyBodyWidget(reply, this));
+    ui->stackedWidget->setCurrentIndex(0);
 
     connect(reply.data(), &ZzzReply::updated, this, &ZzzReplyInspector::updateReply);
     this->updateReply();
@@ -77,4 +62,22 @@ void ZzzReplyInspector::updateReply() {
         ui->statusTextLabel->setText(tr("Processing..."));
         ui->statusCodeWidget->setAutoFillBackground(false);
     }
+}
+
+void ZzzReplyInspector::addReplyInspectorWidget(ReplyInspectorWidget* widget) {
+    ui->stackedWidget->addWidget(widget);
+
+    auto button = new QToolButton();
+    button->setText(widget->text());
+    button->setCheckable(true);
+    button->setAutoExclusive(true);
+    button->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    connect(button, &QToolButton::clicked, this, [this, widget] {
+        ui->stackedWidget->setCurrentWidget(widget);
+    });
+    ui->buttonsLayout->addWidget(button);
+
+    connect(ui->stackedWidget, &QStackedWidget::currentChanged, this, [this, button, widget] {
+        button->setChecked(ui->stackedWidget->currentWidget() == widget);
+    });
 }

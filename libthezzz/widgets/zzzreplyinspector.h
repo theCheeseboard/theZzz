@@ -8,6 +8,7 @@ namespace Ui {
     class ZzzReplyInspector;
 }
 
+class ReplyInspectorWidget;
 struct ZzzReplyInspectorPrivate;
 class ZzzReplyInspector : public QWidget {
         Q_OBJECT
@@ -21,6 +22,7 @@ class ZzzReplyInspector : public QWidget {
         ZzzReplyInspectorPrivate* d;
 
         void updateReply();
+        void addReplyInspectorWidget(ReplyInspectorWidget* widget);
 };
 
 #endif // ZZZREPLYINSPECTOR_H

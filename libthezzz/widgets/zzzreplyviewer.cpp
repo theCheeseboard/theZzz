@@ -1,6 +1,7 @@
 #include "zzzreplyviewer.h"
 #include "ui_zzzreplyviewer.h"
 
+#include "zzzhelpers.h"
 #include "zzzreply.h"
 #include "zzzreplyinspector.h"
 #include "zzzreplymanager.h"
@@ -17,7 +18,8 @@ ZzzReplyViewer::ZzzReplyViewer(QWidget* parent) :
     d->replyManager = (new ZzzReplyManager())->sharedFromThis();
 
     connect(d->replyManager.data(), &ZzzReplyManager::newReply, this, [this](ZzzReplyPtr reply) {
-        ui->replyList->insertItem(0, QStringLiteral("%1 %2").arg(reply->verb(), reply->url().toString()));
+        ui->replyList->insertItem(0, QStringLiteral("%1").arg(reply->url().toString()));
+        ui->replyList->setItemIcon(0, ZzzHelpers::iconForVerb(reply->verb()));
 
         auto inspector = new ZzzReplyInspector(reply);
         ui->stackedWidget->insertWidget(0, inspector);

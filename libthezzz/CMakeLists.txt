@@ -26,7 +26,9 @@ set(SOURCES
     widgets/zzzreplyviewer.cpp widgets/zzzreplyviewer.ui
     widgets/zzzreplyinspector.cpp widgets/zzzreplyinspector.ui
 
+    widgets/replyinspector/replyinspectorwidget.cpp
     widgets/replyinspector/replybodywidget.cpp widgets/replyinspector/replybodywidget.ui
+    widgets/replyinspector/replyheaderswidget.cpp widgets/replyinspector/replyheaderswidget.ui
 
     libthezzz_icons.qrc
 )
@@ -55,7 +57,9 @@ set(HEADERS
     widgets/zzzreplyviewer.h
     widgets/zzzreplyinspector.h
 
+    widgets/replyinspector/replyinspectorwidget.h
     widgets/replyinspector/replybodywidget.h
+    widgets/replyinspector/replyheaderswidget.h
 )
 
 set(PRIVATE_HEADERS
