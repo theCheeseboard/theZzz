@@ -3,6 +3,7 @@
 
 #include "providers/headersprovider.h"
 #include "workspacefile.h"
+#include <ranges/trange.h>
 
 struct HeaderProviderEditorPrivate {
         HeadersProvider* headersProvider;
@@ -34,10 +35,11 @@ void HeaderProviderEditor::updateData() {
 
     ZzzHeaders implicitHeaders = d->headersProvider->implicitHeadersWithAncestors();
     ZzzHeaders parentHeaders = d->headersProvider->ancestorHeaders();
+    ZzzHeaders thisHeaders = d->headersProvider->headers();
 
     for (const auto& header : parentHeaders) {
         implicitHeaders.removeIf([header](ZzzHeader existingHeader) {
-            return existingHeader.first == header.first;
+            return existingHeader.first.toLower() == header.first.toLower();
         });
     }
 
@@ -49,6 +51,14 @@ void HeaderProviderEditor::updateData() {
         item->setFlags(Qt::ItemIsSelectable);
         item->setForeground(0, this->palette().color(QPalette::Disabled, QPalette::WindowText));
         item->setForeground(1, this->palette().color(QPalette::Disabled, QPalette::WindowText));
+        if (tRange(thisHeaders).some([header](const ZzzHeader& existingHeader) {
+                return existingHeader.first.toLower() == header.first.toLower();
+            })) {
+            auto font = item->font(0);
+            font.setStrikeOut(true);
+            item->setFont(0, font);
+            item->setFont(1, font);
+        }
         ui->headersList->addTopLevelItem(item);
     }
 
@@ -60,10 +70,18 @@ void HeaderProviderEditor::updateData() {
         item->setFlags(Qt::ItemIsSelectable);
         item->setForeground(0, this->palette().color(QPalette::Disabled, QPalette::WindowText));
         item->setForeground(1, this->palette().color(QPalette::Disabled, QPalette::WindowText));
+        if (tRange(thisHeaders).some([header](const ZzzHeader& existingHeader) {
+                return existingHeader.first.toLower() == header.first.toLower();
+            })) {
+            auto font = item->font(0);
+            font.setStrikeOut(true);
+            item->setFont(0, font);
+            item->setFont(1, font);
+        }
         ui->headersList->addTopLevelItem(item);
     }
 
-    for (const auto& header : d->headersProvider->headers()) {
+    for (const auto& header : thisHeaders) {
         auto item = new QTreeWidgetItem();
         item->setData(0, Qt::UserRole, true);
         item->setText(0, header.first);

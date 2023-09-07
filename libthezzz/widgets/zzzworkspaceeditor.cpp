@@ -5,7 +5,9 @@
 #include "zzzhelpers.h"
 #include "zzzrequest.h"
 #include "zzzrequesteditor.h"
+#include <QCryptographicHash>
 #include <QFile>
+#include <QFileSystemWatcher>
 #include <QJsonDocument>
 #include <QPainter>
 #include <workspacefile.h>
@@ -13,8 +15,10 @@
 struct ZzzWorkspaceEditorPrivate {
         WorkspaceFilePtr workspaceFile;
         QTreeWidgetItem* workspaceItem;
+        QFileSystemWatcher filesystemWatcher;
 
         QString filePath;
+        QByteArray fileHash;
 };
 
 ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
@@ -43,6 +47,13 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
     });
     this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
 
+    connect(&d->filesystemWatcher, &QFileSystemWatcher::fileChanged, this, [this](QString path) {
+        if (d->filePath == path) {
+            // Reload the file
+            this->openWorkspace(d->filePath);
+        }
+    });
+
     ui->leftWidget->setFixedWidth(300);
 }
 
@@ -56,7 +67,10 @@ QString ZzzWorkspaceEditor::currentFile() {
 }
 
 void ZzzWorkspaceEditor::saveWorkspace(QString filePath) {
+    d->filesystemWatcher.removePaths(d->filesystemWatcher.files());
+
     auto data = QJsonDocument(d->workspaceFile->toJson().toObject()).toJson();
+    d->fileHash = QCryptographicHash::hash(data, QCryptographicHash::Sha256);
 
     QFile file(filePath);
     file.open(QFile::WriteOnly);
@@ -64,6 +78,7 @@ void ZzzWorkspaceEditor::saveWorkspace(QString filePath) {
     file.close();
 
     d->filePath = filePath;
+    d->filesystemWatcher.addPath(filePath);
 }
 
 void ZzzWorkspaceEditor::openWorkspace(QString filePath) {
@@ -72,6 +87,12 @@ void ZzzWorkspaceEditor::openWorkspace(QString filePath) {
     auto data = file.readAll();
     file.close();
 
+    // Only update the workspace if the file has actually changed
+    auto newHash = QCryptographicHash::hash(data, QCryptographicHash::Sha256);
+    if (d->fileHash == newHash) {
+        return;
+    }
+
     QJsonParseError error;
     auto json = QJsonDocument::fromJson(data, &error);
     if (error.error != QJsonParseError::NoError) {
@@ -79,8 +100,13 @@ void ZzzWorkspaceEditor::openWorkspace(QString filePath) {
         return;
     }
 
+    d->fileHash = newHash;
+
     d->workspaceFile->loadJson(json.object());
+
+    d->filesystemWatcher.removePaths(d->filesystemWatcher.files());
     d->filePath = filePath;
+    d->filesystemWatcher.addPath(filePath);
 }
 
 void ZzzWorkspaceEditor::on_newRequestButton_clicked() {
@@ -92,18 +118,37 @@ void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContai
                                                           return treeItem->treeWidgetItem();
                                                       })
                      .toList();
-    for (auto i = 0; i < items.length(); i++) {
-        auto item = items.at(i);
-        if (item->childCount() > i) {
-            auto child = item->child(i);
-            if (item == child) continue; // Nothing to change
+    //    for (auto i = 0; i < items.length(); i++) {
+    //        auto item = items.at(i);
+    //        if (item->childCount() > i) {
+    //            auto child = item->child(i);
+    //            if (item == child) continue; // Nothing to change
 
-            rootItem->removeChild(item);
-            i -= 1;
-            continue;
+    //            rootItem->removeChild(child);
+    //            i -= 1;
+    //            continue;
+    //        }
+
+    //        rootItem->addChild(item);
+    //    }
+
+    // Remove extra children
+    while (rootItem->childCount() > items.size()) {
+        rootItem->takeChild(rootItem->childCount() - 1);
+    }
+
+    // Update existing children and add missing ones
+    for (int i = 0; i < items.size(); ++i) {
+        if (i < rootItem->childCount()) {
+            // Update existing child
+            if (rootItem->child(i) != items.at(i)) {
+                rootItem->takeChild(i);
+                rootItem->insertChild(i, items.at(i));
+            }
+        } else {
+            // Add missing child
+            rootItem->addChild(items.at(i));
         }
-
-        rootItem->addChild(item);
     }
 
     d->workspaceItem->setExpanded(true);
