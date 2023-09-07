@@ -2,12 +2,12 @@
 #define ZZZREQUEST_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include "providers/bodyprovider.h"
 #include "providers/endpointprovider.h"
 #include "providers/headersprovider.h"
 #include "providers/zzzprovides.h"
 #include "zzzrequesttreeitem.h"
-#include "libthezzz_global.h"
 #include <QObject>
 
 typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider> ZzzRequestZzzProvides;
@@ -15,9 +15,9 @@ typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider> ZzzRequestZ
 class QNetworkReply;
 struct ZzzRequestPrivate;
 class LIBTHEZZZ_EXPORT ZzzRequest : public QObject,
-    public ZzzSharedFromThis<ZzzRequest>,
-    public ZzzRequestTreeItem,
-    public ZzzRequestZzzProvides {
+                                    public ZzzSharedFromThis<ZzzRequest>,
+                                    public ZzzRequestTreeItem,
+                                    public ZzzRequestZzzProvides {
         Q_OBJECT
     public:
         explicit ZzzRequest(WorkspaceFilePtr workspace, QObject* parent = nullptr);

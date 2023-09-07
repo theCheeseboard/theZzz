@@ -3,13 +3,3 @@
 struct ZzzProviderPrivate {
         WorkspaceFile* parent;
 };
-
-
-
-
-
-
-
-
-
-

@@ -31,12 +31,16 @@ ZzzReplyPtr ZzzRequest::execute() {
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
     request.setUrl(this->endpoint());
 
-    for (auto header : this->allImplicitHeaders()) {
+    for (const auto& header : this->implicitHeadersWithAncestors()) {
+        request.setRawHeader(header.first, header.second);
+    }
+
+    for (const auto& header : this->ancestorHeaders()) {
         request.setRawHeader(header.first, header.second);
     }
 
     // TODO: Concatenate multiple headers correctly
-    for (auto header : this->headers()) {
+    for (const auto& header : this->headers()) {
         request.setRawHeader(header.first, header.second);
     }
 

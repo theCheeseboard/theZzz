@@ -15,6 +15,9 @@ class HeadersProvider : public ZzzProvider<HeadersProvider> {
         ZzzHeaders headers();
         void setHeaders(ZzzHeaders headers);
 
+        ZzzHeaders implicitHeadersWithAncestors();
+        ZzzHeaders ancestorHeaders();
+
     private:
         HeadersProviderPrivate* d;
 

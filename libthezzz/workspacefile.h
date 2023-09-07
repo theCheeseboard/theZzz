@@ -2,10 +2,10 @@
 #define WORKSPACEFILE_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include "providers/headersprovider.h"
 #include "providers/requestcontainerprovider.h"
 #include "providers/zzzprovides.h"
-#include "libthezzz_global.h"
 #include <QObject>
 
 typedef ZzzProvides<HeadersProvider, RequestContainerProvider> WorkspaceFileZzzProvides;
@@ -13,8 +13,8 @@ typedef ZzzProvides<HeadersProvider, RequestContainerProvider> WorkspaceFileZzzP
 class QNetworkAccessManager;
 struct WorkspaceFilePrivate;
 class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
-    public ZzzSharedFromThis<WorkspaceFile>,
-    public WorkspaceFileZzzProvides {
+                                       public ZzzSharedFromThis<WorkspaceFile>,
+                                       public WorkspaceFileZzzProvides {
         Q_OBJECT
     public:
         explicit WorkspaceFile(QObject* parent = nullptr);

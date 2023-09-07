@@ -64,3 +64,31 @@ ZzzHeaders HeadersProvider::implicitHeaders() {
         {QStringLiteral("Connection").toUtf8(), QStringLiteral("keep-alive").toUtf8()                               },
     };
 }
+
+ZzzHeaders HeadersProvider::implicitHeadersWithAncestors() {
+    ZzzHeaders implicitHeaders;
+    auto providesBase = workspace()->ancestorsAndSelf<ZzzProvidesBase>(dynamic_cast<ZzzProvidesBase*>(this));
+    for (auto base : providesBase) {
+        for (const auto& header : base->allImplicitHeaders()) {
+            implicitHeaders.removeIf([header](ZzzHeader existingHeader) {
+                return existingHeader.first == header.first;
+            });
+            implicitHeaders.append(header);
+        }
+    }
+    return implicitHeaders;
+}
+
+ZzzHeaders HeadersProvider::ancestorHeaders() {
+    ZzzHeaders parentHeaders;
+    auto parentHeaderProviders = workspace()->ancestors<HeadersProvider>(dynamic_cast<ZzzProvidesBase*>(this));
+    for (auto headerProvider : parentHeaderProviders) {
+        for (const auto& header : headerProvider->headers()) {
+            parentHeaders.removeIf([header](ZzzHeader existingHeader) {
+                return existingHeader.first == header.first;
+            });
+            parentHeaders.append(header);
+        }
+    }
+    return parentHeaders;
+}

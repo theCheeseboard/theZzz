@@ -38,7 +38,7 @@ void RequestContainerProvider::loadJson(QJsonValue obj) {
     for (auto request : requests) {
         auto requestObj = request.toObject();
         if (requestObj.value("type") == "request") {
-            auto req = (new ZzzRequest(this->workspace()->sharedFromThis()))->sharedFromThis();
+            auto req = (new ZzzRequest(this->workspace()->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis().staticCast<ZzzRequest>();
             req->loadJson(requestObj);
             d->requests.append(req);
         }

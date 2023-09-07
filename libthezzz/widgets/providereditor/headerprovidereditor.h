@@ -2,6 +2,7 @@
 #define HEADERPROVIDEREDITOR_H
 
 #include "providereditor.h"
+#include "zzzhelpers.h"
 
 namespace Ui {
     class HeaderProviderEditor;
