@@ -1,0 +1,122 @@
+name: "Windows CI"
+on:
+  push:
+    branches:
+      - '**'
+  release:
+    types: [published]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest]
+        arch: [amd64, amd64_arm64]
+        include:
+          - arch: amd64
+            qtArch: win64_msvc2019_64
+            buildArch: x64
+          - arch: amd64_arm64
+            qtArch: win64_msvc2019_arm64
+            buildArch: arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: vicr123/libcontemporary/prepare-vars@actions
+        id: vars
+      - name: Install ninja
+        run: |
+          choco install ninja
+      - name: Install Host Qt
+        uses: vicr123/install-qt-action@win-aarch64-test
+        if: matrix.qtArch != 'win64_msvc2019_64'
+        with:
+          version: ${{ steps.vars.outputs.qtVersion }}
+          arch: win64_msvc2019_64
+          modules: addons.qtmultimedia addons.qtwebsockets qt5compat
+      - name: "Set Qt path"
+        shell: bash
+        run: |
+          echo "QT_HOST_PATH=$Qt6_DIR" >> $GITHUB_ENV
+      - name: Set up Host MSVC
+        uses: ilammy/msvc-dev-cmd@v1.12.0
+        if: matrix.qtArch != 'win64_msvc2019_64'
+        with:
+          sdk: 10.0.22000.0
+          arch: amd64
+      - name: Build Host libcontemporary
+        uses: vicr123/libcontemporary/install-libcontemporary@actions
+        if: matrix.qtArch != 'win64_msvc2019_64'
+        with:
+          qcoroVersion: ${{ steps.vars.outputs.qcoroVersion }}
+          commitish: features/win-aarch64
+          arch: x64
+      - name: Install Qt
+        uses: vicr123/install-qt-action@win-aarch64-test
+        with:
+          version: ${{ steps.vars.outputs.qtVersion }}
+          arch: ${{ matrix.qtArch }}
+          modules: addons.qtmultimedia addons.qtwebsockets qt5compat
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1.12.0
+        with:
+          sdk: 10.0.22000.0
+          arch: ${{ matrix.arch }}
+      - name: Build libcontemporary
+        uses: vicr123/libcontemporary/install-libcontemporary@actions
+        with:
+          qcoroVersion: ${{ steps.vars.outputs.qcoroVersion }}
+          commitish: features/win-aarch64
+          arch: ${{ matrix.buildArch }}
+      - uses: vicr123/libcontemporary/build-project@actions
+        name: "Build contemporary-theme"
+        with:
+          project: "vicr123/contemporary-theme"
+          commitish: "blueprint"
+          arch: ${{ matrix.buildArch }}
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+      - uses: vicr123/libcontemporary/build-project@actions
+        name: "Build project"
+        with:
+          project: "."
+          arch: ${{ matrix.buildArch }}
+          extra-cmake-args: ${{ format('-DTAGLIB_ROOT=D:\a\theZzz\cmake-install\{0} -DCNTP_TARGET_ARCH={0}', matrix.buildArch) }}
+      - name: "Prepare for deployment"
+        shell: bash
+        run: |
+          mkdir -p ./build/application/deploy
+        #  mkdir -p ./build/application/deploy/plugins
+        #  cp ./build/plugins/*/*.dll ./build/application/deploy/plugins
+      - uses: vicr123/libcontemporary/deploy-project@actions
+        id: deploy
+        name: "Deploy project"
+        with:
+          subdir: "application"
+          arch: ${{ matrix.buildArch }}
+      - uses: actions/upload-artifact@v1
+        name: Upload Artifact to GitHub Actions
+        with:
+          name: ${{ format('thezzz-win-{0}', matrix.buildArch) }}
+          path: ${{ steps.deploy.outputs.package }}
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'release'
+    steps:
+      - uses: actions/download-artifact@v3
+        name: "Download Artifact"
+        id: download
+        with:
+          name: "thezzz-win"
+          path: "thezzz-win"
+      - run: |
+          zip -r thezzz-win.zip thezzz-win
+      - name: "Upload to Release"
+        uses: softprops/action-gh-release@v1
+        with:
+          files: thezzz-win.zip
