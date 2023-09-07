@@ -4,11 +4,12 @@
 #include "forwarddeclares.h"
 #include <QNetworkReply>
 #include <QObject>
+#include "libthezzz_global.h"
 
 class QNetworkRequest;
 struct ZzzReplyPrivate;
-class ZzzReply : public QObject,
-                 public ZzzSharedFromThis<ZzzReply> {
+class LIBTHEZZZ_EXPORT ZzzReply : public QObject,
+    public ZzzSharedFromThis<ZzzReply> {
         Q_OBJECT
     public:
         explicit ZzzReply(QString verb, QNetworkRequest request, QNetworkReply* reply, QObject* parent = nullptr);

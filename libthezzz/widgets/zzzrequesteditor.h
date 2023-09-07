@@ -2,6 +2,7 @@
 #define ZZZREQUESTEDITOR_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include <QWidget>
 
 namespace Ui {
@@ -9,7 +10,7 @@ namespace Ui {
 }
 
 struct ZzzRequestEditorPrivate;
-class ZzzRequestEditor : public QWidget {
+class LIBTHEZZZ_EXPORT ZzzRequestEditor : public QWidget {
         Q_OBJECT
 
     public:

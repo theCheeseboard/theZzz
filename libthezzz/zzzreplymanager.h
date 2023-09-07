@@ -3,10 +3,11 @@
 
 #include "forwarddeclares.h"
 #include <QObject>
+#include "libthezzz_global.h"
 
 struct ZzzReplyManagerPrivate;
-class ZzzReplyManager : public QObject,
-                        public ZzzSharedFromThis<ZzzReplyManager> {
+class LIBTHEZZZ_EXPORT ZzzReplyManager : public QObject,
+    public ZzzSharedFromThis<ZzzReplyManager> {
         Q_OBJECT
     public:
         explicit ZzzReplyManager(QObject* parent = nullptr);

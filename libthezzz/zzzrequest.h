@@ -7,16 +7,17 @@
 #include "providers/headersprovider.h"
 #include "providers/zzzprovides.h"
 #include "zzzrequesttreeitem.h"
+#include "libthezzz_global.h"
 #include <QObject>
 
 typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider> ZzzRequestZzzProvides;
 
 class QNetworkReply;
 struct ZzzRequestPrivate;
-class ZzzRequest : public QObject,
-                   public ZzzSharedFromThis<ZzzRequest>,
-                   public ZzzRequestTreeItem,
-                   public ZzzRequestZzzProvides {
+class LIBTHEZZZ_EXPORT ZzzRequest : public QObject,
+    public ZzzSharedFromThis<ZzzRequest>,
+    public ZzzRequestTreeItem,
+    public ZzzRequestZzzProvides {
         Q_OBJECT
     public:
         explicit ZzzRequest(WorkspaceFilePtr workspace, QObject* parent = nullptr);

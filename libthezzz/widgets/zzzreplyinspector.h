@@ -2,6 +2,7 @@
 #define ZZZREPLYINSPECTOR_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include <QWidget>
 
 namespace Ui {
@@ -10,7 +11,7 @@ namespace Ui {
 
 class ReplyInspectorWidget;
 struct ZzzReplyInspectorPrivate;
-class ZzzReplyInspector : public QWidget {
+class LIBTHEZZZ_EXPORT ZzzReplyInspector : public QWidget {
         Q_OBJECT
 
     public:

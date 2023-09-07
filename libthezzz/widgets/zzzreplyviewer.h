@@ -2,6 +2,7 @@
 #define ZZZREPLYVIEWER_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include <QWidget>
 
 namespace Ui {
@@ -9,7 +10,7 @@ namespace Ui {
 }
 
 struct ZzzReplyViewerPrivate;
-class ZzzReplyViewer : public QWidget {
+class LIBTHEZZZ_EXPORT ZzzReplyViewer : public QWidget {
         Q_OBJECT
 
     public:

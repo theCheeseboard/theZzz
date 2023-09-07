@@ -5,6 +5,7 @@
 #include <QStyledItemDelegate>
 #include <QWidget>
 #include <tpaintcalculator.h>
+#include "libthezzz_global.h"
 
 namespace Ui {
     class ZzzWorkspaceEditor;
@@ -12,7 +13,7 @@ namespace Ui {
 
 class QTreeWidgetItem;
 struct ZzzWorkspaceEditorPrivate;
-class ZzzWorkspaceEditor : public QWidget {
+class LIBTHEZZZ_EXPORT ZzzWorkspaceEditor : public QWidget {
         Q_OBJECT
 
     public:

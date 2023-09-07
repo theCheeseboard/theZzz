@@ -5,15 +5,16 @@
 #include "providers/headersprovider.h"
 #include "providers/requestcontainerprovider.h"
 #include "providers/zzzprovides.h"
+#include "libthezzz_global.h"
 #include <QObject>
 
 typedef ZzzProvides<HeadersProvider, RequestContainerProvider> WorkspaceFileZzzProvides;
 
 class QNetworkAccessManager;
 struct WorkspaceFilePrivate;
-class WorkspaceFile : public QObject,
-                      public ZzzSharedFromThis<WorkspaceFile>,
-                      public WorkspaceFileZzzProvides {
+class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
+    public ZzzSharedFromThis<WorkspaceFile>,
+    public WorkspaceFileZzzProvides {
         Q_OBJECT
     public:
         explicit WorkspaceFile(QObject* parent = nullptr);

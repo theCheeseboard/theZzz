@@ -2,8 +2,9 @@
 #define ZZZNETWORKCACHE_H
 
 #include <QAbstractNetworkCache>
+#include "libthezzz_global.h"
 
-class ZzzNetworkCache : public QAbstractNetworkCache {
+class LIBTHEZZZ_EXPORT ZzzNetworkCache : public QAbstractNetworkCache {
         Q_OBJECT
     public:
         explicit ZzzNetworkCache(QObject* parent = nullptr);

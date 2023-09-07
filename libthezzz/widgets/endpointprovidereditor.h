@@ -3,13 +3,14 @@
 
 #include "forwarddeclares.h"
 #include <QWidget>
+#include "libthezzz_global.h"
 
 namespace Ui {
     class EndpointProviderEditor;
 }
 
 struct EndpointProviderEditorPrivate;
-class EndpointProviderEditor : public QWidget {
+class LIBTHEZZZ_EXPORT EndpointProviderEditor : public QWidget {
         Q_OBJECT
 
     public:
