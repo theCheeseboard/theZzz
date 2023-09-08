@@ -88,6 +88,12 @@ jobs:
           commitish: "master"
           arch: ${{ matrix.buildArch }}
       - uses: vicr123/libcontemporary/build-project@actions
+        name: "Build theBranch"
+        with:
+          project: "theCheeseboard/thebranch"
+          commitish: "master"
+          arch: ${{ matrix.buildArch }}
+      - uses: vicr123/libcontemporary/build-project@actions
         name: "Build contemporary-theme"
         with:
           project: "vicr123/contemporary-theme"
