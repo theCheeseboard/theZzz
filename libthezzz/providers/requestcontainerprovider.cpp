@@ -24,6 +24,15 @@ void RequestContainerProvider::addRequest(ZzzRequestTreeItemPtr request) {
     emit this->workspace()->requestsChanged();
 }
 
+void RequestContainerProvider::insertRequest(ZzzRequestTreeItemPtr before, ZzzRequestTreeItemPtr request) {
+    if (before) {
+        d->requests.insert(d->requests.indexOf(before), request);
+        emit this->workspace()->requestsChanged();
+    } else {
+        this->addRequest(request);
+    }
+}
+
 void RequestContainerProvider::removeRequestRecursive(ZzzRequestTreeItemPtr request) {
     d->requests.removeAll(request);
     for (auto rq : d->requests) {

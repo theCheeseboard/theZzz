@@ -14,6 +14,7 @@ class RequestContainerProvider : public ZzzProvider<RequestContainerProvider> {
         ~RequestContainerProvider();
 
         void addRequest(ZzzRequestTreeItemPtr request);
+        void insertRequest(ZzzRequestTreeItemPtr before, ZzzRequestTreeItemPtr request);
         void removeRequestRecursive(ZzzRequestTreeItemPtr request);
         QList<ZzzRequestTreeItemPtr> requests();
 

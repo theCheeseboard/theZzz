@@ -27,6 +27,7 @@ set(SOURCES
     widgets/endpointprovidereditor.cpp widgets/endpointprovidereditor.ui
     widgets/zzzreplyviewer.cpp widgets/zzzreplyviewer.ui
     widgets/zzzreplyinspector.cpp widgets/zzzreplyinspector.ui
+    widgets/zzzrequesttreewidget.cpp
 
     widgets/replyinspector/replyinspectorwidget.cpp
     widgets/replyinspector/replybodywidget.cpp widgets/replyinspector/replybodywidget.ui
@@ -64,6 +65,7 @@ set(HEADERS
     widgets/endpointprovidereditor.h
     widgets/zzzreplyviewer.h
     widgets/zzzreplyinspector.h
+    widgets/zzzrequesttreewidget.h
 
     widgets/replyinspector/replyinspectorwidget.h
     widgets/replyinspector/replybodywidget.h

@@ -3,6 +3,7 @@
 
 #include "forwarddeclares.h"
 #include "libthezzz_global.h"
+#include <QCoroTask>
 #include <QStyledItemDelegate>
 #include <QWidget>
 #include <tpaintcalculator.h>
@@ -39,6 +40,8 @@ class LIBTHEZZZ_EXPORT ZzzWorkspaceEditor : public QWidget {
         ZzzWorkspaceEditorPrivate* d;
 
         void updateRequests(QTreeWidgetItem* rootItem, RequestContainerProviderPtr containerProvider);
+
+        QCoro::Task<> deleteRequest(ZzzRequestTreeItemPtr request);
 };
 
 class ZzzWorkspaceEditorRequestDelegate : public QStyledItemDelegate {

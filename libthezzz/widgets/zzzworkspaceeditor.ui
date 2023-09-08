@@ -48,12 +48,15 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QTreeWidget" name="treeWidget">
+       <widget class="ZzzRequestTreeWidget" name="treeWidget">
         <property name="contextMenuPolicy">
          <enum>Qt::CustomContextMenu</enum>
         </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="dragDropMode">
+         <enum>QAbstractItemView::InternalMove</enum>
         </property>
         <property name="rootIsDecorated">
          <bool>false</bool>
@@ -105,6 +108,11 @@
    <slots>
     <signal>switchingFrame(int)</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>ZzzRequestTreeWidget</class>
+   <extends>QTreeWidget</extends>
+   <header>widgets/zzzrequesttreewidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

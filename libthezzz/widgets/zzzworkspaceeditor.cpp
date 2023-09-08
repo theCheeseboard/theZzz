@@ -12,6 +12,7 @@
 #include <QJsonDocument>
 #include <QMenu>
 #include <QPainter>
+#include <tmessagebox.h>
 #include <workspacefile.h>
 
 struct ZzzWorkspaceEditorPrivate {
@@ -140,6 +141,22 @@ void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContai
     d->workspaceFile->treeWidgetItem()->setExpanded(true);
 }
 
+QCoro::Task<> ZzzWorkspaceEditor::deleteRequest(ZzzRequestTreeItemPtr request) {
+    if (request.dynamicCast<RequestContainerProvider>()) {
+        tMessageBox box(this->window());
+        box.setTitleBarText(tr("Delete Request Folder"));
+        box.setMessageText(tr("Do you want to delete the request folder?"));
+        box.setInformativeText(tr("Deleting the request folder will also delete all the requests contained within."));
+        box.setIcon(QMessageBox::Warning);
+        auto deleteButton = box.addButton(tr("Delete Request Folder"), QMessageBox::DestructiveRole);
+        auto cancelButton = box.addStandardButton(QMessageBox::Cancel);
+
+        auto button = co_await box.presentAsync();
+        if (button == cancelButton) co_return;
+    }
+    d->workspaceFile->removeRequestRecursive(request);
+}
+
 void ZzzWorkspaceEditor::on_treeWidget_itemSelectionChanged() {
     auto items = ui->treeWidget->selectedItems();
     if (items.length() == 0) {
@@ -255,8 +272,8 @@ void ZzzWorkspaceEditor::on_treeWidget_customContextMenuRequested(const QPoint& 
         }
 
         if (item != d->workspaceFile->treeWidgetItem()) {
-            menu->addAction(QIcon::fromTheme("edit-delete"), tr("Remove"), [treeItem, this] {
-                d->workspaceFile->removeRequestRecursive(treeItem);
+            menu->addAction(QIcon::fromTheme("edit-delete"), tr("Delete"), [treeItem, this] {
+                this->deleteRequest(treeItem);
             });
         }
 
