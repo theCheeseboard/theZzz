@@ -21,6 +21,8 @@ ZzzReplyInspector::ZzzReplyInspector(ZzzReplyPtr reply, QWidget* parent) :
     this->addReplyInspectorWidget(new ReplyBodyWidget(reply, this));
     ui->stackedWidget->setCurrentIndex(0);
 
+    ui->responseStack->setCurrentAnimation(tStackedWidget::Fade);
+
     connect(reply.data(), &ZzzReply::updated, this, &ZzzReplyInspector::updateReply);
     this->updateReply();
 }
@@ -51,6 +53,7 @@ void ZzzReplyInspector::updateReply() {
             ui->errorText->setText(d->reply->readableNetworkError());
             ui->errorWidget->setVisible(true);
 
+            ui->responseStack->setCurrentWidget(ui->responseErrorPage);
             return;
         }
 
@@ -74,11 +77,13 @@ void ZzzReplyInspector::updateReply() {
         }
         ui->statusCodeWidget->setPalette(pal);
         ui->statusCodeWidget->setAutoFillBackground(true);
+        ui->responseStack->setCurrentWidget(ui->responsePage);
     } else {
         ui->statusCodeLabel->setVisible(false);
         ui->timingsLabel->setVisible(false);
         ui->statusTextLabel->setText(tr("Processing..."));
         ui->statusCodeWidget->setAutoFillBackground(false);
+        ui->responseStack->setCurrentWidget(ui->loadingPage);
     }
 }
 

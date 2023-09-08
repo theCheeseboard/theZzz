@@ -207,24 +207,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/zzzreplyinspector.ui" line="91"/>
+        <location filename="../widgets/zzzreplyinspector.ui" line="94"/>
         <source>Unable to send request</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../widgets/zzzreplyinspector.cpp" line="37"/>
+        <location filename="../widgets/zzzreplyinspector.cpp" line="39"/>
         <source>in %n msec</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../widgets/zzzreplyinspector.cpp" line="43"/>
+        <location filename="../widgets/zzzreplyinspector.cpp" line="45"/>
         <source>Fail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/zzzreplyinspector.cpp" line="80"/>
+        <location filename="../widgets/zzzreplyinspector.cpp" line="84"/>
         <source>Processing...</source>
         <translation type="unfinished"></translation>
     </message>
