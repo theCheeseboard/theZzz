@@ -92,6 +92,8 @@ void HeaderProviderEditor::updateData() {
 
     auto newItem = new QTreeWidgetItem();
     newItem->setData(0, Qt::UserRole, true);
+    newItem->setText(0, tr("New Header..."));
+    newItem->setForeground(0, this->palette().color(QPalette::Disabled, QPalette::Text));
     newItem->setFlags(Qt::ItemIsEditable | Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     ui->headersList->addTopLevelItem(newItem);
 }
@@ -100,7 +102,7 @@ void HeaderProviderEditor::on_headersList_itemChanged(QTreeWidgetItem* item, int
     ZzzHeaders headers;
     for (auto i = 0; i < ui->headersList->topLevelItemCount(); i++) {
         auto item = ui->headersList->topLevelItem(i);
-        if (item->data(0, Qt::UserRole).toBool() && !item->text(0).isEmpty()) {
+        if (item->data(0, Qt::UserRole).toBool() && !item->text(0).isEmpty() && item->text(0) != tr("New Header...")) {
             headers.append({item->text(0).toUtf8(), item->text(1).toUtf8()});
         }
     }
