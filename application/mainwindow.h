@@ -42,6 +42,8 @@ class MainWindow : public QMainWindow {
 
         QCoro::Task<> on_actionCheckout_triggered();
 
+        void on_actionClose_Tab_triggered();
+
     private:
         Ui::MainWindow* ui;
         MainWindowPrivate* d;

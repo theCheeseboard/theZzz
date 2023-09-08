@@ -75,6 +75,9 @@ MainWindow::MainWindow(QWidget* parent) :
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
     this->setWindowIcon(tApplication::applicationIcon());
 
+    connect(ui->stackedWidget, &tStackedWidget::switchingFrame, this, &MainWindow::updateMenuItems);
+    updateMenuItems();
+
     ui->replyViewer->setFixedWidth(400);
 }
 
@@ -197,4 +200,28 @@ QCoro::Task<> MainWindow::on_actionCheckout_triggered() {
     if (!repo) co_return;
 
     SnapInPopover::showSnapInPopover(this, new CheckoutSnapIn(repo));
+}
+
+void MainWindow::on_actionClose_Tab_triggered() {
+    auto browser = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+    if (browser) {
+        ui->stackedWidget->removeWidget(browser);
+        ui->windowTabber->removeButton(d->tabButtons.value(browser));
+        d->tabButtons.remove(browser);
+        browser->deleteLater();
+
+        updateMenuItems();
+    }
+}
+
+void MainWindow::updateMenuItems() {
+    bool enabled = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+
+    ui->actionSave->setEnabled(enabled);
+    ui->actionSave_As->setEnabled(enabled);
+    ui->actionCommit->setEnabled(enabled);
+    ui->actionCheckout->setEnabled(enabled);
+    ui->actionPush->setEnabled(enabled);
+    ui->actionPull->setEnabled(enabled);
+    ui->actionClose_Tab->setEnabled(enabled);
 }
