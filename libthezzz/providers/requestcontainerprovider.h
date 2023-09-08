@@ -34,6 +34,8 @@ class RequestContainerProvider : public ZzzProvider<RequestContainerProvider> {
                     bool isChildChild = false;
                     auto response = container->ancestors<T>(item, &isChildChild);
                     if (isChildChild) {
+                        if (isChild) *isChild = true;
+
                         if (auto casted = dynamic_cast<T*>(this)) {
                             response.prepend(casted);
                         }
