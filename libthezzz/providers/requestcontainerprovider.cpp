@@ -2,6 +2,7 @@
 
 #include "workspacefile.h"
 #include "zzzrequest.h"
+#include "zzzrequestfolder.h"
 #include <QJsonArray>
 #include <QList>
 
@@ -25,8 +26,8 @@ void RequestContainerProvider::addRequest(ZzzRequestTreeItemPtr request) {
 
 void RequestContainerProvider::removeRequestRecursive(ZzzRequestTreeItemPtr request) {
     d->requests.removeAll(request);
-    for (auto request : d->requests) {
-        if (auto containerProvider = request.dynamicCast<RequestContainerProvider>()) {
+    for (auto rq : d->requests) {
+        if (auto containerProvider = rq.dynamicCast<RequestContainerProvider>()) {
             containerProvider->removeRequestRecursive(request);
         }
     }
@@ -52,6 +53,10 @@ void RequestContainerProvider::loadJson(QJsonValue obj) {
             auto req = (new ZzzRequest(this->workspace()->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis().staticCast<ZzzRequest>();
             req->loadJson(requestObj);
             d->requests.append(req);
+        } else if (requestObj.value("type") == "requestfolder") {
+            auto req = (new ZzzRequestFolder(this->workspace()->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis().staticCast<ZzzRequestFolder>();
+            req->loadJson(requestObj);
+            d->requests.append(req);
         }
     }
 }
@@ -61,6 +66,8 @@ QJsonValue RequestContainerProvider::toJson() {
     for (auto request : d->requests) {
         if (auto zrq = request.dynamicCast<ZzzRequest>()) {
             requests.append(zrq->toJson());
+        } else if (auto zrqf = request.dynamicCast<ZzzRequestFolder>()) {
+            requests.append(zrqf->toJson());
         }
     }
 

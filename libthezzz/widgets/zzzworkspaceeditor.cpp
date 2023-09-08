@@ -5,6 +5,7 @@
 #include "zzzhelpers.h"
 #include "zzzrequest.h"
 #include "zzzrequesteditor.h"
+#include "zzzrequestfolder.h"
 #include <QCryptographicHash>
 #include <QFile>
 #include <QFileSystemWatcher>
@@ -110,10 +111,7 @@ void ZzzWorkspaceEditor::on_newRequestButton_clicked() {
 }
 
 void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContainerProviderPtr containerProvider) {
-    auto items = tRange(containerProvider->requests()).map<QTreeWidgetItem*>([](ZzzRequestTreeItemPtr treeItem) {
-                                                          return treeItem->treeWidgetItem();
-                                                      })
-                     .toList();
+    auto items = containerProvider->requests();
 
     // Remove extra children
     while (rootItem->childCount() > items.size()) {
@@ -122,15 +120,20 @@ void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContai
 
     // Update existing children and add missing ones
     for (int i = 0; i < items.size(); ++i) {
+        auto item = items.at(i);
         if (i < rootItem->childCount()) {
             // Update existing child
-            if (rootItem->child(i) != items.at(i)) {
+            if (rootItem->child(i) != item->treeWidgetItem()) {
                 rootItem->takeChild(i);
-                rootItem->insertChild(i, items.at(i));
+                rootItem->insertChild(i, item->treeWidgetItem());
             }
         } else {
             // Add missing child
-            rootItem->addChild(items.at(i));
+            rootItem->addChild(item->treeWidgetItem());
+        }
+
+        if (auto container = item.dynamicCast<RequestContainerProvider>()) {
+            this->updateRequests(item->treeWidgetItem(), container);
         }
     }
 
@@ -210,6 +213,11 @@ tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* pa
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, index.data(Qt::DisplayRole).toString());
         });
+    } else if (auto workspace = item.dynamicCast<ZzzRequestFolder>()) {
+        paintCalculator.addRect(titleRect, [painter, index, option](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, index.data(Qt::DisplayRole).toString());
+        });
     }
 
     return paintCalculator;
@@ -240,6 +248,9 @@ void ZzzWorkspaceEditor::on_treeWidget_customContextMenuRequested(const QPoint& 
         if (auto container = treeItem.dynamicCast<RequestContainerProvider>()) {
             menu->addAction(QIcon::fromTheme("list-add"), tr("New Request"), [treeItem, this, container] {
                 container->addRequest((new ZzzRequest(d->workspaceFile))->sharedFromThis());
+            });
+            menu->addAction(QIcon::fromTheme("list-add"), tr("New Request Folder"), [treeItem, this, container] {
+                container->addRequest((new ZzzRequestFolder(d->workspaceFile))->sharedFromThis());
             });
         }
 
