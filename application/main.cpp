@@ -1,6 +1,7 @@
 #include <QCommandLineParser>
 #include <QJsonArray>
 #include <QUrl>
+#include <libthebranch_global.h>
 #include <tapplication.h>
 #include <tsettings.h>
 #include <tstylemanager.h>
@@ -33,9 +34,14 @@ int main(int argc, char* argv[]) {
     });
     tStyleManager::setOverrideStyleForApplication(settings.value("theme/mode").toString() == "light" ? tStyleManager::ContemporaryLight : tStyleManager::ContemporaryDark);
 
+    theBranch::init();
+
     MainWindow* w = new MainWindow();
     w->show();
 
     int retval = a.exec();
+
+    theBranch::teardown();
+
     return retval;
 }

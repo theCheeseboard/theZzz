@@ -20,7 +20,7 @@ jobs:
       - uses: vicr123/libcontemporary/brew-universalinstall@actions
         name: "Install Dependencies"
         with:
-          packages: "qt:cmake:ninja:pkg-config"
+          packages: "qt:libgit2:cmake:ninja:pkg-config"
       - uses: vicr123/libcontemporary/install-libcontemporary@actions
         with:
           qcoroVersion: ${{ steps.vars.outputs.qcoroVersion }}

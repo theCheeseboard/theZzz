@@ -3,6 +3,7 @@
 
 #include <QCoroTask>
 #include <QMainWindow>
+#include <repository.h>
 
 namespace Ui {
     class MainWindow;
@@ -33,6 +34,14 @@ class MainWindow : public QMainWindow {
 
         QCoro::Task<> on_actionOpen_Workspace_triggered();
 
+        QCoro::Task<> on_actionCommit_triggered();
+
+        QCoro::Task<> on_actionPush_triggered();
+
+        QCoro::Task<> on_actionPull_triggered();
+
+        QCoro::Task<> on_actionCheckout_triggered();
+
     private:
         Ui::MainWindow* ui;
         MainWindowPrivate* d;
@@ -40,6 +49,8 @@ class MainWindow : public QMainWindow {
         ZzzWorkspaceEditor* newTab();
 
         void updateMenuItems();
+
+        QCoro::Task<RepositoryPtr> currentFileGitRepository();
 };
 
 #endif // MAINWINDOW_H

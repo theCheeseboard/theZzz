@@ -1,3 +1,7 @@
+#include <popovers/snapinpopover.h>
+#include <popovers/snapins/checkoutsnapin.h>
+#include <popovers/snapins/commitsnapin.h>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -5,10 +9,12 @@
 #include <QCoroCore>
 #include <QFileDialog>
 #include <QStandardPaths>
+#include <repository.h>
 #include <tapplication.h>
 #include <tcsdtools.h>
 #include <thelpmenu.h>
 #include <tjobmanager.h>
+#include <tmessagebox.h>
 #include <tpopover.h>
 #include <twindowtabberbutton.h>
 #include <widgets/zzzworkspaceeditor.h>
@@ -146,4 +152,49 @@ ZzzWorkspaceEditor* MainWindow::newTab() {
 
     ui->stackedWidget->addWidget(browser);
     return browser;
+}
+
+QCoro::Task<> MainWindow::on_actionCommit_triggered() {
+    auto repo = co_await currentFileGitRepository();
+    if (!repo) co_return;
+
+    SnapInPopover::showSnapInPopover(this, new CommitSnapIn(repo));
+}
+
+QCoro::Task<> MainWindow::on_actionPush_triggered() {
+    auto repo = co_await currentFileGitRepository();
+    if (!repo) co_return;
+
+    SnapInPopover::showPushPopover(this, repo);
+}
+
+QCoro::Task<> MainWindow::on_actionPull_triggered() {
+    auto repo = co_await currentFileGitRepository();
+    if (!repo) co_return;
+
+    SnapInPopover::showPullPopover(this, repo);
+}
+
+QCoro::Task<RepositoryPtr> MainWindow::currentFileGitRepository() {
+    auto browser = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+    if (!browser) co_return {};
+
+    auto repository = Repository::repositoryForDirectory(browser->currentFile());
+    if (!repository) {
+        tMessageBox box(this->window());
+        box.setTitleBarText(tr("No Git Repository Available"));
+        box.setMessageText(tr("This workspace file is not in a Git repository. Init a Git repository, and then try again."));
+        box.setIcon(QMessageBox::Information);
+
+        auto button = co_await box.presentAsync();
+        co_return {};
+    }
+    co_return repository;
+}
+
+QCoro::Task<> MainWindow::on_actionCheckout_triggered() {
+    auto repo = co_await currentFileGitRepository();
+    if (!repo) co_return;
+
+    SnapInPopover::showSnapInPopover(this, new CheckoutSnapIn(repo));
 }

@@ -164,7 +164,18 @@
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuGit">
+    <property name="title">
+     <string>Git</string>
+    </property>
+    <addaction name="actionCommit"/>
+    <addaction name="actionCheckout"/>
+    <addaction name="separator"/>
+    <addaction name="actionPush"/>
+    <addaction name="actionPull"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuGit"/>
   </widget>
   <action name="actionExit">
    <property name="icon">
@@ -208,6 +219,38 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionCommit">
+   <property name="text">
+    <string>Commit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+S</string>
+   </property>
+  </action>
+  <action name="actionPush">
+   <property name="text">
+    <string>Push</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Up</string>
+   </property>
+  </action>
+  <action name="actionPull">
+   <property name="text">
+    <string>Pull</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Down</string>
+   </property>
+  </action>
+  <action name="actionCheckout">
+   <property name="text">
+    <string>Checkout</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+.</string>
    </property>
   </action>
  </widget>

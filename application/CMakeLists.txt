@@ -4,6 +4,7 @@ project(thezzz VERSION 1.0.0 LANGUAGES CXX)
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary REQUIRED)
+find_package(libthebranch REQUIRED)
 
 set(SOURCES
         main.cpp
@@ -51,7 +52,7 @@ cntp_target_desktop_file(thezzz
 cntp_defaults_file(thezzz
     DEFAULTS_FILE thezzz.conf)
 
-target_link_libraries(thezzz Qt::Widgets libcontemporary libthezzz)
+target_link_libraries(thezzz Qt::Widgets libcontemporary libthezzz libthebranch)
 target_include_directories(thezzz PUBLIC ../libthezzz/)
 
 install(TARGETS thezzz

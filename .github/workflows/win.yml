@@ -69,6 +69,24 @@ jobs:
           qcoroVersion: ${{ steps.vars.outputs.qcoroVersion }}
           commitish: features/win-aarch64
           arch: ${{ matrix.buildArch }}
+      - uses: actions/checkout@v3
+        with:
+          repository: libssh2/libssh2
+          path: "libssh2"
+          ref: refs/tags/libssh2-1.10.0
+      - uses: vicr123/libcontemporary/build-project@actions
+        name: "Build libgit2"
+        with:
+          project: "libgit2/libgit2"
+          commitish: "v1.6.2"
+          extra-cmake-args: "-DEMBED_SSH_PATH=${{ github.workspace }}/libssh2"
+          arch: ${{ matrix.buildArch }}
+      - uses: vicr123/libcontemporary/build-project@actions
+        name: "Build ttexteditor"
+        with:
+          project: "vicr123/ttexteditor"
+          commitish: "master"
+          arch: ${{ matrix.buildArch }}
       - uses: vicr123/libcontemporary/build-project@actions
         name: "Build contemporary-theme"
         with:
