@@ -13,9 +13,12 @@ ZzzRequest::ZzzRequest(WorkspaceFilePtr workspace, QObject* parent) :
     QObject{parent}, ZzzRequestZzzProvides(workspace.data()) {
     d = new ZzzRequestPrivate();
     d->treeWidgetItem = new QTreeWidgetItem();
-    d->treeWidgetItem->setText(0, tr("New Request"));
+    d->treeWidgetItem->setText(0, this->title().isEmpty() ? tr("Untitled Request") : this->title());
     d->treeWidgetItem->setData(0, Qt::UserRole, QVariant::fromValue(this->ZzzRequestTreeItem::sharedFromThis()));
 
+    connect(workspace.data(), &WorkspaceFile::dataChanged, this, [this] {
+        d->treeWidgetItem->setText(0, this->title().isEmpty() ? tr("Untitled Request") : this->title());
+    });
     d->workspace = workspace;
 }
 

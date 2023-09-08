@@ -19,8 +19,11 @@ WorkspaceFile::WorkspaceFile(QObject* parent) :
     Q_INIT_RESOURCE(libthezzz_icons);
 
     d->treeWidgetItem = new QTreeWidgetItem();
-    d->treeWidgetItem->setText(0, tr("New Workspace"));
+    d->treeWidgetItem->setText(0, this->title().isEmpty() ? tr("Untitled Workspace") : this->title());
     d->treeWidgetItem->setData(0, Qt::UserRole, QVariant::fromValue(this->ZzzRequestTreeItem::sharedFromThis()));
+    connect(this, &WorkspaceFile::dataChanged, this, [this] {
+        d->treeWidgetItem->setText(0, this->title().isEmpty() ? tr("Untitled Workspace") : this->title());
+    });
 
     this->addRequest((new ZzzRequest(this->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis());
 }
@@ -32,6 +35,7 @@ WorkspaceFile::~WorkspaceFile() {
 void WorkspaceFile::loadJson(QJsonValue object) {
     WorkspaceFileZzzProvides::loadJson(object.toObject());
     emit requestsChanged();
+    emit dataChanged();
 }
 
 QJsonValue WorkspaceFile::toJson() {

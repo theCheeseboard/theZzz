@@ -21,6 +21,7 @@ set(SOURCES
     providers/requestcontainerprovider.cpp
     providers/endpointprovider.cpp
     providers/bodyprovider.cpp
+    providers/descriptionprovider.cpp
 
     widgets/zzzworkspaceeditor.cpp widgets/zzzworkspaceeditor.ui
     widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
@@ -36,6 +37,7 @@ set(SOURCES
     widgets/providereditor/providereditor.cpp
     widgets/providereditor/bodyprovidereditor.cpp widgets/providereditor/bodyprovidereditor.ui
     widgets/providereditor/headerprovidereditor.cpp widgets/providereditor/headerprovidereditor.ui
+    widgets/providereditor/descriptionprovidereditor.cpp widgets/providereditor/descriptionprovidereditor.ui
 
     libthezzz_icons.qrc
 )
@@ -59,6 +61,7 @@ set(HEADERS
     providers/requestcontainerprovider.h
     providers/endpointprovider.h
     providers/bodyprovider.h
+    providers/descriptionprovider.h
 
     widgets/zzzworkspaceeditor.h
     widgets/zzzrequesteditor.h
@@ -74,6 +77,7 @@ set(HEADERS
     widgets/providereditor/providereditor.h
     widgets/providereditor/bodyprovidereditor.h
     widgets/providereditor/headerprovidereditor.h
+    widgets/providereditor/descriptionprovidereditor.h
 
 )
 

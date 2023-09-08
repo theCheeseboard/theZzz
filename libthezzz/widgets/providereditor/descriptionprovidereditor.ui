@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DescriptionProviderEditor</class>
+ <widget class="QWidget" name="DescriptionProviderEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="tSubtitleLabel" name="subtitleLabel">
+     <property name="text">
+      <string>Description</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="titleEdit">
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Title</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="descriptionEdit">
+     <property name="placeholderText">
+      <string>Description</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>tSubtitleLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">tsubtitlelabel.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

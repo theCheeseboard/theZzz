@@ -4,13 +4,14 @@
 #include "forwarddeclares.h"
 #include "libthezzz_global.h"
 #include "providers/bodyprovider.h"
+#include "providers/descriptionprovider.h"
 #include "providers/endpointprovider.h"
 #include "providers/headersprovider.h"
 #include "providers/zzzprovides.h"
 #include "zzzrequesttreeitem.h"
 #include <QObject>
 
-typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider> ZzzRequestZzzProvides;
+typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider, DescriptionProvider> ZzzRequestZzzProvides;
 
 class QNetworkReply;
 struct ZzzRequestPrivate;
