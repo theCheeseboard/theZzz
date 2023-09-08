@@ -15,7 +15,6 @@ typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider> ZzzRequestZ
 class QNetworkReply;
 struct ZzzRequestPrivate;
 class LIBTHEZZZ_EXPORT ZzzRequest : public QObject,
-                                    public ZzzSharedFromThis<ZzzRequest>,
                                     public ZzzRequestTreeItem,
                                     public ZzzRequestZzzProvides {
         Q_OBJECT

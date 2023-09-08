@@ -2,10 +2,10 @@
 #define ZZZWORKSPACEEDITOR_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include <QStyledItemDelegate>
 #include <QWidget>
 #include <tpaintcalculator.h>
-#include "libthezzz_global.h"
 
 namespace Ui {
     class ZzzWorkspaceEditor;
@@ -28,6 +28,8 @@ class LIBTHEZZZ_EXPORT ZzzWorkspaceEditor : public QWidget {
         void on_newRequestButton_clicked();
 
         void on_treeWidget_itemSelectionChanged();
+
+        void on_treeWidget_customContextMenuRequested(const QPoint& pos);
 
     signals:
         void addReply(ZzzReplyPtr reply);

@@ -10,7 +10,7 @@ struct HeaderProviderEditorPrivate {
 };
 
 HeaderProviderEditor::HeaderProviderEditor(HeadersProvider* headersProvider, QWidget* parent) :
-    ProviderEditor(headersProvider->workspace()->sharedFromThis(), parent),
+    ProviderEditor(headersProvider->workspace()->sharedFromThis().staticCast<WorkspaceFile>(), parent),
     ui(new Ui::HeaderProviderEditor) {
     ui->setupUi(this);
     d = new HeaderProviderEditorPrivate();

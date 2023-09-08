@@ -8,6 +8,7 @@
 
 struct WorkspaceFilePrivate {
         QNetworkAccessManager networkAccessManager;
+        QTreeWidgetItem* treeWidgetItem;
 };
 
 WorkspaceFile::WorkspaceFile(QObject* parent) :
@@ -17,7 +18,11 @@ WorkspaceFile::WorkspaceFile(QObject* parent) :
 
     Q_INIT_RESOURCE(libthezzz_icons);
 
-    this->addRequest((new ZzzRequest(this->sharedFromThis()))->sharedFromThis());
+    d->treeWidgetItem = new QTreeWidgetItem();
+    d->treeWidgetItem->setText(0, tr("New Workspace"));
+    d->treeWidgetItem->setData(0, Qt::UserRole, QVariant::fromValue(this->ZzzRequestTreeItem::sharedFromThis()));
+
+    this->addRequest((new ZzzRequest(this->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis());
 }
 
 WorkspaceFile::~WorkspaceFile() {
@@ -35,4 +40,8 @@ QJsonValue WorkspaceFile::toJson() {
 
 QNetworkAccessManager* WorkspaceFile::networkAccessManager() {
     return &d->networkAccessManager;
+}
+
+QTreeWidgetItem* WorkspaceFile::treeWidgetItem() {
+    return d->treeWidgetItem;
 }

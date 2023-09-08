@@ -14,7 +14,7 @@ ZzzRequest::ZzzRequest(WorkspaceFilePtr workspace, QObject* parent) :
     d = new ZzzRequestPrivate();
     d->treeWidgetItem = new QTreeWidgetItem();
     d->treeWidgetItem->setText(0, tr("New Request"));
-    d->treeWidgetItem->setData(0, Qt::UserRole, QVariant::fromValue(this->sharedFromThis()));
+    d->treeWidgetItem->setData(0, Qt::UserRole, QVariant::fromValue(this->ZzzRequestTreeItem::sharedFromThis()));
 
     d->workspace = workspace;
 }

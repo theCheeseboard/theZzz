@@ -13,7 +13,7 @@ typedef ZzzProvides<HeadersProvider, RequestContainerProvider> WorkspaceFileZzzP
 class QNetworkAccessManager;
 struct WorkspaceFilePrivate;
 class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
-                                       public ZzzSharedFromThis<WorkspaceFile>,
+                                       public ZzzRequestTreeItem,
                                        public WorkspaceFileZzzProvides {
         Q_OBJECT
     public:
@@ -31,6 +31,10 @@ class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
 
     private:
         WorkspaceFilePrivate* d;
+
+        // ZzzRequestTreeItem interface
+    public:
+        QTreeWidgetItem* treeWidgetItem();
 };
 
 typedef QSharedPointer<WorkspaceFile> WorkspaceFilePtr;

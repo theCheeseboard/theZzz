@@ -14,7 +14,7 @@ class LIBTHEZZZ_EXPORT ZzzRequestEditor : public QWidget {
         Q_OBJECT
 
     public:
-        explicit ZzzRequestEditor(QSharedPointer<QObject> request, QWidget* parent = nullptr);
+        explicit ZzzRequestEditor(ZzzRequestTreeItemPtr request, QWidget* parent = nullptr);
         ~ZzzRequestEditor();
 
         void executeRequest();

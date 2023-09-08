@@ -6,9 +6,10 @@
 #include <QSharedPointer>
 #include <QTreeWidgetItem>
 
-class LIBTHEZZZ_EXPORT ZzzRequestTreeItem {
+class LIBTHEZZZ_EXPORT ZzzRequestTreeItem : public ZzzSharedFromThis<ZzzRequestTreeItem> {
     public:
         ZzzRequestTreeItem();
+        virtual ~ZzzRequestTreeItem() = default;
 
         virtual QTreeWidgetItem* treeWidgetItem() = 0;
 };

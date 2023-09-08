@@ -7,10 +7,10 @@
 #include <QToolButton>
 
 struct ZzzRequestEditorPrivate {
-        QSharedPointer<QObject> request;
+        ZzzRequestTreeItemPtr request;
 };
 
-ZzzRequestEditor::ZzzRequestEditor(QSharedPointer<QObject> request, QWidget* parent) :
+ZzzRequestEditor::ZzzRequestEditor(ZzzRequestTreeItemPtr request, QWidget* parent) :
     QWidget(parent),
     ui(new Ui::ZzzRequestEditor) {
     ui->setupUi(this);

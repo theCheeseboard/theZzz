@@ -23,6 +23,17 @@ void RequestContainerProvider::addRequest(ZzzRequestTreeItemPtr request) {
     emit this->workspace()->requestsChanged();
 }
 
+void RequestContainerProvider::removeRequestRecursive(ZzzRequestTreeItemPtr request) {
+    d->requests.removeAll(request);
+    for (auto request : d->requests) {
+        if (auto containerProvider = request.dynamicCast<RequestContainerProvider>()) {
+            containerProvider->removeRequestRecursive(request);
+        }
+    }
+
+    emit this->workspace()->requestsChanged();
+}
+
 QList<ZzzRequestTreeItemPtr> RequestContainerProvider::requests() {
     return d->requests;
 }

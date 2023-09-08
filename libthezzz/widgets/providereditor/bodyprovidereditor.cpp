@@ -9,7 +9,7 @@ struct BodyProviderEditorPrivate {
 };
 
 BodyProviderEditor::BodyProviderEditor(BodyProvider* bodyProvider, QWidget* parent) :
-    ProviderEditor(bodyProvider->workspace()->sharedFromThis(), parent),
+    ProviderEditor(bodyProvider->workspace()->sharedFromThis().staticCast<WorkspaceFile>(), parent),
     ui(new Ui::BodyProviderEditor) {
     ui->setupUi(this);
 

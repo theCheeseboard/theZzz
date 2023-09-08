@@ -49,6 +49,9 @@
       </property>
       <item>
        <widget class="QTreeWidget" name="treeWidget">
+        <property name="contextMenuPolicy">
+         <enum>Qt::CustomContextMenu</enum>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>

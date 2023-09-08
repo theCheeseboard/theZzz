@@ -9,12 +9,12 @@
 #include <QFile>
 #include <QFileSystemWatcher>
 #include <QJsonDocument>
+#include <QMenu>
 #include <QPainter>
 #include <workspacefile.h>
 
 struct ZzzWorkspaceEditorPrivate {
         WorkspaceFilePtr workspaceFile;
-        QTreeWidgetItem* workspaceItem;
         QFileSystemWatcher filesystemWatcher;
 
         QString filePath;
@@ -27,16 +27,12 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
     ui->setupUi(this);
 
     d = new ZzzWorkspaceEditorPrivate();
-    d->workspaceFile = (new WorkspaceFile())->sharedFromThis();
-    d->workspaceItem = new QTreeWidgetItem();
-    d->workspaceItem->setText(0, tr("Workspace"));
-    d->workspaceItem->setData(0, Qt::UserRole, QVariant::fromValue(d->workspaceFile));
-
-    ui->treeWidget->addTopLevelItem(d->workspaceItem);
+    d->workspaceFile = (new WorkspaceFile())->sharedFromThis().staticCast<WorkspaceFile>();
+    ui->treeWidget->addTopLevelItem(d->workspaceFile->treeWidgetItem());
     ui->treeWidget->setItemDelegate(new ZzzWorkspaceEditorRequestDelegate(this));
 
     connect(d->workspaceFile.data(), &WorkspaceFile::requestsChanged, this, [this] {
-        this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
+        this->updateRequests(d->workspaceFile->treeWidgetItem(), d->workspaceFile.dynamicCast<RequestContainerProvider>());
     });
     connect(d->workspaceFile.data(), &WorkspaceFile::dataChanged, this, [this] {
         if (!d->filePath.isEmpty()) {
@@ -45,7 +41,7 @@ ZzzWorkspaceEditor::ZzzWorkspaceEditor(QWidget* parent) :
 
         ui->treeWidget->viewport()->update();
     });
-    this->updateRequests(d->workspaceItem, d->workspaceFile.dynamicCast<RequestContainerProvider>());
+    this->updateRequests(d->workspaceFile->treeWidgetItem(), d->workspaceFile.dynamicCast<RequestContainerProvider>());
 
     connect(&d->filesystemWatcher, &QFileSystemWatcher::fileChanged, this, [this](QString path) {
         if (d->filePath == path) {
@@ -151,18 +147,18 @@ void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContai
         }
     }
 
-    d->workspaceItem->setExpanded(true);
+    d->workspaceFile->treeWidgetItem()->setExpanded(true);
 }
 
 void ZzzWorkspaceEditor::on_treeWidget_itemSelectionChanged() {
     auto items = ui->treeWidget->selectedItems();
     if (items.length() == 0) {
     } else if (items.length() == 1) {
-        QSharedPointer<QObject> request = items.constFirst()->data(0, Qt::UserRole).value<ZzzRequestPtr>();
-        if (!request) {
-            request = items.constFirst()->data(0, Qt::UserRole).value<WorkspaceFilePtr>();
-            if (!request) return;
-        }
+        auto request = items.constFirst()->data(0, Qt::UserRole).value<ZzzRequestTreeItemPtr>();
+        //        if (!request) {
+        //            request = items.constFirst()->data(0, Qt::UserRole).value<WorkspaceFilePtr>();
+        //            if (!request) return;
+        //        }
 
         auto editor = new ZzzRequestEditor(request);
         connect(editor, &ZzzRequestEditor::addReply, this, &ZzzWorkspaceEditor::addReply);
@@ -196,7 +192,8 @@ tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* pa
     titleRect.moveCenter(initialRect.center());
     titleRect.moveTop(initialRect.top() + 6);
 
-    if (auto request = index.data(Qt::UserRole).value<ZzzRequestPtr>()) {
+    auto item = index.data(Qt::UserRole).value<ZzzRequestTreeItemPtr>();
+    if (auto request = item.dynamicCast<ZzzRequest>()) {
         QRectF iconRect;
         iconRect.setSize({16, 16});
         iconRect.moveLeft(titleRect.left());
@@ -225,7 +222,7 @@ tPaintCalculator ZzzWorkspaceEditorRequestDelegate::paintCalculator(QPainter* pa
             painter->drawText(drawBounds, text);
             painter->restore();
         });
-    } else if (auto workspace = index.data(Qt::UserRole).value<WorkspaceFilePtr>()) {
+    } else if (auto workspace = item.dynamicCast<WorkspaceFile>()) {
         paintCalculator.addRect(titleRect, [painter, index, option](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, index.data(Qt::DisplayRole).toString());
@@ -247,4 +244,23 @@ QSize ZzzWorkspaceEditorRequestDelegate::sizeHint(const QStyleOptionViewItem& op
     auto paintCalculator = this->paintCalculator(nullptr, option, index);
     auto size = paintCalculator.sizeWithMargins().toSize();
     return size;
+}
+
+void ZzzWorkspaceEditor::on_treeWidget_customContextMenuRequested(const QPoint& pos) {
+    auto item = ui->treeWidget->itemAt(pos);
+    if (item) {
+        auto treeItem = item->data(0, Qt::UserRole).value<ZzzRequestTreeItemPtr>();
+
+        auto menu = new QMenu(this);
+        menu->addSection(tr("For %1").arg(QLocale().quoteString(item->text(0))));
+
+        if (item != d->workspaceFile->treeWidgetItem()) {
+            menu->addAction(QIcon::fromTheme("edit-delete"), tr("Remove"), [treeItem, this] {
+                d->workspaceFile->removeRequestRecursive(treeItem);
+            });
+        }
+
+        connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
+        menu->popup(ui->treeWidget->mapToGlobal(pos));
+    }
 }
