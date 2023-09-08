@@ -68,7 +68,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="183"/>
-        <location filename="../mainwindow.cpp" line="135"/>
+        <location filename="../mainwindow.cpp" line="136"/>
         <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="188"/>
         <source>New Workspace</source>
         <translation type="unfinished"></translation>
@@ -116,8 +116,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="106"/>
-        <location filename="../mainwindow.cpp" line="121"/>
+        <location filename="../mainwindow.cpp" line="107"/>
+        <location filename="../mainwindow.cpp" line="122"/>
         <source>theZzz Workspace (*.zzz)</source>
         <translation type="unfinished"></translation>
     </message>

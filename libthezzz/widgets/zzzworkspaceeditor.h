@@ -24,6 +24,7 @@ class LIBTHEZZZ_EXPORT ZzzWorkspaceEditor : public QWidget {
         QString currentFile();
         void saveWorkspace(QString filePath);
         void openWorkspace(QString filePath);
+        WorkspaceFilePtr workspace();
 
     private slots:
         void on_newRequestButton_clicked();

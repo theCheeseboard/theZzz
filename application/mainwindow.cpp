@@ -12,6 +12,7 @@
 #include <tpopover.h>
 #include <twindowtabberbutton.h>
 #include <widgets/zzzworkspaceeditor.h>
+#include <workspacefile.h>
 #include <zzzreplymanager.h>
 
 struct MainWindowPrivate {
@@ -136,10 +137,9 @@ ZzzWorkspaceEditor* MainWindow::newTab() {
 
     ui->stackedWidget->addWidget(browser);
     connect(browser, &ZzzWorkspaceEditor::addReply, ui->replyViewer->replyManager().data(), &ZzzReplyManager::pushReply);
-    //    connect(browser, &ZzzWorkspaceEditor::titleChanged, this, [=] {
-    //        initialBrowserTab->setText(browser->title());
-    //    });
-    //    connect(browser, &ZzzWorkspaceEditor::repositoryChanged, this, &MainWindow::updateMenuItems);
+    connect(browser->workspace().data(), &WorkspaceFile::dataChanged, this, [browser, initialBrowserTab] {
+        initialBrowserTab->setText(browser->workspace()->workspaceFileTitle());
+    });
 
     ui->windowTabber->addButton(initialBrowserTab);
     d->tabButtons.insert(browser, initialBrowserTab);

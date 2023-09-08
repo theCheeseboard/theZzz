@@ -107,6 +107,10 @@ void ZzzWorkspaceEditor::openWorkspace(QString filePath) {
     d->filesystemWatcher.addPath(filePath);
 }
 
+WorkspaceFilePtr ZzzWorkspaceEditor::workspace() {
+    return d->workspaceFile;
+}
+
 void ZzzWorkspaceEditor::on_newRequestButton_clicked() {
     d->workspaceFile->addRequest((new ZzzRequest(d->workspaceFile))->sharedFromThis());
 }

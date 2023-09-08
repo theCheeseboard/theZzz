@@ -24,6 +24,8 @@ class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
         void loadJson(QJsonValue object);
         QJsonValue toJson();
 
+        QString workspaceFileTitle();
+
         QNetworkAccessManager* networkAccessManager();
 
     signals:
