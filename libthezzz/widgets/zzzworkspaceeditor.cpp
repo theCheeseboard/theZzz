@@ -114,19 +114,6 @@ void ZzzWorkspaceEditor::updateRequests(QTreeWidgetItem* rootItem, RequestContai
                                                           return treeItem->treeWidgetItem();
                                                       })
                      .toList();
-    //    for (auto i = 0; i < items.length(); i++) {
-    //        auto item = items.at(i);
-    //        if (item->childCount() > i) {
-    //            auto child = item->child(i);
-    //            if (item == child) continue; // Nothing to change
-
-    //            rootItem->removeChild(child);
-    //            i -= 1;
-    //            continue;
-    //        }
-
-    //        rootItem->addChild(item);
-    //    }
 
     // Remove extra children
     while (rootItem->childCount() > items.size()) {
@@ -155,10 +142,6 @@ void ZzzWorkspaceEditor::on_treeWidget_itemSelectionChanged() {
     if (items.length() == 0) {
     } else if (items.length() == 1) {
         auto request = items.constFirst()->data(0, Qt::UserRole).value<ZzzRequestTreeItemPtr>();
-        //        if (!request) {
-        //            request = items.constFirst()->data(0, Qt::UserRole).value<WorkspaceFilePtr>();
-        //            if (!request) return;
-        //        }
 
         auto editor = new ZzzRequestEditor(request);
         connect(editor, &ZzzRequestEditor::addReply, this, &ZzzWorkspaceEditor::addReply);
@@ -253,6 +236,12 @@ void ZzzWorkspaceEditor::on_treeWidget_customContextMenuRequested(const QPoint& 
 
         auto menu = new QMenu(this);
         menu->addSection(tr("For %1").arg(QLocale().quoteString(item->text(0))));
+
+        if (auto container = treeItem.dynamicCast<RequestContainerProvider>()) {
+            menu->addAction(QIcon::fromTheme("list-add"), tr("New Request"), [treeItem, this, container] {
+                container->addRequest((new ZzzRequest(d->workspaceFile))->sharedFromThis());
+            });
+        }
 
         if (item != d->workspaceFile->treeWidgetItem()) {
             menu->addAction(QIcon::fromTheme("edit-delete"), tr("Remove"), [treeItem, this] {
