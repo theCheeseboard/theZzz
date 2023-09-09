@@ -97,7 +97,7 @@
     <name>EnvironmentProvider</name>
     <message>
         <location filename="../providers/environmentprovider.cpp" line="18"/>
-        <location filename="../providers/environmentprovider.cpp" line="91"/>
+        <location filename="../providers/environmentprovider.cpp" line="94"/>
         <source>Production</source>
         <translation type="unfinished"></translation>
     </message>
@@ -120,75 +120,132 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="78"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="83"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="88"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="81"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="86"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="91"/>
         <source>Var</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="93"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="38"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="96"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="42"/>
         <source>Variable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="98"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="39"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="101"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="43"/>
         <source>Secret?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="103"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="106"/>
         <source>Production</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="108"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="111"/>
         <source>Staging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="113"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="116"/>
         <source>baseUrl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="135"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="138"/>
         <source>envthing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="140"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="143"/>
         <source>envthing2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="145"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="148"/>
         <source>token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="167"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="170"/>
         <source>password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="172"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="175"/>
         <source>password2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="177"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="82"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="102"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="180"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="86"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="106"/>
         <source>New Variable...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="26"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="222"/>
+        <source>Actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="229"/>
+        <source>Create New Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="30"/>
         <source>Env</source>
         <comment>Short for Environment</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="133"/>
+        <source>For Environment %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="134"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="149"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="153"/>
+        <source>Delete Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="140"/>
+        <source>Unable to delete environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="141"/>
+        <source>Every workspace must have at least one environment.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="142"/>
+        <source>To delete the %1 environment, create a new environment first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="150"/>
+        <source>Do you want to delete the environment %1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="151"/>
+        <source>Deleting the environment will also delete all environment variables associated with it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="170"/>
+        <source>New Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="170"/>
+        <source>What do you want to call the new environment?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

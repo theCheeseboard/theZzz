@@ -30,6 +30,8 @@ class EnvironmentProviderEditor : public ProviderEditor {
         void updateData();
     private slots:
         void on_tableWidget_itemChanged(QTableWidgetItem* item);
+        void on_tableWidget_customContextMenuRequested(const QPoint& pos);
+        void on_newEnvironmentButton_clicked();
 };
 
 #endif // ENVIRONMENTPROVIDEREDITOR_H

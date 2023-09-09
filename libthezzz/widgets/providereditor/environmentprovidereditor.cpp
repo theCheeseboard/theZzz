@@ -3,7 +3,11 @@
 
 #include "providers/environmentprovider.h"
 #include "workspacefile.h"
+#include <QCoroTask>
+#include <QMenu>
 #include <ranges/trange.h>
+#include <tinputdialog.h>
+#include <tmessagebox.h>
 
 struct EnvironmentProviderEditorPrivate {
         EnvironmentProvider* environmentProvider;
@@ -116,4 +120,55 @@ void EnvironmentProviderEditor::on_tableWidget_itemChanged(QTableWidgetItem* ite
 
     d->environmentProvider->setVariables(variables);
     d->environmentProvider->setEnvironmentVariables(environmentVariables);
+}
+
+void EnvironmentProviderEditor::on_tableWidget_customContextMenuRequested(const QPoint& pos) {
+    auto item = ui->tableWidget->itemAt(pos);
+    if (item) {
+        auto menu = new QMenu(this);
+
+        if (item->column() > 1) {
+            auto env = d->environmentProvider->environments().at(item->column() - 2);
+            auto [envUuid, envName] = env;
+            menu->addSection(tr("For Environment %1").arg(QLocale().quoteString(envName)));
+            menu->addAction(QIcon::fromTheme("edit-delete"), tr("Delete Environment"), [this, env]() -> QCoro::Task<> {
+                auto innerEnv = env;
+                auto [envUuid, envName] = innerEnv;
+
+                if (d->environmentProvider->environments().length() <= 1) {
+                    tMessageBox box(this->window());
+                    box.setTitleBarText(tr("Unable to delete environment"));
+                    box.setMessageText(tr("Every workspace must have at least one environment."));
+                    box.setInformativeText(tr("To delete the %1 environment, create a new environment first.").arg(QLocale().quoteString(envName)));
+                    box.setIcon(QMessageBox::Warning);
+                    auto button = co_await box.presentAsync();
+                    co_return;
+                }
+
+                tMessageBox box(this->window());
+                box.setTitleBarText(tr("Delete Environment"));
+                box.setMessageText(tr("Do you want to delete the environment %1?").arg(QLocale().quoteString(envName)));
+                box.setInformativeText(tr("Deleting the environment will also delete all environment variables associated with it."));
+                box.setIcon(QMessageBox::Warning);
+                auto deleteButton = box.addButton(tr("Delete Environment"), QMessageBox::DestructiveRole);
+                auto cancelButton = box.addStandardButton(QMessageBox::Cancel);
+
+                auto button = co_await box.presentAsync();
+                if (button == cancelButton) co_return;
+
+                d->environmentProvider->removeEnvironment(envUuid);
+            });
+        }
+
+        connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
+        menu->popup(ui->tableWidget->mapToGlobal(pos));
+    }
+}
+
+void EnvironmentProviderEditor::on_newEnvironmentButton_clicked() {
+    bool ok;
+    auto environmentName = tInputDialog::getText(this->window(), tr("New Environment"), tr("What do you want to call the new environment?"), QLineEdit::Normal, "", &ok);
+    if (ok) {
+        d->environmentProvider->addEnvironment(environmentName);
+    }
 }

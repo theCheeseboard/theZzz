@@ -34,6 +34,8 @@ QUuid EnvironmentProvider::addEnvironment(QString name) {
 }
 
 void EnvironmentProvider::removeEnvironment(QUuid uuid) {
+    if (d->environments.length() <= 1) return;
+
     d->environments.removeIf([uuid](ZzzEnvironment env) {
         return env.first == uuid;
     });
@@ -88,6 +90,7 @@ void EnvironmentProvider::loadJson(QJsonValue obj) {
         d->envVars.append({QUuid::fromString(envVarObj.value("environment").toString()), QUuid::fromString(envVarObj.value("variable").toString()), envVarObj.value("value").toString()});
     }
 
+    // Failsafe
     if (d->environments.isEmpty()) d->environments.append({QUuid::createUuid(), tr("Production")});
 }
 
