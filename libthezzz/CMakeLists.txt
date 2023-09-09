@@ -17,11 +17,13 @@ set(SOURCES
 
     providers/zzzprovider.cpp
     providers/zzzprovides.cpp
+    providers/identifierprovider.cpp
     providers/headersprovider.cpp
     providers/requestcontainerprovider.cpp
     providers/endpointprovider.cpp
     providers/bodyprovider.cpp
     providers/descriptionprovider.cpp
+    providers/environmentprovider.cpp
 
     widgets/zzzworkspaceeditor.cpp widgets/zzzworkspaceeditor.ui
     widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
@@ -57,11 +59,13 @@ set(HEADERS
 
     providers/zzzprovider.h
     providers/zzzprovides.h
+    providers/identifierprovider.h
     providers/headersprovider.h
     providers/requestcontainerprovider.h
     providers/endpointprovider.h
     providers/bodyprovider.h
     providers/descriptionprovider.h
+    providers/environmentprovider.h
 
     widgets/zzzworkspaceeditor.h
     widgets/zzzrequesteditor.h
@@ -85,7 +89,8 @@ set(PRIVATE_HEADERS
 
 )
 
-add_library(libthezzz SHARED ${SOURCES} ${HEADERS} ${PRIVATE_HEADERS})
+add_library(libthezzz SHARED ${SOURCES} ${HEADERS} ${PRIVATE_HEADERS}
+    widgets/providereditor/environmentprovidereditor.h widgets/providereditor/environmentprovidereditor.cpp widgets/providereditor/environmentprovidereditor.ui)
 cntp_init(libthezzz 20)
 set_target_properties(libthezzz PROPERTIES
         OUTPUT_NAME thezzz

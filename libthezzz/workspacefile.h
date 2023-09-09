@@ -4,12 +4,14 @@
 #include "forwarddeclares.h"
 #include "libthezzz_global.h"
 #include "providers/descriptionprovider.h"
+#include "providers/environmentprovider.h"
 #include "providers/headersprovider.h"
+#include "providers/identifierprovider.h"
 #include "providers/requestcontainerprovider.h"
 #include "providers/zzzprovides.h"
 #include <QObject>
 
-typedef ZzzProvides<HeadersProvider, RequestContainerProvider, DescriptionProvider> WorkspaceFileZzzProvides;
+typedef ZzzProvides<HeadersProvider, RequestContainerProvider, DescriptionProvider, IdentifierProvider, EnvironmentProvider> WorkspaceFileZzzProvides;
 
 class QNetworkAccessManager;
 struct WorkspaceFilePrivate;

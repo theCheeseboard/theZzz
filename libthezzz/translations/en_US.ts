@@ -94,6 +94,105 @@
     </message>
 </context>
 <context>
+    <name>EnvironmentProvider</name>
+    <message>
+        <location filename="../providers/environmentprovider.cpp" line="18"/>
+        <location filename="../providers/environmentprovider.cpp" line="91"/>
+        <source>Production</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EnvironmentProviderEditor</name>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="52"/>
+        <source>Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="59"/>
+        <source>Environment Variables allow you to set common variables and set secrets that can be used by other requests in this workspace.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="78"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="83"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="88"/>
+        <source>Var</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="93"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="38"/>
+        <source>Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="98"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="39"/>
+        <source>Secret?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="103"/>
+        <source>Production</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="108"/>
+        <source>Staging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="113"/>
+        <source>baseUrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="135"/>
+        <source>envthing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="140"/>
+        <source>envthing2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="145"/>
+        <source>token</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="167"/>
+        <source>password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="172"/>
+        <source>password2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="177"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="82"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="102"/>
+        <source>New Variable...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="26"/>
+        <source>Env</source>
+        <comment>Short for Environment</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HeaderProviderEditor</name>
     <message>
         <location filename="../widgets/providereditor/headerprovidereditor.ui" line="14"/>
