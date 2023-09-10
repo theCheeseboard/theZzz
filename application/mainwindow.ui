@@ -149,7 +149,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>43</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -191,6 +191,9 @@
    </property>
   </action>
   <action name="actionNew_Workspace">
+   <property name="icon">
+    <iconset theme="document-new"/>
+   </property>
    <property name="text">
     <string>New Workspace</string>
    </property>
@@ -199,6 +202,9 @@
    </property>
   </action>
   <action name="actionOpen_Workspace">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
    <property name="text">
     <string>Open Workspace</string>
    </property>
@@ -207,6 +213,9 @@
    </property>
   </action>
   <action name="actionSave_As">
+   <property name="icon">
+    <iconset theme="document-save-as"/>
+   </property>
    <property name="text">
     <string>Save As</string>
    </property>
@@ -215,6 +224,9 @@
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset theme="document-save"/>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -223,6 +235,9 @@
    </property>
   </action>
   <action name="actionCommit">
+   <property name="icon">
+    <iconset theme="commit"/>
+   </property>
    <property name="text">
     <string>Commit</string>
    </property>
@@ -231,6 +246,9 @@
    </property>
   </action>
   <action name="actionPush">
+   <property name="icon">
+    <iconset theme="vcs-push"/>
+   </property>
    <property name="text">
     <string>Push</string>
    </property>
@@ -239,6 +257,9 @@
    </property>
   </action>
   <action name="actionPull">
+   <property name="icon">
+    <iconset theme="vcs-pull"/>
+   </property>
    <property name="text">
     <string>Pull</string>
    </property>
@@ -247,6 +268,9 @@
    </property>
   </action>
   <action name="actionCheckout">
+   <property name="icon">
+    <iconset theme="vcs-checkout"/>
+   </property>
    <property name="text">
     <string>Checkout</string>
    </property>
@@ -255,6 +279,9 @@
    </property>
   </action>
   <action name="actionClose_Tab">
+   <property name="icon">
+    <iconset theme="tab-close"/>
+   </property>
    <property name="text">
     <string>Close Tab</string>
    </property>

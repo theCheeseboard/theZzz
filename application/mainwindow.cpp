@@ -54,6 +54,15 @@ MainWindow::MainWindow(QWidget* parent) :
 
     tHelpMenu* helpMenu = new tHelpMenu(this);
 
+    menu->addAction(ui->actionNew_Workspace);
+    menu->addAction(ui->actionOpen_Workspace);
+    menu->addSeparator();
+    menu->addAction(ui->actionSave);
+    menu->addAction(ui->actionSave_As);
+    menu->addSeparator();
+    menu->addMenu(ui->menuGit);
+    menu->addSeparator();
+    menu->addAction(ui->actionClose_Tab);
     menu->addMenu(helpMenu);
     menu->addAction(ui->actionExit);
 
