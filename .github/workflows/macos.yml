@@ -25,6 +25,12 @@ jobs:
         with:
           qcoroVersion: ${{ steps.vars.outputs.qcoroVersion }}
       - uses: vicr123/libcontemporary/build-project@actions
+        name: "Build ttexteditor"
+        with:
+          project: "vicr123/ttexteditor"
+          commitish: "master"
+          arch: ${{ matrix.buildArch }}
+      - uses: vicr123/libcontemporary/build-project@actions
         name: "Build theBranch"
         with:
           project: "theCheeseboard/thebranch"
