@@ -1,0 +1,35 @@
+{
+    "name": "theZzz",
+    "subprojects": [
+        {
+            "name": "theZzz Core",
+            "type": "qt",
+            "path": "/libthezzz/translations/{lang}.ts",
+            "baseLang": "en_US"
+        },
+        {
+            "name": "theZzz Desktop",
+            "type": "qt",
+            "path": "/application/translations/{lang}.ts",
+            "baseLang": "en_US"
+        },
+        {
+            "name": "theZzz Apple Support",
+            "type": "apple-strings",
+            "path": "/application/translations/apple-lproj/{lang}.lproj/InfoPlist.strings",
+            "baseLang": "en_US"
+        },
+        {
+            "name": "theZzz Desktop File",
+            "type": "webext-json",
+            "path": "/application/translations/desktop/com.vicr123.thezzz/{lang}.json",
+            "baseLang": "en"
+        },
+        {
+            "name": "theZzz Blueprint Desktop File",
+            "type": "webext-json",
+            "path": "/application/translations/desktop/com.vicr123.thezzz_blueprint/{lang}.json",
+            "baseLang": "en"
+        }
+    ]
+}
