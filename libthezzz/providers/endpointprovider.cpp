@@ -34,8 +34,8 @@ void EndpointProvider::setEndpoint(QString endpoint) {
     emit this->workspace()->dataChanged();
 }
 
-QUrl EndpointProvider::calculateUrl() {
-    return d->endpoint;
+QUrl EndpointProvider::calculateUrl(QList<ZzzVariable>* missingEnvironmentVariables) {
+    return this->workspace()->substituteEnvironment(d->endpoint, missingEnvironmentVariables);
 }
 
 QString EndpointProvider::jsonKey() {

@@ -97,7 +97,7 @@
     <name>EnvironmentProvider</name>
     <message>
         <location filename="../providers/environmentprovider.cpp" line="20"/>
-        <location filename="../providers/environmentprovider.cpp" line="123"/>
+        <location filename="../providers/environmentprovider.cpp" line="164"/>
         <source>Production</source>
         <translation type="unfinished"></translation>
     </message>
@@ -401,8 +401,8 @@
 <context>
     <name>ZzzRequest</name>
     <message>
-        <location filename="../zzzrequest.cpp" line="16"/>
-        <location filename="../zzzrequest.cpp" line="20"/>
+        <location filename="../zzzrequest.cpp" line="17"/>
+        <location filename="../zzzrequest.cpp" line="21"/>
         <source>Untitled Request</source>
         <translation type="unfinished"></translation>
     </message>
@@ -413,6 +413,23 @@
         <location filename="../widgets/zzzrequesteditor.ui" line="14"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/zzzrequesteditor.cpp" line="75"/>
+        <source>Environment Incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/zzzrequesteditor.cpp" line="76"/>
+        <source>The request cannot be sent because some environment variables used by this request are not set.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../widgets/zzzrequesteditor.cpp" line="77"/>
+        <source>The environment variable(s) %1 need to be set before the request can be sent.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

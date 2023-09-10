@@ -3,6 +3,7 @@
 
 #include "zzzprovider.h"
 #include <QCoreApplication>
+#include <texception.h>
 
 typedef std::pair<QUuid, QString> ZzzEnvironment;
 typedef std::tuple<QUuid, QString, bool> ZzzVariable;
@@ -23,11 +24,13 @@ class EnvironmentProvider : public ZzzProvider<EnvironmentProvider> {
 
         QList<ZzzVariable> variables();
         void setVariables(QList<ZzzVariable> variables);
+        QString variableName(QUuid variable);
 
         QList<ZzzEnvironmentVariable> environmentVariables();
         void setEnvironmentVariables(QList<ZzzEnvironmentVariable> environmentVariables);
 
         QUuid currentEnvironment();
+        QString substituteEnvironment(QString string, QList<ZzzVariable>* missingEnvironmentVariables = nullptr);
 
     private:
         EnvironmentProviderPrivate* d;

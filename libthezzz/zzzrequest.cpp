@@ -3,6 +3,7 @@
 #include "workspacefile.h"
 #include "zzzreply.h"
 #include <QNetworkAccessManager>
+#include <ranges/trange.h>
 
 struct ZzzRequestPrivate {
         WorkspaceFilePtr workspace;
@@ -28,23 +29,24 @@ ZzzRequest::~ZzzRequest() {
 }
 
 ZzzReplyPtr ZzzRequest::execute() {
+    QList<ZzzVariable> missingEnvironmentVariables;
     auto mgr = d->workspace->networkAccessManager();
 
     QNetworkRequest request;
     request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
-    request.setUrl(this->endpoint());
+    request.setUrl(this->calculateUrl(&missingEnvironmentVariables));
 
     for (const auto& header : this->implicitHeadersWithAncestors()) {
-        request.setRawHeader(header.first, header.second);
+        request.setRawHeader(header.first, d->workspace->substituteEnvironment(header.second, &missingEnvironmentVariables).toUtf8());
     }
 
     for (const auto& header : this->ancestorHeaders()) {
-        request.setRawHeader(header.first, header.second);
+        request.setRawHeader(header.first, d->workspace->substituteEnvironment(header.second, &missingEnvironmentVariables).toUtf8());
     }
 
     // TODO: Concatenate multiple headers correctly
     for (const auto& header : this->headers()) {
-        request.setRawHeader(header.first, header.second);
+        request.setRawHeader(header.first, d->workspace->substituteEnvironment(header.second, &missingEnvironmentVariables).toUtf8());
     }
 
     QNetworkReply* networkReply;
@@ -60,6 +62,14 @@ ZzzReplyPtr ZzzRequest::execute() {
         networkReply = mgr->sendCustomRequest(request, this->verb().toUtf8(), this->body());
     }
 
+    missingEnvironmentVariables = tRange(missingEnvironmentVariables).unique<QUuid>([](ZzzVariable variable) {
+                                                                         return std::get<0>(variable);
+                                                                     })
+                                      .toList();
+    if (!missingEnvironmentVariables.isEmpty()) {
+        throw EnvironmentIncompleteException(missingEnvironmentVariables);
+    }
+
     auto reply = new ZzzReply(this->verb(), request, networkReply);
     return reply->sharedFromThis();
 }
@@ -73,3 +83,13 @@ QJsonValue ZzzRequest::toJson() {
     json.insert("type", "request");
     return json;
 }
+
+EnvironmentIncompleteException::EnvironmentIncompleteException(QList<ZzzVariable> missingVariables) {
+    _missingVariables = missingVariables;
+}
+
+QList<ZzzVariable> EnvironmentIncompleteException::missingVariables() {
+    return _missingVariables;
+}
+
+T_EXCEPTION_IMPL(EnvironmentIncompleteException)

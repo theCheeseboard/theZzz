@@ -42,6 +42,9 @@ void EnvironmentProvider::removeEnvironment(QUuid uuid) {
     d->environments.removeIf([uuid](ZzzEnvironment env) {
         return env.first == uuid;
     });
+    d->envVars.removeIf([uuid](ZzzEnvironmentVariable envVar) {
+        return std::get<0>(envVar) == uuid;
+    });
     emit this->workspace()->dataChanged();
 }
 
@@ -58,7 +61,18 @@ QList<ZzzVariable> EnvironmentProvider::variables() {
 
 void EnvironmentProvider::setVariables(QList<ZzzVariable> variables) {
     d->variables = variables;
+    d->envVars.removeIf([variables](ZzzEnvironmentVariable envVar) {
+        return !tRange(variables).some([envVar](ZzzVariable var) {
+            return std::get<0>(var) == std::get<1>(envVar);
+        });
+    });
     emit this->workspace()->dataChanged();
+}
+
+QString EnvironmentProvider::variableName(QUuid variable) {
+    return std::get<1>(tRange(d->variables).first([variable](ZzzVariable var) {
+        return std::get<0>(var) == variable;
+    }));
 }
 
 QList<ZzzEnvironmentVariable> EnvironmentProvider::environmentVariables() {
@@ -72,6 +86,33 @@ void EnvironmentProvider::setEnvironmentVariables(QList<ZzzEnvironmentVariable> 
 
 QUuid EnvironmentProvider::currentEnvironment() {
     return d->currentEnvironment;
+}
+
+QString EnvironmentProvider::substituteEnvironment(QString string, QList<ZzzVariable>* missingEnvironmentVariables) {
+    for (const auto& envVar : d->envVars) {
+        auto [envUuid, varUuid, value] = envVar;
+        try {
+            auto variable = tRange(d->variables).first([envVar](ZzzVariable var) {
+                auto [envUuid, varUuid, value] = envVar;
+                return std::get<0>(var) == varUuid;
+            });
+            auto [varUuid2, varName, varIsSecret] = variable;
+
+            auto searchTerm = QStringLiteral("{{%1}}").arg(varName);
+            if (string.contains(searchTerm)) {
+                if (value.isEmpty()) {
+                    if (missingEnvironmentVariables) missingEnvironmentVariables->append(variable);
+                    string = string.replace(searchTerm, "");
+                } else {
+                    string = string.replace(searchTerm, value);
+                }
+            }
+        } catch (tRangeException& ex) {
+            // ignore
+        }
+    }
+
+    return string;
 }
 
 QString EnvironmentProvider::jsonKey() {

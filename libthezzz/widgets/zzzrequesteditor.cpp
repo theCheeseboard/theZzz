@@ -5,6 +5,8 @@
 #include "providers/endpointprovider.h"
 #include "zzzrequest.h"
 #include <QToolButton>
+#include <ranges/trange.h>
+#include <tmessagebox.h>
 
 struct ZzzRequestEditorPrivate {
         ZzzRequestTreeItemPtr request;
@@ -60,6 +62,21 @@ void ZzzRequestEditor::executeRequest() {
     auto request = d->request.dynamicCast<ZzzRequest>();
     if (!request) return;
 
-    auto reply = request->execute();
-    emit addReply(reply);
+    try {
+        auto reply = request->execute();
+        emit addReply(reply);
+    } catch (EnvironmentIncompleteException& ex) {
+        ([this, &ex]() -> QCoro::Task<> {
+            auto missingVariables = tRange(ex.missingVariables()).map<QString>([](ZzzVariable variable) {
+                                                                     return QLocale().quoteString(std::get<1>(variable));
+                                                                 })
+                                        .toList();
+            tMessageBox box(this->window());
+            box.setTitleBarText(tr("Environment Incomplete"));
+            box.setMessageText(tr("The request cannot be sent because some environment variables used by this request are not set."));
+            box.setInformativeText(tr("The environment variable(s) %1 need to be set before the request can be sent.", nullptr, missingVariables.length()).arg(QLocale().createSeparatedList(missingVariables)));
+            box.setIcon(QMessageBox::Information);
+            co_await box.presentAsync();
+        })();
+    }
 }
