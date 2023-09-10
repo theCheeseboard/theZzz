@@ -45,6 +45,9 @@ void EnvironmentProvider::removeEnvironment(QUuid uuid) {
     d->envVars.removeIf([uuid](ZzzEnvironmentVariable envVar) {
         return std::get<0>(envVar) == uuid;
     });
+    if (d->currentEnvironment == uuid) {
+        d->currentEnvironment = d->environments.constFirst().first;
+    }
     emit this->workspace()->dataChanged();
 }
 
@@ -88,9 +91,18 @@ QUuid EnvironmentProvider::currentEnvironment() {
     return d->currentEnvironment;
 }
 
+void EnvironmentProvider::setCurrentEnvironment(QUuid environment) {
+    d->currentEnvironment = environment;
+    emit this->workspace()->dataChanged();
+}
+
 QString EnvironmentProvider::substituteEnvironment(QString string, QList<ZzzVariable>* missingEnvironmentVariables) {
     for (const auto& envVar : d->envVars) {
         auto [envUuid, varUuid, value] = envVar;
+
+        // Ensure that this environment variable is part of the current environment
+        if (d->currentEnvironment != envUuid) continue;
+
         try {
             auto variable = tRange(d->variables).first([envVar](ZzzVariable var) {
                 auto [envUuid, varUuid, value] = envVar;

@@ -97,7 +97,7 @@
     <name>EnvironmentProvider</name>
     <message>
         <location filename="../providers/environmentprovider.cpp" line="20"/>
-        <location filename="../providers/environmentprovider.cpp" line="164"/>
+        <location filename="../providers/environmentprovider.cpp" line="176"/>
         <source>Production</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,44 +207,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="134"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="149"/>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="153"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="135"/>
+        <source>Activate Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="139"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="154"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="158"/>
         <source>Delete Environment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="140"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="145"/>
         <source>Unable to delete environment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="141"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="146"/>
         <source>Every workspace must have at least one environment.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="142"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="147"/>
         <source>To delete the %1 environment, create a new environment first.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="150"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="155"/>
         <source>Do you want to delete the environment %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="151"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="156"/>
         <source>Deleting the environment will also delete all environment variables associated with it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="170"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="175"/>
         <source>New Environment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="170"/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="175"/>
         <source>What do you want to call the new environment?</source>
         <translation type="unfinished"></translation>
     </message>

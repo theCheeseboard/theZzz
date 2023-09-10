@@ -131,6 +131,11 @@ void EnvironmentProviderEditor::on_tableWidget_customContextMenuRequested(const 
             auto env = d->environmentProvider->environments().at(item->column() - 2);
             auto [envUuid, envName] = env;
             menu->addSection(tr("For Environment %1").arg(QLocale().quoteString(envName)));
+            if (d->environmentProvider->currentEnvironment() != envUuid) {
+                menu->addAction(QIcon::fromTheme("dialog-ok"), tr("Activate Environment"), [env, this] {
+                    d->environmentProvider->setCurrentEnvironment(env.first);
+                });
+            }
             menu->addAction(QIcon::fromTheme("edit-delete"), tr("Delete Environment"), [this, env]() -> QCoro::Task<> {
                 auto innerEnv = env;
                 auto [envUuid, envName] = innerEnv;

@@ -30,6 +30,7 @@ class EnvironmentProvider : public ZzzProvider<EnvironmentProvider> {
         void setEnvironmentVariables(QList<ZzzEnvironmentVariable> environmentVariables);
 
         QUuid currentEnvironment();
+        void setCurrentEnvironment(QUuid environment);
         QString substituteEnvironment(QString string, QList<ZzzVariable>* missingEnvironmentVariables = nullptr);
 
     private:
