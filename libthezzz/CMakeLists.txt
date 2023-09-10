@@ -98,7 +98,7 @@ set_target_properties(libthezzz PROPERTIES
         MACOSX_FRAMEWORK_IDENTIFIER com.vicr123.thezzz
         VERSION 1.0.0
         PUBLIC_HEADER "${HEADERS}"
-        CNTP_DATA_SUBDIR thetroposphere/libthetroposphere)
+        CNTP_DATA_SUBDIR thezzz/libthezzz)
 cntp_translate(libthezzz)
 
 target_link_libraries(libthezzz Qt::Widgets libcontemporary)

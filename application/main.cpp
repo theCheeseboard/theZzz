@@ -2,6 +2,7 @@
 #include <QJsonArray>
 #include <QUrl>
 #include <libthebranch_global.h>
+#include <libthezzz_global.h>
 #include <tapplication.h>
 #include <tsettings.h>
 #include <tstylemanager.h>
@@ -12,6 +13,8 @@ int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
     a.setApplicationShareDir("thezzz");
     a.installTranslators();
+    a.addLibraryTranslator(LIBTHEBRANCH_TRANSLATOR);
+    a.addLibraryTranslator(LIBTHEZZZ_TRANSLATOR);
 
     a.setApplicationVersion("1.0");
     a.setGenericName(QApplication::translate("main", "REST Client"));

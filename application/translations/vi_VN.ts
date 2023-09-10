@@ -1,208 +1,238 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <TS version="2.1" language="vi_VN">
-  <context>
+<context>
     <name>LandingPage</name>
     <message>
-      <translation></translation>
-      <location filename="../landingpage.ui" line="14" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="140" />
-      <source>Form</source>
+        <location filename="../landingpage.ui" line="+14"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+140"/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation>Bắt đầu</translation>
-      <location filename="../landingpage.ui" line="125" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="141" />
-      <source>Get Started</source>
+        <location line="+111"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
+        <source>Get Started</source>
+        <translation>Bắt đầu</translation>
     </message>
     <message>
-      <translation>Bàn làm việc mới</translation>
-      <location filename="../landingpage.ui" line="149" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="142" />
-      <source>New Workspace</source>
+        <location line="+24"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
+        <source>New Workspace</source>
+        <translation>Bàn làm việc mới</translation>
     </message>
     <message>
-      <translation>Tạo bàn làm việc trống</translation>
-      <location filename="../landingpage.ui" line="152" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="143" />
-      <source>Create a blank workspace</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
+        <source>Create a blank workspace</source>
+        <translation>Tạo bàn làm việc trống</translation>
     </message>
     <message>
-      <translation>Mở bàn làm việc</translation>
-      <location filename="../landingpage.ui" line="159" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="144" />
-      <source>Open Workspace</source>
+        <location line="+7"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
+        <source>Open Workspace</source>
+        <translation>Mở bàn làm việc</translation>
     </message>
     <message>
-      <translation>Mở bàn làm việc đã lưu</translation>
-      <location filename="../landingpage.ui" line="162" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="145" />
-      <source>Open a saved workspace</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
+        <source>Open a saved workspace</source>
+        <translation>Mở bàn làm việc đã lưu</translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
-      <translation>theZzz</translation>
-      <location filename="../mainwindow.ui" line="14" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="226" />
-      <source>theZzz</source>
+        <location filename="../mainwindow.ui" line="+14"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+226"/>
+        <source>theZzz</source>
+        <translation>theZzz</translation>
     </message>
     <message>
-      <translation>Tệp</translation>
-      <location filename="../mainwindow.ui" line="157" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="268" />
-      <source>File</source>
+        <location line="+143"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+42"/>
+        <source>File</source>
+        <translation>Tệp</translation>
     </message>
     <message>
-      <translation>Git</translation>
-      <location filename="../mainwindow.ui" line="170" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="269" />
-      <source>Git</source>
+        <location line="+13"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+1"/>
+        <source>Git</source>
+        <translation>Git</translation>
     </message>
     <message>
-      <translation>Thoát</translation>
-      <location filename="../mainwindow.ui" line="187" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="227" />
-      <source>Exit</source>
+        <location line="+17"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="-42"/>
+        <source>Exit</source>
+        <translation>Thoát</translation>
     </message>
     <message>
-      <translation>Ctrl+Q</translation>
-      <location filename="../mainwindow.ui" line="190" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="229" />
-      <source>Ctrl+Q</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Q</source>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
-      <translation>Bàn làm việc mới</translation>
-      <location filename="../mainwindow.ui" line="198" />
-      <location filename="../mainwindow.cpp" line="153" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="231" />
-      <source>New Workspace</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../mainwindow.cpp" line="+153"/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>New Workspace</source>
+        <translation>Bàn làm việc mới</translation>
     </message>
     <message>
-      <translation>Ctrl+Shift+N</translation>
-      <location filename="../mainwindow.ui" line="201" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="233" />
-      <source>Ctrl+Shift+N</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Shift+N</source>
+        <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
-      <translation>Mở bàn làm việc</translation>
-      <location filename="../mainwindow.ui" line="209" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="235" />
-      <source>Open Workspace</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Open Workspace</source>
+        <translation>Mở bàn làm việc</translation>
     </message>
     <message>
-      <translation>Ctrl+O</translation>
-      <location filename="../mainwindow.ui" line="212" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="237" />
-      <source>Ctrl+O</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+O</source>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
-      <translation>Lưu thành</translation>
-      <location filename="../mainwindow.ui" line="220" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="239" />
-      <source>Save As</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Save As</source>
+        <translation>Lưu thành</translation>
     </message>
     <message>
-      <translation>Ctrl+Shift+S</translation>
-      <location filename="../mainwindow.ui" line="223" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="241" />
-      <source>Ctrl+Shift+S</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Shift+S</source>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-      <translation>Lưu</translation>
-      <location filename="../mainwindow.ui" line="231" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="243" />
-      <source>Save</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Save</source>
+        <translation>Lưu</translation>
     </message>
     <message>
-      <translation>Ctrl+S</translation>
-      <location filename="../mainwindow.ui" line="234" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="245" />
-      <source>Ctrl+S</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+S</source>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../mainwindow.ui" line="242" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="247" />
-      <source>Commit</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Commit</source>
+        <translation></translation>
     </message>
     <message>
-      <translation>Ctrl+Alt+S</translation>
-      <location filename="../mainwindow.ui" line="245" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="249" />
-      <source>Ctrl+Alt+S</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Alt+S</source>
+        <translation>Ctrl+Alt+S</translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../mainwindow.ui" line="253" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="251" />
-      <source>Push</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Push</source>
+        <translation></translation>
     </message>
     <message>
-      <translation>Ctrl+Alt+Up</translation>
-      <location filename="../mainwindow.ui" line="256" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="253" />
-      <source>Ctrl+Alt+Up</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Alt+Up</source>
+        <translation>Ctrl+Alt+Up</translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../mainwindow.ui" line="264" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="255" />
-      <source>Pull</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Pull</source>
+        <translation></translation>
     </message>
     <message>
-      <translation>Ctrl+Alt+Down</translation>
-      <location filename="../mainwindow.ui" line="267" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="257" />
-      <source>Ctrl+Alt+Down</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Alt+Down</source>
+        <translation>Ctrl+Alt+Down</translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../mainwindow.ui" line="275" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="259" />
-      <source>Checkout</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Checkout</source>
+        <translation></translation>
     </message>
     <message>
-      <translation>Ctrl+Alt+.</translation>
-      <location filename="../mainwindow.ui" line="278" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="261" />
-      <source>Ctrl+Alt+.</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+Alt+.</source>
+        <translation>Ctrl+Alt+.</translation>
     </message>
     <message>
-      <translation>Đóng tab</translation>
-      <location filename="../mainwindow.ui" line="286" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="263" />
-      <source>Close Tab</source>
+        <location line="+8"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Close Tab</source>
+        <translation>Đóng tab</translation>
     </message>
     <message>
-      <translation>Ctrl+W</translation>
-      <location filename="../mainwindow.ui" line="289" />
-      <location filename="../../../build-theZzz-Chroot_6-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="265" />
-      <source>Ctrl+W</source>
+        <location line="+3"/>
+        <location/>
+        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <source>Ctrl+W</source>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
-      <translation>Bàn làm việc theZzz (*.zzz)</translation>
-      <location filename="../mainwindow.cpp" line="124" />
-      <location filename="../mainwindow.cpp" line="139" />
-      <source>theZzz Workspace (*.zzz)</source>
+        <location filename="../mainwindow.cpp" line="-29"/>
+        <location line="+15"/>
+        <source>theZzz Workspace (*.zzz)</source>
+        <translation>Bàn làm việc theZzz (*.zzz)</translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../mainwindow.cpp" line="199" />
-      <source>No Git Repository Available</source>
+        <location line="+60"/>
+        <source>No Git Repository Available</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../mainwindow.cpp" line="200" />
-      <source>This workspace file is not in a Git repository. Init a Git repository, and then try again.</source>
+        <location line="+1"/>
+        <source>This workspace file is not in a Git repository. Init a Git repository, and then try again.</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>main</name>
     <message>
-      <translation>Ứng dụng khách REST</translation>
-      <location filename="../main.cpp" line="17" />
-      <source>REST Client</source>
+        <location filename="../main.cpp" line="+20"/>
+        <source>REST Client</source>
+        <translation>Ứng dụng khách REST</translation>
     </message>
-  </context>
+</context>
 </TS>

@@ -1,467 +1,544 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <TS version="2.1" language="he">
-  <context>
+<context>
     <name>BodyProviderEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/bodyprovidereditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/providereditor/bodyprovidereditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/bodyprovidereditor.ui" line="49" />
-      <source>Body</source>
+        <location line="+35"/>
+        <location/>
+        <source>Body</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/bodyprovidereditor.cpp" line="26" />
-      <source>Body</source>
+        <location filename="../widgets/providereditor/bodyprovidereditor.cpp" line="+26"/>
+        <source>Body</source>
+        <comment>Short for Body</comment>
+        <translation type="unfinished"></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>DescriptionProviderEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/descriptionprovidereditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/providereditor/descriptionprovidereditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/descriptionprovidereditor.ui" line="20" />
-      <location filename="../widgets/providereditor/descriptionprovidereditor.ui" line="42" />
-      <source>Description</source>
+        <location line="+6"/>
+        <location line="+22"/>
+        <location/>
+        <source>Description</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/descriptionprovidereditor.ui" line="35" />
-      <source>Title</source>
+        <location line="-7"/>
+        <location/>
+        <source>Title</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/descriptionprovidereditor.cpp" line="25" />
-      <source>Desc</source>
+        <location filename="../widgets/providereditor/descriptionprovidereditor.cpp" line="+25"/>
+        <source>Desc</source>
+        <comment>Short for Description</comment>
+        <translation type="unfinished"></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>EndpointProviderEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/endpointprovidereditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="48" />
-      <source>GET</source>
+        <location line="+34"/>
+        <location/>
+        <source>GET</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="57" />
-      <source>POST</source>
+        <location line="+9"/>
+        <location/>
+        <source>POST</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="66" />
-      <source>PUT</source>
+        <location line="+9"/>
+        <location/>
+        <source>PUT</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="75" />
-      <source>PATCH</source>
+        <location line="+9"/>
+        <location/>
+        <source>PATCH</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="84" />
-      <source>DELETE</source>
+        <location line="+9"/>
+        <location/>
+        <source>DELETE</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="93" />
-      <source>OPTIONS</source>
+        <location line="+9"/>
+        <location/>
+        <source>OPTIONS</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="102" />
-      <source>HEAD</source>
+        <location line="+9"/>
+        <location/>
+        <source>HEAD</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/endpointprovidereditor.ui" line="123" />
-      <source>Endpoint</source>
+        <location line="+21"/>
+        <location/>
+        <source>Endpoint</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>EnvironmentProvider</name>
     <message>
-      <translation></translation>
-      <location filename="../providers/environmentprovider.cpp" line="20" />
-      <location filename="../providers/environmentprovider.cpp" line="123" />
-      <source>Production</source>
+        <location filename="../providers/environmentprovider.cpp" line="+20"/>
+        <location line="+156"/>
+        <source>Production</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>EnvironmentProviderEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="52" />
-      <source>Environment</source>
+        <location line="+38"/>
+        <location/>
+        <source>Environment</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="59" />
-      <source>Environment Variables allow you to set common variables and set secrets that can be used by other requests in this workspace.</source>
+        <location line="+7"/>
+        <location/>
+        <source>Environment Variables allow you to set common variables and set secrets that can be used by other requests in this workspace.</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="81" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="86" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="91" />
-      <source>Var</source>
+        <location line="+22"/>
+        <location line="+5"/>
+        <location line="+5"/>
+        <location/>
+        <source>Var</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="96" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="42" />
-      <source>Variable</source>
+        <location line="+5"/>
+        <location/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="+42"/>
+        <source>Variable</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="101" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="43" />
-      <source>Secret?</source>
+        <location line="+5"/>
+        <location/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="+1"/>
+        <source>Secret?</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="106" />
-      <source>Production</source>
+        <location line="+5"/>
+        <location/>
+        <source>Production</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="111" />
-      <source>Staging</source>
+        <location line="+5"/>
+        <location/>
+        <source>Staging</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="116" />
-      <source>baseUrl</source>
+        <location line="+5"/>
+        <location/>
+        <source>baseUrl</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="138" />
-      <source>envthing</source>
+        <location line="+22"/>
+        <location/>
+        <source>envthing</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="143" />
-      <source>envthing2</source>
+        <location line="+5"/>
+        <location/>
+        <source>envthing2</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="148" />
-      <source>token</source>
+        <location line="+5"/>
+        <location/>
+        <source>token</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="170" />
-      <source>password</source>
+        <location line="+22"/>
+        <location/>
+        <source>password</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="175" />
-      <source>password2</source>
+        <location line="+5"/>
+        <location/>
+        <source>password2</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="180" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="86" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="106" />
-      <source>New Variable...</source>
+        <location line="+5"/>
+        <location/>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="+43"/>
+        <location line="+20"/>
+        <source>New Variable...</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="222" />
-      <source>Actions</source>
+        <location line="+42"/>
+        <location/>
+        <source>Actions</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="229" />
-      <source>Create New Environment</source>
+        <location line="+7"/>
+        <location/>
+        <source>Create New Environment</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="30" />
-      <source>Env</source>
+        <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="-76"/>
+        <source>Env</source>
+        <comment>Short for Environment</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="133" />
-      <source>For Environment %1</source>
+        <location line="+103"/>
+        <source>For Environment %1</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="134" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="149" />
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="153" />
-      <source>Delete Environment</source>
+        <location line="+2"/>
+        <source>Activate Environment</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="140" />
-      <source>Unable to delete environment</source>
+        <location line="+4"/>
+        <location line="+15"/>
+        <location line="+4"/>
+        <source>Delete Environment</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="141" />
-      <source>Every workspace must have at least one environment.</source>
+        <location line="-13"/>
+        <source>Unable to delete environment</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="142" />
-      <source>To delete the %1 environment, create a new environment first.</source>
+        <location line="+1"/>
+        <source>Every workspace must have at least one environment.</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="150" />
-      <source>Do you want to delete the environment %1?</source>
+        <location line="+1"/>
+        <source>To delete the %1 environment, create a new environment first.</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="151" />
-      <source>Deleting the environment will also delete all environment variables associated with it.</source>
+        <location line="+8"/>
+        <source>Do you want to delete the environment %1?</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="170" />
-      <source>New Environment</source>
+        <location line="+1"/>
+        <source>Deleting the environment will also delete all environment variables associated with it.</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="170" />
-      <source>What do you want to call the new environment?</source>
+        <location line="+19"/>
+        <source>New Environment</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+    <message>
+        <location line="+0"/>
+        <source>What do you want to call the new environment?</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>HeaderProviderEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/headerprovidereditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/providereditor/headerprovidereditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/headerprovidereditor.ui" line="52" />
-      <source>Headers</source>
+        <location line="+38"/>
+        <location/>
+        <source>Headers</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/headerprovidereditor.ui" line="74" />
-      <source>Header</source>
+        <location line="+22"/>
+        <location/>
+        <source>Header</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/headerprovidereditor.ui" line="79" />
-      <source>Value</source>
+        <location line="+5"/>
+        <location/>
+        <source>Value</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/headerprovidereditor.cpp" line="26" />
-      <source>Hdrs</source>
+        <location filename="../widgets/providereditor/headerprovidereditor.cpp" line="+26"/>
+        <source>Hdrs</source>
+        <comment>Short for Headers</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/providereditor/headerprovidereditor.cpp" line="95" />
-      <location filename="../widgets/providereditor/headerprovidereditor.cpp" line="105" />
-      <source>New Header...</source>
+        <location line="+69"/>
+        <location line="+10"/>
+        <source>New Header...</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ReplyBodyWidget</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replybodywidget.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/replyinspector/replybodywidget.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replybodywidget.ui" line="37" />
-      <source>Raw Body</source>
+        <location line="+23"/>
+        <location/>
+        <source>Raw Body</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replybodywidget.cpp" line="25" />
-      <source>Raw</source>
+        <location filename="../widgets/replyinspector/replybodywidget.cpp" line="+25"/>
+        <source>Raw</source>
+        <comment>Short for Raw Body</comment>
+        <translation type="unfinished"></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ReplyHeadersWidget</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/replyinspector/replyheaderswidget.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.ui" line="52" />
-      <source>Headers</source>
+        <location line="+38"/>
+        <location/>
+        <source>Headers</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.ui" line="74" />
-      <source>Header</source>
+        <location line="+22"/>
+        <location/>
+        <source>Header</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.ui" line="79" />
-      <source>Value</source>
+        <location line="+5"/>
+        <location/>
+        <source>Value</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.cpp" line="18" />
-      <source>Hdr</source>
+        <location filename="../widgets/replyinspector/replyheaderswidget.cpp" line="+18"/>
+        <source>Hdr</source>
+        <comment>Short for Headers</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.cpp" line="37" />
-      <source>For header %1</source>
+        <location line="+19"/>
+        <source>For header %1</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.cpp" line="38" />
-      <source>Copy Header</source>
+        <location line="+1"/>
+        <source>Copy Header</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/replyinspector/replyheaderswidget.cpp" line="41" />
-      <source>Copy Value</source>
+        <location line="+3"/>
+        <source>Copy Value</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>WorkspaceFile</name>
     <message>
-      <translation></translation>
-      <location filename="../workspacefile.cpp" line="87" />
-      <source>Untitled Workspace</source>
+        <location filename="../workspacefile.cpp" line="+87"/>
+        <source>Untitled Workspace</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ZzzReplyInspector</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzreplyinspector.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/zzzreplyinspector.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzreplyinspector.ui" line="94" />
-      <source>Unable to send request</source>
+        <location line="+80"/>
+        <location/>
+        <source>Unable to send request</source>
+        <translation></translation>
     </message>
     <message numerus="yes">
-      <translation>
-        <numerusform></numerusform>
-        <numerusform></numerusform>
-        <numerusform></numerusform>
-      </translation>
-      <location filename="../widgets/zzzreplyinspector.cpp" line="39" />
-      <source>in %n msec</source>
+        <location filename="../widgets/zzzreplyinspector.cpp" line="+39"/>
+        <source>in %n msec</source>
+        <translation>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzreplyinspector.cpp" line="45" />
-      <source>Fail</source>
+        <location line="+6"/>
+        <source>Fail</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzreplyinspector.cpp" line="84" />
-      <source>Processing...</source>
+        <location line="+39"/>
+        <source>Processing...</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ZzzReplyViewer</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzreplyviewer.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/zzzreplyviewer.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzreplyviewer.ui" line="35" />
-      <source>Responses</source>
+        <location line="+21"/>
+        <location/>
+        <source>Responses</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ZzzRequest</name>
     <message>
-      <translation></translation>
-      <location filename="../zzzrequest.cpp" line="16" />
-      <location filename="../zzzrequest.cpp" line="20" />
-      <source>Untitled Request</source>
+        <location filename="../zzzrequest.cpp" line="+17"/>
+        <location line="+4"/>
+        <source>Untitled Request</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ZzzRequestEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzrequesteditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/zzzrequesteditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+    <message>
+        <location filename="../widgets/zzzrequesteditor.cpp" line="+75"/>
+        <source>Environment Incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The request cannot be sent because some environment variables used by this request are not set.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>%n environment variable(s) (%1) need to be set before the request can be sent.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ZzzRequestFolder</name>
     <message>
-      <translation></translation>
-      <location filename="../zzzrequestfolder.cpp" line="14" />
-      <location filename="../zzzrequestfolder.cpp" line="18" />
-      <source>Untitled Request Folder</source>
+        <location filename="../zzzrequestfolder.cpp" line="+14"/>
+        <location line="+4"/>
+        <source>Untitled Request Folder</source>
+        <translation></translation>
     </message>
-  </context>
-  <context>
+</context>
+<context>
     <name>ZzzWorkspaceEditor</name>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.ui" line="14" />
-      <source>Form</source>
+        <location filename="../widgets/zzzworkspaceeditor.ui" line="+14"/>
+        <location/>
+        <source>Form</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.ui" line="77" />
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="270" />
-      <source>New Request</source>
+        <location line="+63"/>
+        <location/>
+        <location filename="../widgets/zzzworkspaceeditor.cpp" line="+270"/>
+        <source>New Request</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="151" />
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="155" />
-      <source>Delete Request Folder</source>
+        <location filename="../widgets/zzzworkspaceeditor.cpp" line="-119"/>
+        <location line="+4"/>
+        <source>Delete Request Folder</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="152" />
-      <source>Do you want to delete the request folder?</source>
+        <location line="-3"/>
+        <source>Do you want to delete the request folder?</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="153" />
-      <source>Deleting the request folder will also delete all the requests contained within.</source>
+        <location line="+1"/>
+        <source>Deleting the request folder will also delete all the requests contained within.</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="267" />
-      <source>For %1</source>
+        <location line="+114"/>
+        <source>For %1</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="273" />
-      <source>New Request Folder</source>
+        <location line="+6"/>
+        <source>New Request Folder</source>
+        <translation></translation>
     </message>
     <message>
-      <translation></translation>
-      <location filename="../widgets/zzzworkspaceeditor.cpp" line="279" />
-      <source>Delete</source>
+        <location line="+6"/>
+        <source>Delete</source>
+        <translation></translation>
     </message>
-  </context>
+</context>
 </TS>

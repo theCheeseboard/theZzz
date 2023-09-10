@@ -9,4 +9,6 @@
     #define LIBTHEZZZ_EXPORT Q_DECL_IMPORT
 #endif
 
+#define LIBTHEZZZ_TRANSLATOR "thezzz/libthezzz"
+
 #endif // LIBTHEZZZ_GLOBAL_H
