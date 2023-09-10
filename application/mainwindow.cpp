@@ -9,7 +9,6 @@
 #include <QCoroCore>
 #include <QFileDialog>
 #include <QStandardPaths>
-#include <repository.h>
 #include <tapplication.h>
 #include <tcsdtools.h>
 #include <thelpmenu.h>

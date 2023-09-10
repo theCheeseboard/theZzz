@@ -3,7 +3,7 @@
 
 #include <QCoroTask>
 #include <QMainWindow>
-#include <repository.h>
+#include <objects/repository.h>
 
 namespace Ui {
     class MainWindow;
