@@ -41,7 +41,7 @@ class LIBTHEZZZ_EXPORT ZzzRequest : public QObject,
 
 typedef QSharedPointer<ZzzRequest> ZzzRequestPtr;
 
-class LIBCONTEMPORARY_EXPORT EnvironmentIncompleteException : public tException {
+class LIBTHEZZZ_EXPORT EnvironmentIncompleteException : public tException {
         T_EXCEPTION(EnvironmentIncompleteException)
     public:
         EnvironmentIncompleteException(QList<ZzzVariable> missingVariables);
