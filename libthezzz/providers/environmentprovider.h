@@ -19,12 +19,15 @@ class EnvironmentProvider : public ZzzProvider<EnvironmentProvider> {
         QList<ZzzEnvironment> environments();
         QUuid addEnvironment(QString name);
         void removeEnvironment(QUuid uuid);
+        QString environmentName(QUuid environment);
 
         QList<ZzzVariable> variables();
         void setVariables(QList<ZzzVariable> variables);
 
         QList<ZzzEnvironmentVariable> environmentVariables();
         void setEnvironmentVariables(QList<ZzzEnvironmentVariable> environmentVariables);
+
+        QUuid currentEnvironment();
 
     private:
         EnvironmentProviderPrivate* d;

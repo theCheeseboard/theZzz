@@ -96,8 +96,8 @@
 <context>
     <name>EnvironmentProvider</name>
     <message>
-        <location filename="../providers/environmentprovider.cpp" line="18"/>
-        <location filename="../providers/environmentprovider.cpp" line="109"/>
+        <location filename="../providers/environmentprovider.cpp" line="20"/>
+        <location filename="../providers/environmentprovider.cpp" line="123"/>
         <source>Production</source>
         <translation type="unfinished"></translation>
     </message>

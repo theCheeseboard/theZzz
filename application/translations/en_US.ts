@@ -188,12 +188,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="188"/>
+        <location filename="../mainwindow.cpp" line="191"/>
         <source>No Git Repository Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="189"/>
+        <location filename="../mainwindow.cpp" line="192"/>
         <source>This workspace file is not in a Git repository. Init a Git repository, and then try again.</source>
         <translation type="unfinished"></translation>
     </message>

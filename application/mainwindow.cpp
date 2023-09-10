@@ -148,6 +148,9 @@ ZzzWorkspaceEditor* MainWindow::newTab() {
     connect(browser, &ZzzWorkspaceEditor::addReply, ui->replyViewer->replyManager().data(), &ZzzReplyManager::pushReply);
     connect(browser->workspace().data(), &WorkspaceFile::dataChanged, this, [browser, initialBrowserTab] {
         initialBrowserTab->setText(browser->workspace()->workspaceFileTitle());
+
+        auto currentEnvironment = browser->workspace()->currentEnvironment();
+        initialBrowserTab->setSupplementaryText(browser->workspace()->environmentName(currentEnvironment));
     });
 
     ui->windowTabber->addButton(initialBrowserTab);

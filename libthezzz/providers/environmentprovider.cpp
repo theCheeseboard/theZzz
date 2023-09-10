@@ -9,13 +9,16 @@ struct EnvironmentProviderPrivate {
         QList<ZzzEnvironment> environments;
         QList<ZzzVariable> variables;
         QList<ZzzEnvironmentVariable> envVars;
+        QUuid currentEnvironment;
 };
 
 EnvironmentProvider::EnvironmentProvider(WorkspaceFile* parent) :
     ZzzProvider(parent) {
     d = new EnvironmentProviderPrivate();
 
-    d->environments.append({QUuid::createUuid(), tr("Production")});
+    auto uuid = QUuid::createUuid();
+    d->environments.append({uuid, tr("Production")});
+    d->currentEnvironment = uuid;
 }
 
 EnvironmentProvider::~EnvironmentProvider() {
@@ -42,6 +45,13 @@ void EnvironmentProvider::removeEnvironment(QUuid uuid) {
     emit this->workspace()->dataChanged();
 }
 
+QString EnvironmentProvider::environmentName(QUuid environment) {
+    return tRange(d->environments).first([environment](ZzzEnvironment env) {
+                                      return env.first == environment;
+                                  })
+        .second;
+}
+
 QList<ZzzVariable> EnvironmentProvider::variables() {
     return d->variables;
 }
@@ -58,6 +68,10 @@ QList<ZzzEnvironmentVariable> EnvironmentProvider::environmentVariables() {
 void EnvironmentProvider::setEnvironmentVariables(QList<ZzzEnvironmentVariable> environmentVariables) {
     d->envVars = environmentVariables;
     emit this->workspace()->dataChanged();
+}
+
+QUuid EnvironmentProvider::currentEnvironment() {
+    return d->currentEnvironment;
 }
 
 QString EnvironmentProvider::jsonKey() {
@@ -107,6 +121,7 @@ void EnvironmentProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
 
     // Failsafe
     if (d->environments.isEmpty()) d->environments.append({QUuid::createUuid(), tr("Production")});
+    d->currentEnvironment = d->environments.first().first;
 }
 
 QJsonValue EnvironmentProvider::toJson() {
