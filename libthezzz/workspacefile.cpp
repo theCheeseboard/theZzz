@@ -3,8 +3,11 @@
 #include "zzznetworkcache.h"
 #include "zzzrequest.h"
 #include <QAbstractNetworkCache>
+#include <QDir>
+#include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkAccessManager>
+#include <QStandardPaths>
 
 struct WorkspaceFilePrivate {
         QNetworkAccessManager networkAccessManager;
@@ -32,14 +35,52 @@ WorkspaceFile::~WorkspaceFile() {
     delete d;
 }
 
+QString WorkspaceFile::localJsonFilePath(QUuid workspaceUuid) {
+    auto appData = QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)).absoluteFilePath("workspaces");
+    return QDir(appData).absoluteFilePath(workspaceUuid.toString(QUuid::WithoutBraces));
+}
+
 void WorkspaceFile::loadJson(QJsonValue object) {
-    WorkspaceFileZzzProvides::loadJson(object.toObject());
+    QJsonValue localObj;
+    auto objectIdentifier = object.toObject().value("identifier").toString();
+    if (!objectIdentifier.isEmpty()) {
+        auto uuid = QUuid::fromString(objectIdentifier);
+        if (!uuid.isNull()) {
+            auto localJsonFile = localJsonFilePath(uuid);
+
+            QFile localJson(localJsonFile);
+            localJson.open(QFile::ReadOnly);
+            localObj = QJsonDocument::fromJson(localJson.readAll()).object();
+            localJson.close();
+        }
+    }
+
+    this->loadJson(object, localObj);
+}
+
+void WorkspaceFile::loadJson(QJsonValue object, QJsonValue localObj) {
+    WorkspaceFileZzzProvides::loadJson(object.toObject(), localObj.toObject());
     emit requestsChanged();
     emit dataChanged();
 }
 
 QJsonValue WorkspaceFile::toJson() {
+    if (!this->identifier().isNull()) {
+        auto localJsonFile = localJsonFilePath(this->identifier());
+
+        QDir::root().mkpath(QFileInfo(localJsonFile).dir().path());
+
+        QFile localJson(localJsonFile);
+        localJson.open(QFile::WriteOnly);
+        localJson.write(QJsonDocument(this->toLocalJson().toObject()).toJson());
+        localJson.close();
+    }
+
     return WorkspaceFileZzzProvides::toJson();
+}
+
+QJsonValue WorkspaceFile::toLocalJson() {
+    return WorkspaceFileZzzProvides::toLocalJson();
 }
 
 QString WorkspaceFile::workspaceFileTitle() {

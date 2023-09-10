@@ -23,8 +23,11 @@ class ZzzProvider : public ZzzProviderBase {
         }
 
         virtual QString jsonKey() = 0;
-        virtual void loadJson(QJsonValue obj) = 0;
+        virtual void loadJson(QJsonValue obj, QJsonValue localObj) = 0;
         virtual QJsonValue toJson() = 0;
+        virtual QJsonValue toLocalJson() {
+            return {};
+        }
 
         virtual QList<ProviderEditor*> editor() {
             return {};
@@ -35,12 +38,17 @@ class ZzzProvider : public ZzzProviderBase {
         }
 
     protected:
-        void loadJsonProvider(QJsonObject obj) {
-            dynamic_cast<T*>(this)->T::loadJson(obj.value(this->jsonKey()));
+        void loadJsonProvider(QJsonObject obj, QJsonObject localObj) {
+            dynamic_cast<T*>(this)->T::loadJson(obj.value(this->jsonKey()), localObj.value(this->jsonKey()));
         }
         QJsonObject saveJsonProvider() {
             return {
                 {dynamic_cast<T*>(this)->T::jsonKey(), dynamic_cast<T*>(this)->T::toJson()}
+            };
+        }
+        QJsonObject saveLocalJsonProvider() {
+            return {
+                {dynamic_cast<T*>(this)->T::jsonKey(), dynamic_cast<T*>(this)->T::toLocalJson()}
             };
         }
 

@@ -23,12 +23,16 @@ class ZzzProvides : public ZzzProvidesBase,
             Providers(parent)... {
         }
 
-        virtual void loadJson(QJsonObject obj) {
-            (Providers::loadJsonProvider(obj), ...);
+        virtual void loadJson(QJsonObject obj, QJsonObject localObj) {
+            (Providers::loadJsonProvider(obj, localObj), ...);
         }
 
         virtual QJsonValue toJson() {
             return QJsonObject((... << Providers::saveJsonProvider()));
+        }
+
+        virtual QJsonValue toLocalJson() {
+            return QJsonObject((... << Providers::saveLocalJsonProvider()));
         }
 
         virtual QList<ProviderEditor*> editors() {

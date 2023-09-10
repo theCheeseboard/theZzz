@@ -97,7 +97,7 @@
     <name>EnvironmentProvider</name>
     <message>
         <location filename="../providers/environmentprovider.cpp" line="18"/>
-        <location filename="../providers/environmentprovider.cpp" line="94"/>
+        <location filename="../providers/environmentprovider.cpp" line="109"/>
         <source>Production</source>
         <translation type="unfinished"></translation>
     </message>
@@ -350,7 +350,7 @@
 <context>
     <name>WorkspaceFile</name>
     <message>
-        <location filename="../workspacefile.cpp" line="46"/>
+        <location filename="../workspacefile.cpp" line="87"/>
         <source>Untitled Workspace</source>
         <translation type="unfinished"></translation>
     </message>

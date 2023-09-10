@@ -22,7 +22,7 @@ QString IdentifierProvider::jsonKey() {
     return QStringLiteral("identifier");
 }
 
-void IdentifierProvider::loadJson(QJsonValue obj) {
+void IdentifierProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     if (obj.isString()) {
         d->identifier = QUuid::fromString(obj.toString());
     }

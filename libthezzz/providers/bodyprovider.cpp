@@ -30,7 +30,7 @@ QString BodyProvider::jsonKey() {
     return QStringLiteral("body");
 }
 
-void BodyProvider::loadJson(QJsonValue obj) {
+void BodyProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     auto object = obj.toObject();
     d->body = QByteArray::fromBase64(object.value("payload").toString().toUtf8());
 }

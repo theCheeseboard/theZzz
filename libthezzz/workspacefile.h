@@ -23,8 +23,11 @@ class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
         explicit WorkspaceFile(QObject* parent = nullptr);
         ~WorkspaceFile();
 
+        static QString localJsonFilePath(QUuid workspaceUuid);
+
         void loadJson(QJsonValue object);
         QJsonValue toJson();
+        QJsonValue toLocalJson();
 
         QString workspaceFileTitle();
 
@@ -33,6 +36,9 @@ class LIBTHEZZZ_EXPORT WorkspaceFile : public QObject,
     signals:
         void requestsChanged();
         void dataChanged();
+
+    protected:
+        void loadJson(QJsonValue object, QJsonValue localObj);
 
     private:
         WorkspaceFilePrivate* d;

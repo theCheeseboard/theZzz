@@ -64,16 +64,18 @@ QString EnvironmentProvider::jsonKey() {
     return QStringLiteral("env");
 }
 
-void EnvironmentProvider::loadJson(QJsonValue obj) {
+void EnvironmentProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     d->environments.clear();
     d->variables.clear();
     d->envVars.clear();
 
     auto jsonObject = obj.toObject();
+    auto localObject = localObj.toObject();
 
     auto environment = jsonObject.value("environment").toArray();
     auto variables = jsonObject.value("variables").toArray();
     auto environmentVariables = jsonObject.value("environmentVariables").toArray();
+    auto localEnvironmentVariables = localObject.value("environmentVariables").toArray();
 
     for (auto env : environment) {
         auto envObj = env.toObject();
@@ -88,6 +90,19 @@ void EnvironmentProvider::loadJson(QJsonValue obj) {
     for (auto envVar : environmentVariables) {
         auto envVarObj = envVar.toObject();
         d->envVars.append({QUuid::fromString(envVarObj.value("environment").toString()), QUuid::fromString(envVarObj.value("variable").toString()), envVarObj.value("value").toString()});
+    }
+
+    for (auto envVar : localEnvironmentVariables) {
+        auto envVarObj = envVar.toObject();
+
+        auto envVarEnvironment = QUuid::fromString(envVarObj.value("environment").toString());
+        auto envVarVariable = QUuid::fromString(envVarObj.value("variable").toString());
+
+        d->envVars.removeIf([envVarEnvironment, envVarVariable](ZzzEnvironmentVariable envVar) {
+            auto [env, var, value] = envVar;
+            return env == envVarEnvironment && var == envVarVariable;
+        });
+        d->envVars.append({envVarEnvironment, envVarVariable, envVarObj.value("value").toString()});
     }
 
     // Failsafe
@@ -148,4 +163,34 @@ QJsonValue EnvironmentProvider::toJson() {
 
 QList<ProviderEditor*> EnvironmentProvider::editor() {
     return {new EnvironmentProviderEditor(this)};
+}
+
+QJsonValue EnvironmentProvider::toLocalJson() {
+    QJsonArray environmentVariables;
+    for (const auto& envVar : d->envVars) {
+        auto [environment, variable, value] = envVar;
+        try {
+            auto environmentValue = tRange(d->environments).first([envVar](ZzzEnvironment e) {
+                return e.first == std::get<0>(envVar);
+            });
+            auto variableValue = tRange(d->variables).first([envVar](ZzzVariable v) {
+                return std::get<0>(v) == std::get<1>(envVar);
+            });
+
+            // Only save secret variables
+            if (!std::get<2>(variableValue)) continue;
+
+            environmentVariables.append(QJsonObject{
+                {"variable",    variable.toString(QUuid::WithoutBraces)   },
+                {"environment", environment.toString(QUuid::WithoutBraces)},
+                {"value",       value                                     }
+            });
+
+        } catch (tRangeException e) {
+        }
+    }
+
+    return QJsonObject{
+        {"environmentVariables", environmentVariables}
+    };
 }

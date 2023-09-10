@@ -18,7 +18,7 @@ class BodyProvider : public ZzzProvider<BodyProvider> {
         // ZzzProvider interface
     public:
         QString jsonKey();
-        void loadJson(QJsonValue obj);
+        void loadJson(QJsonValue obj, QJsonValue localObj);
         QJsonValue toJson();
         QList<ProviderEditor*> editor();
         ZzzHeaders implicitHeaders();

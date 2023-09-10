@@ -39,7 +39,7 @@ QString DescriptionProvider::jsonKey() {
     return QStringLiteral("description");
 }
 
-void DescriptionProvider::loadJson(QJsonValue obj) {
+void DescriptionProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     auto object = obj.toObject();
     d->title = object.value("title").toString();
     d->description = object.value("description").toString();
@@ -54,4 +54,10 @@ QJsonValue DescriptionProvider::toJson() {
 
 QList<ProviderEditor*> DescriptionProvider::editor() {
     return {new DescriptionProviderEditor(this)};
+}
+
+QJsonValue DescriptionProvider::toLocalJson() {
+    return QJsonObject{
+        {"title", d->title}
+    };
 }

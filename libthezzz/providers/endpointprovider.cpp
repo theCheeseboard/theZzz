@@ -42,7 +42,7 @@ QString EndpointProvider::jsonKey() {
     return QStringLiteral("endpoint");
 }
 
-void EndpointProvider::loadJson(QJsonValue obj) {
+void EndpointProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     auto object = obj.toObject();
     d->verb = object.value("verb").toString();
     d->endpoint = object.value("endpoint").toString();

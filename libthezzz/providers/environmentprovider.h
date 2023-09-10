@@ -32,8 +32,9 @@ class EnvironmentProvider : public ZzzProvider<EnvironmentProvider> {
         // ZzzProvider interface
     public:
         QString jsonKey();
-        void loadJson(QJsonValue obj);
+        void loadJson(QJsonValue obj, QJsonValue localObj);
         QJsonValue toJson();
+        QJsonValue toLocalJson();
         QList<ProviderEditor*> editor();
 };
 

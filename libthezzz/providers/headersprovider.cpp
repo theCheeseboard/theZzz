@@ -31,7 +31,7 @@ QString HeadersProvider::jsonKey() {
     return QStringLiteral("headers");
 }
 
-void HeadersProvider::loadJson(QJsonValue obj) {
+void HeadersProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     d->headers.clear();
 
     auto headers = obj.toArray();

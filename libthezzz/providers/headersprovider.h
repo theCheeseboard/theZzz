@@ -24,7 +24,7 @@ class HeadersProvider : public ZzzProvider<HeadersProvider> {
         // ZzzProvider interface
     public:
         QString jsonKey();
-        void loadJson(QJsonValue obj);
+        void loadJson(QJsonValue obj, QJsonValue localObj);
         QJsonValue toJson();
 
         // ZzzProvider interface

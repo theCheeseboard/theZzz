@@ -52,7 +52,7 @@ QString RequestContainerProvider::jsonKey() {
     return QStringLiteral("requests");
 }
 
-void RequestContainerProvider::loadJson(QJsonValue obj) {
+void RequestContainerProvider::loadJson(QJsonValue obj, QJsonValue localObj) {
     d->requests.clear();
 
     auto requests = obj.toObject().value("requests").toArray();
@@ -60,11 +60,11 @@ void RequestContainerProvider::loadJson(QJsonValue obj) {
         auto requestObj = request.toObject();
         if (requestObj.value("type") == "request") {
             auto req = (new ZzzRequest(this->workspace()->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis().staticCast<ZzzRequest>();
-            req->loadJson(requestObj);
+            req->loadJson(requestObj, {});
             d->requests.append(req);
         } else if (requestObj.value("type") == "requestfolder") {
             auto req = (new ZzzRequestFolder(this->workspace()->sharedFromThis().staticCast<WorkspaceFile>()))->sharedFromThis().staticCast<ZzzRequestFolder>();
-            req->loadJson(requestObj);
+            req->loadJson(requestObj, {});
             d->requests.append(req);
         }
     }
