@@ -431,7 +431,7 @@
     </message>
     <message numerus="yes">
         <location filename="../widgets/zzzrequesteditor.cpp" line="77"/>
-        <source>The environment variable(s) %1 need to be set before the request can be sent.</source>
+        <source>%n environment variable(s) (%1) need to be set before the request can be sent.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>

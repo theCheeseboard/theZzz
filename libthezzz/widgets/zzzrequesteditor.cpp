@@ -74,7 +74,7 @@ void ZzzRequestEditor::executeRequest() {
             tMessageBox box(this->window());
             box.setTitleBarText(tr("Environment Incomplete"));
             box.setMessageText(tr("The request cannot be sent because some environment variables used by this request are not set."));
-            box.setInformativeText(tr("The environment variable(s) %1 need to be set before the request can be sent.", nullptr, missingVariables.length()).arg(QLocale().createSeparatedList(missingVariables)));
+            box.setInformativeText(tr("%n environment variable(s) (%1) need to be set before the request can be sent.", nullptr, missingVariables.length()).arg(QLocale().createSeparatedList(missingVariables)));
             box.setIcon(QMessageBox::Information);
             co_await box.presentAsync();
         })();
