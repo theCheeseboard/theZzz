@@ -52,6 +52,7 @@ cntp_target_desktop_file(thezzz
     BLUEPRINT_DESKTOP_FILE com.vicr123.thezzz_blueprint.desktop)
 cntp_defaults_file(thezzz
     DEFAULTS_FILE thezzz.conf)
+cntp_dmg(thezzz app-dmg-background.svg)
 
 target_link_libraries(thezzz Qt::Widgets libcontemporary libthezzz libthebranch)
 target_include_directories(thezzz PUBLIC ../libthezzz/)
