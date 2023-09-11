@@ -1,6 +1,7 @@
 #ifndef ENVIRONMENTPROVIDER_H
 #define ENVIRONMENTPROVIDER_H
 
+#include "libthezzz_global.h"
 #include "zzzprovider.h"
 #include <QCoreApplication>
 #include <texception.h>
@@ -10,7 +11,7 @@ typedef std::tuple<QUuid, QString, bool> ZzzVariable;
 typedef std::tuple<QUuid, QUuid, QString> ZzzEnvironmentVariable;
 
 struct EnvironmentProviderPrivate;
-class EnvironmentProvider : public ZzzProvider<EnvironmentProvider> {
+class LIBTHEZZZ_EXPORT EnvironmentProvider : public ZzzProvider<EnvironmentProvider> {
         Q_DECLARE_TR_FUNCTIONS(EnvironmentProvider)
 
     public:
