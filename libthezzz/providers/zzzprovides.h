@@ -1,6 +1,7 @@
 #ifndef ZZZPROVIDES_H
 #define ZZZPROVIDES_H
 
+#include "libthezzz_global.h"
 #include "zzzhelpers.h"
 #include "zzzprovider.h"
 
@@ -9,15 +10,15 @@
 
 QJsonObject operator<<(const QJsonObject& first, const QJsonObject& second);
 
-class ZzzProvidesBase {
+class LIBTHEZZZ_EXPORT ZzzProvidesBase {
     public:
         virtual QList<ProviderEditor*> editors() = 0;
         virtual ZzzHeaders allImplicitHeaders() = 0;
 };
 
 template<typename... Providers>
-class ZzzProvides : public ZzzProvidesBase,
-                    public Providers... {
+class LIBTHEZZZ_EXPORT ZzzProvides : public ZzzProvidesBase,
+                                     public Providers... {
     public:
         ZzzProvides(WorkspaceFile* parent) :
             Providers(parent)... {

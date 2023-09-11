@@ -12,7 +12,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macOS-latest]
+        os: [macOS-13]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: vicr123/libcontemporary/prepare-vars@actions
