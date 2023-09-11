@@ -12,6 +12,9 @@ class BodyProvider : public ZzzProvider<BodyProvider> {
         QByteArray body();
         void setBody(QByteArray body);
 
+        QString contentType();
+        void setContentType(QString contentType);
+
     private:
         BodyProviderPrivate* d;
 

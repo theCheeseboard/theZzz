@@ -22,6 +22,11 @@ class BodyProviderEditor : public ProviderEditor {
     protected:
         void updateData();
 
+    private slots:
+        void on_actionCustom_triggered();
+
+        void on_actionForm_Data_triggered();
+
     private:
         Ui::BodyProviderEditor* ui;
         BodyProviderEditorPrivate* d;
