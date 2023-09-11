@@ -1,13 +1,18 @@
 #include "zzzreplyinspector.h"
 #include "ui_zzzreplyinspector.h"
 
+#include "replyinspector/jsonbodywidget.h"
 #include "replyinspector/replybodywidget.h"
 #include "replyinspector/replyheaderswidget.h"
+#include "zzzhelpers.h"
 #include "zzzreply.h"
 #include <QToolButton>
+#include <ranges/trange.h>
 
 struct ZzzReplyInspectorPrivate {
         ZzzReplyPtr reply;
+
+        bool isJsonWidgetRegistered;
 };
 
 ZzzReplyInspector::ZzzReplyInspector(ZzzReplyPtr reply, QWidget* parent) :
@@ -84,6 +89,13 @@ void ZzzReplyInspector::updateReply() {
         ui->statusTextLabel->setText(tr("Processing..."));
         ui->statusCodeWidget->setAutoFillBackground(false);
         ui->responseStack->setCurrentWidget(ui->loadingPage);
+    }
+
+    if (!d->isJsonWidgetRegistered && tRange(d->reply->headers()).some([](ZzzHeader header) {
+            return header.first.toLower() == "content-type" && header.second.toLower().startsWith("application/json");
+        })) {
+        d->isJsonWidgetRegistered = true;
+        this->addReplyInspectorWidget(new JsonBodyWidget(d->reply, this));
     }
 }
 

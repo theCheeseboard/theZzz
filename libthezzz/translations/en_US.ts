@@ -325,6 +325,27 @@
     </message>
 </context>
 <context>
+    <name>JsonBodyWidget</name>
+    <message>
+        <location filename="../widgets/replyinspector/jsonbodywidget.ui" line="+14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <location filename="../widgets/replyinspector/jsonbodywidget.cpp" line="+21"/>
+        <source>JSON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/replyinspector/jsonbodywidget.cpp" line="+8"/>
+        <source>Unable to parse JSON
+Error: %1
+at %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ReplyBodyWidget</name>
     <message>
         <location filename="../widgets/replyinspector/replybodywidget.ui" line="+14"/>
@@ -416,7 +437,7 @@
         <translation></translation>
     </message>
     <message numerus="yes">
-        <location filename="../widgets/zzzreplyinspector.cpp" line="+39"/>
+        <location filename="../widgets/zzzreplyinspector.cpp" line="+44"/>
         <source>in %n msec</source>
         <translation>
             <numerusform></numerusform>

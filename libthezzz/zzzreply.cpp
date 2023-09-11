@@ -132,7 +132,7 @@ quint64 ZzzReply::requestTime() {
     return d->msecsRequestTime;
 }
 
-QList<QNetworkReply::RawHeaderPair> ZzzReply::headers() {
+ZzzHeaders ZzzReply::headers() {
     return d->reply->rawHeaderPairs();
 }
 
