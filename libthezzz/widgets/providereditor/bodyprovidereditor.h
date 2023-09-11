@@ -19,9 +19,6 @@ class BodyProviderEditor : public ProviderEditor {
         QString text();
         int order();
 
-    private slots:
-        void on_plainTextEdit_textChanged();
-
     protected:
         void updateData();
 

@@ -44,12 +44,12 @@
     </layout>
    </item>
    <item>
-    <widget class="QPlainTextEdit" name="bodyText">
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
+    <widget class="CompleteTextEditor" name="editor" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
     </widget>
    </item>
@@ -60,6 +60,12 @@
    <class>tSubtitleLabel</class>
    <extends>QLabel</extends>
    <header location="global">tsubtitlelabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CompleteTextEditor</class>
+   <extends>QWidget</extends>
+   <header>ttexteditor/completetexteditor.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

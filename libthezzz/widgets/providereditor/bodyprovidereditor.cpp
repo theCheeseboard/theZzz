@@ -3,6 +3,7 @@
 
 #include "providers/bodyprovider.h"
 #include "workspacefile.h"
+#include <ttexteditor/texteditor.h>
 
 struct BodyProviderEditorPrivate {
         BodyProvider* provider;
@@ -15,6 +16,10 @@ BodyProviderEditor::BodyProviderEditor(BodyProvider* bodyProvider, QWidget* pare
 
     d = new BodyProviderEditorPrivate();
     d->provider = bodyProvider;
+
+    connect(ui->editor->editor(), &TextEditor::textChanged, this, [this] {
+        d->provider->setBody(ui->editor->editor()->text().toUtf8());
+    });
 }
 
 BodyProviderEditor::~BodyProviderEditor() {
@@ -30,13 +35,9 @@ int BodyProviderEditor::order() {
     return 200;
 }
 
-void BodyProviderEditor::on_plainTextEdit_textChanged() {
-    d->provider->setBody(ui->plainTextEdit->toPlainText().toUtf8());
-}
-
 void BodyProviderEditor::updateData() {
-    if (ui->plainTextEdit->hasFocus()) return;
+    if (ui->editor->editor()->hasFocus()) return;
 
-    QSignalBlocker blocker(ui->plainTextEdit);
-    ui->plainTextEdit->setPlainText(d->provider->body());
+    QSignalBlocker blocker(ui->editor->editor());
+    ui->editor->editor()->setText(d->provider->body());
 }

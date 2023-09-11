@@ -4,6 +4,7 @@ project(lib VERSION 1.0.0 LANGUAGES CXX)
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary REQUIRED)
+find_package(ttexteditor REQUIRED)
 
 set(SOURCES
     workspacefile.cpp
@@ -101,7 +102,7 @@ set_target_properties(libthezzz PROPERTIES
         CNTP_DATA_SUBDIR thezzz/libthezzz)
 cntp_translate(libthezzz)
 
-target_link_libraries(libthezzz Qt::Widgets libcontemporary)
+target_link_libraries(libthezzz Qt::Widgets libcontemporary ttexteditor)
 target_compile_definitions(libthezzz PRIVATE LIBTHEZZZ_LIBRARY)
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")

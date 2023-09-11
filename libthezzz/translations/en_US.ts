@@ -16,7 +16,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../widgets/providereditor/bodyprovidereditor.cpp" line="+26"/>
+        <location filename="../widgets/providereditor/bodyprovidereditor.cpp" line="+31"/>
         <source>Body</source>
         <comment>Short for Body</comment>
         <translation type="unfinished"></translation>
@@ -339,7 +339,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../widgets/replyinspector/replybodywidget.cpp" line="+25"/>
+        <location filename="../widgets/replyinspector/replybodywidget.cpp" line="+26"/>
         <source>Raw</source>
         <comment>Short for Raw Body</comment>
         <translation type="unfinished"></translation>

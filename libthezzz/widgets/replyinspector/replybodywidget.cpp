@@ -3,6 +3,7 @@
 
 #include "zzzreply.h"
 #include <QFontDatabase>
+#include <ttexteditor/texteditor.h>
 
 struct ReplyBodyWidgetPrivate {
 };
@@ -13,7 +14,7 @@ ReplyBodyWidget::ReplyBodyWidget(ZzzReplyPtr reply, QWidget* parent) :
     ui->setupUi(this);
     d = new ReplyBodyWidgetPrivate();
 
-    ui->bodyText->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    ui->editor->editor()->setReadOnly(true);
 }
 
 ReplyBodyWidget::~ReplyBodyWidget() {
@@ -26,5 +27,5 @@ QString ReplyBodyWidget::text() {
 }
 
 void ReplyBodyWidget::updateReply() {
-    ui->bodyText->setPlainText(reply()->body());
+    ui->editor->editor()->setText(reply()->body());
 }
