@@ -17,7 +17,7 @@ struct MainWindowMacPrivate;
 class MainWindow : public QMainWindow {
         Q_OBJECT
 
-      public:
+    public:
         explicit MainWindow(QWidget* parent = nullptr);
         ~MainWindow();
 
@@ -52,6 +52,8 @@ class MainWindow : public QMainWindow {
         void on_stackedWidget_currentChanged(int arg1);
 
         void on_actionSend_triggered();
+
+        void on_actionResponses_toggled(bool arg1);
 
     private:
         Ui::MainWindow* ui;

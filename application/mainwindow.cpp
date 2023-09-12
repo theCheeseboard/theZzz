@@ -77,7 +77,9 @@ MainWindow::MainWindow(QWidget* parent) :
     menu->addSeparator();
     menu->addMenu(ui->menuGit);
     menu->addSeparator();
+    menu->addMenu(ui->menuView);
     menu->addAction(ui->actionClose_Tab);
+    menu->addSeparator();
     menu->addAction(commandPalette->commandPaletteAction());
     menu->addMenu(helpMenu);
     menu->addAction(ui->actionExit);
@@ -108,6 +110,8 @@ MainWindow::MainWindow(QWidget* parent) :
     updateMenuItems();
 
     ui->replyViewer->setFixedWidth(400);
+    ui->replyViewer->setVisible(false);
+    ui->line->setVisible(false);
 }
 
 MainWindow::~MainWindow() {
@@ -177,7 +181,10 @@ ZzzWorkspaceEditor* MainWindow::newTab() {
     auto* initialBrowserTab = new tWindowTabberButton(QIcon(), tr("New Workspace"), ui->stackedWidget, browser);
 
     ui->stackedWidget->addWidget(browser);
-    connect(browser, &ZzzWorkspaceEditor::addReply, ui->replyViewer->replyManager().data(), &ZzzReplyManager::pushReply);
+    connect(browser, &ZzzWorkspaceEditor::addReply, this, [this](ZzzReplyPtr reply) {
+        ui->actionResponses->setChecked(true);
+        ui->replyViewer->replyManager()->pushReply(reply);
+    });
     connect(browser, &ZzzWorkspaceEditor::currentRequestChanged, this, &MainWindow::updateContext);
     connect(browser->workspace().data(), &WorkspaceFile::dataChanged, this, [browser, initialBrowserTab, this] {
         initialBrowserTab->setText(browser->workspace()->workspaceFileTitle());
@@ -311,4 +318,9 @@ void MainWindow::executeCurrentRequest() {
     if (browser) {
         browser->executeCurrentRequest();
     }
+}
+
+void MainWindow::on_actionResponses_toggled(bool arg1) {
+    ui->replyViewer->setVisible(arg1);
+    ui->line->setVisible(arg1);
 }

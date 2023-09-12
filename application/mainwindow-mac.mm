@@ -146,7 +146,7 @@ static NSTouchBarItemIdentifier verbIdentifier = @"com.vicr123.thezzz.verb";
             auto image = buttonDetails.icon.pixmap(QSize(64, 64)).toImage();
             libContemporaryCommon::tintImage(image, Qt::white);
             auto cgImage = image.toCGImage();
-            auto nsimage = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){24, 24}];
+            auto nsimage = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){16, 16}];
             [button setImage:nsimage];
         }
 
@@ -216,7 +216,7 @@ void MainWindow::updateContextMacOs() {
           [verbButton setTitle:request->verb().left(10).toNSString()];
           if (!icon.isNull()) {
               auto cgImage = icon.pixmap(QSize(64, 64)).toImage().toCGImage();
-              auto image = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){24, 24}];
+              auto image = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){20, 20}];
               [verbButton setImage:image];
               [verbButton setImagePosition:NSImageOnly];
           } else {

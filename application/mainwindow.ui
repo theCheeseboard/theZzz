@@ -181,8 +181,15 @@
     </property>
     <addaction name="actionSend"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionResponses"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuRequest"/>
+   <addaction name="menuView"/>
    <addaction name="menuGit"/>
   </widget>
   <action name="actionExit">
@@ -307,13 +314,22 @@
   </action>
   <action name="actionSend">
    <property name="icon">
-    <iconset theme="mail-send"/>
+    <iconset theme="mail-send">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Send</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Return</string>
+   </property>
+  </action>
+  <action name="actionResponses">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Responses</string>
    </property>
   </action>
  </widget>

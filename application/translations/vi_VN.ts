@@ -65,7 +65,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+6"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>Exit</source>
         <translation>Thoát</translation>
     </message>
@@ -76,7 +81,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../mainwindow.cpp" line="+177"/>
+        <location filename="../mainwindow.cpp" line="+181"/>
         <source>New Workspace</source>
         <translation>Bàn làm việc mới</translation>
     </message>
@@ -166,7 +171,7 @@
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
@@ -176,13 +181,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+8"/>
+        <source>Responses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="-29"/>
         <location line="+15"/>
         <source>theZzz Workspace (*.zzz)</source>
         <translation>Bàn làm việc theZzz (*.zzz)</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+71"/>
         <source>No Git Repository Available</source>
         <translation></translation>
     </message>
