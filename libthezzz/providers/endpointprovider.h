@@ -2,12 +2,13 @@
 #define ENDPOINTPROVIDER_H
 
 #include "environmentprovider.h"
+#include "libthezzz_global.h"
 #include "zzzprovider.h"
 #include <QString>
 
 struct EndpointProviderPrivate;
 
-class EndpointProvider : public ZzzProvider<EndpointProvider> {
+class LIBTHEZZZ_EXPORT EndpointProvider : public ZzzProvider<EndpointProvider> {
     public:
         EndpointProvider(WorkspaceFile* parent);
         ~EndpointProvider();
