@@ -111,6 +111,17 @@ WorkspaceFilePtr ZzzWorkspaceEditor::workspace() {
     return d->workspaceFile;
 }
 
+ZzzRequestTreeItemPtr ZzzWorkspaceEditor::currentRequest() {
+    auto editor = qobject_cast<ZzzRequestEditor*>(ui->stackedWidget->currentWidget());
+    if (editor) return editor->currentRequest();
+    return nullptr;
+}
+
+void ZzzWorkspaceEditor::executeCurrentRequest() {
+    auto editor = qobject_cast<ZzzRequestEditor*>(ui->stackedWidget->currentWidget());
+    if (editor) editor->executeRequest();
+}
+
 void ZzzWorkspaceEditor::on_newRequestButton_clicked() {
     d->workspaceFile->addRequest((new ZzzRequest(d->workspaceFile))->sharedFromThis());
 }
@@ -284,4 +295,8 @@ void ZzzWorkspaceEditor::on_treeWidget_customContextMenuRequested(const QPoint& 
         connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
         menu->popup(ui->treeWidget->mapToGlobal(pos));
     }
+}
+
+void ZzzWorkspaceEditor::on_stackedWidget_currentChanged(int arg1) {
+    emit currentRequestChanged();
 }

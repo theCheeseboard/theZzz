@@ -6,89 +6,95 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary REQUIRED)
 find_package(ttexteditor REQUIRED)
 
-set(SOURCES
-    workspacefile.cpp
-    zzzrequesttreeitem.cpp
-    zzzrequest.cpp
-    zzzreply.cpp
-    zzzreplymanager.cpp
-    zzznetworkcache.cpp
-    zzzhelpers.cpp
-    zzzrequestfolder.cpp
 
-    providers/zzzprovider.cpp
-    providers/zzzprovides.cpp
-    providers/identifierprovider.cpp
-    providers/headersprovider.cpp
-    providers/requestcontainerprovider.cpp
-    providers/endpointprovider.cpp
-    providers/bodyprovider.cpp
-    providers/descriptionprovider.cpp
-    providers/environmentprovider.cpp
+cntp_sourcelist(
+    OUTPUT HEADERS
+    OUTPUT_ALL ALL_HEADERS
+    FILES
+        workspacefile.cpp
+        zzzrequesttreeitem.cpp
+        zzzrequest.cpp
+        zzzreply.cpp
+        zzzreplymanager.cpp
+        zzznetworkcache.cpp
+        zzzhelpers.cpp
+        zzzrequestfolder.cpp
 
-    widgets/zzzworkspaceeditor.cpp widgets/zzzworkspaceeditor.ui
-    widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
-    widgets/endpointprovidereditor.cpp widgets/endpointprovidereditor.ui
-    widgets/zzzreplyviewer.cpp widgets/zzzreplyviewer.ui
-    widgets/zzzreplyinspector.cpp widgets/zzzreplyinspector.ui
-    widgets/zzzrequesttreewidget.cpp
+        providers/zzzprovider.cpp
+        providers/zzzprovides.cpp
+        providers/identifierprovider.cpp
+        providers/headersprovider.cpp
+        providers/requestcontainerprovider.cpp
+        providers/endpointprovider.cpp
+        providers/bodyprovider.cpp
+        providers/descriptionprovider.cpp
+        providers/environmentprovider.cpp
 
-    widgets/replyinspector/replyinspectorwidget.cpp
-    widgets/replyinspector/replybodywidget.cpp widgets/replyinspector/replybodywidget.ui
-    widgets/replyinspector/replyheaderswidget.cpp widgets/replyinspector/replyheaderswidget.ui
-    widgets/replyinspector/jsonbodywidget.cpp widgets/replyinspector/jsonbodywidget.ui
+        widgets/zzzworkspaceeditor.cpp widgets/zzzworkspaceeditor.ui
+        widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
+        widgets/endpointprovidereditor.cpp widgets/endpointprovidereditor.ui
+        widgets/zzzreplyviewer.cpp widgets/zzzreplyviewer.ui
+        widgets/zzzreplyinspector.cpp widgets/zzzreplyinspector.ui
+        widgets/zzzrequesttreewidget.cpp
 
-    widgets/providereditor/providereditor.cpp
-    widgets/providereditor/bodyprovidereditor.cpp widgets/providereditor/bodyprovidereditor.ui
-    widgets/providereditor/headerprovidereditor.cpp widgets/providereditor/headerprovidereditor.ui
-    widgets/providereditor/descriptionprovidereditor.cpp widgets/providereditor/descriptionprovidereditor.ui
-    widgets/providereditor/environmentprovidereditor.cpp widgets/providereditor/environmentprovidereditor.ui
+        widgets/replyinspector/replyinspectorwidget.cpp
+        widgets/replyinspector/replybodywidget.cpp widgets/replyinspector/replybodywidget.ui
+        widgets/replyinspector/replyheaderswidget.cpp widgets/replyinspector/replyheaderswidget.ui
+        widgets/replyinspector/jsonbodywidget.cpp widgets/replyinspector/jsonbodywidget.ui
 
-    libthezzz_icons.qrc
-)
+        widgets/providereditor/providereditor.cpp
+        widgets/providereditor/bodyprovidereditor.cpp widgets/providereditor/bodyprovidereditor.ui
+        widgets/providereditor/headerprovidereditor.cpp widgets/providereditor/headerprovidereditor.ui
+        widgets/providereditor/descriptionprovidereditor.cpp widgets/providereditor/descriptionprovidereditor.ui
+        widgets/providereditor/environmentprovidereditor.cpp widgets/providereditor/environmentprovidereditor.ui
 
-set(HEADERS
-    libthezzz_global.h
-    forwarddeclares.h
+        libthezzz_icons.qrc
+    )
 
-    workspacefile.h
-    zzzrequesttreeitem.h
-    zzzrequest.h
-    zzzreply.h
-    zzzreplymanager.h
-    zzznetworkcache.h
-    zzzhelpers.h
-    zzzrequestfolder.h
+cntp_sourcelist(
+    OUTPUT HEADERS
+    OUTPUT_ALL ALL_HEADERS
+    FILES
+        libthezzz_global.h
+        forwarddeclares.h
 
-    providers/zzzprovider.h
-    providers/zzzprovides.h
-    providers/identifierprovider.h
-    providers/headersprovider.h
-    providers/requestcontainerprovider.h
-    providers/endpointprovider.h
-    providers/bodyprovider.h
-    providers/descriptionprovider.h
-    providers/environmentprovider.h
+        workspacefile.h
+        zzzrequesttreeitem.h
+        zzzrequest.h
+        zzzreply.h
+        zzzreplymanager.h
+        zzznetworkcache.h
+        zzzhelpers.h
+        zzzrequestfolder.h
 
-    widgets/zzzworkspaceeditor.h
-    widgets/zzzrequesteditor.h
-    widgets/endpointprovidereditor.h
-    widgets/zzzreplyviewer.h
-    widgets/zzzreplyinspector.h
-    widgets/zzzrequesttreewidget.h
+        providers/zzzprovider.h
+        providers/zzzprovides.h
+        providers/identifierprovider.h
+        providers/headersprovider.h
+        providers/requestcontainerprovider.h
+        providers/endpointprovider.h
+        providers/bodyprovider.h
+        providers/descriptionprovider.h
+        providers/environmentprovider.h
 
-    widgets/replyinspector/replyinspectorwidget.h
-    widgets/replyinspector/replybodywidget.h
-    widgets/replyinspector/replyheaderswidget.h
+        widgets/zzzworkspaceeditor.h
+        widgets/zzzrequesteditor.h
+        widgets/endpointprovidereditor.h
+        widgets/zzzreplyviewer.h
+        widgets/zzzreplyinspector.h
+        widgets/zzzrequesttreewidget.h
 
-    widgets/providereditor/providereditor.h
-    widgets/providereditor/bodyprovidereditor.h
-    widgets/providereditor/headerprovidereditor.h
-    widgets/providereditor/descriptionprovidereditor.h
-    widgets/providereditor/environmentprovidereditor.h
-    widgets/replyinspector/jsonbodywidget.h
+        widgets/replyinspector/replyinspectorwidget.h
+        widgets/replyinspector/replybodywidget.h
+        widgets/replyinspector/replyheaderswidget.h
 
-)
+        widgets/providereditor/providereditor.h
+        widgets/providereditor/bodyprovidereditor.h
+        widgets/providereditor/headerprovidereditor.h
+        widgets/providereditor/descriptionprovidereditor.h
+        widgets/providereditor/environmentprovidereditor.h
+        widgets/replyinspector/jsonbodywidget.h
+    )
 
 set(PRIVATE_HEADERS
 
@@ -102,6 +108,7 @@ set_target_properties(libthezzz PROPERTIES
         MACOSX_FRAMEWORK_IDENTIFIER com.vicr123.thezzz
         VERSION 1.0.0
         PUBLIC_HEADER "${HEADERS}"
+        TRANSLATION_SOURCES "${ALL_SOURCES};${ALL_HEADERS}"
         CNTP_DATA_SUBDIR thezzz/libthezzz)
 cntp_translate(libthezzz)
 

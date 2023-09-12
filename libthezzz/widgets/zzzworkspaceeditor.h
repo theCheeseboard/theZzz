@@ -26,6 +26,9 @@ class LIBTHEZZZ_EXPORT ZzzWorkspaceEditor : public QWidget {
         void openWorkspace(QString filePath);
         WorkspaceFilePtr workspace();
 
+        ZzzRequestTreeItemPtr currentRequest();
+        void executeCurrentRequest();
+
     private slots:
         void on_newRequestButton_clicked();
 
@@ -33,8 +36,11 @@ class LIBTHEZZZ_EXPORT ZzzWorkspaceEditor : public QWidget {
 
         void on_treeWidget_customContextMenuRequested(const QPoint& pos);
 
+        void on_stackedWidget_currentChanged(int arg1);
+
     signals:
         void addReply(ZzzReplyPtr reply);
+        void currentRequestChanged();
 
     private:
         Ui::ZzzWorkspaceEditor* ui;

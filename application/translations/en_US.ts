@@ -5,43 +5,31 @@
     <name>LandingPage</name>
     <message>
         <location filename="../landingpage.ui" line="+14"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+140"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+111"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
         <source>Get Started</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+24"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
         <source>New Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
         <source>Create a blank workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
         <source>Open Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_landingpage.h" line="+1"/>
         <source>Open a saved workspace</source>
         <translation type="unfinished"></translation>
     </message>
@@ -50,164 +38,133 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="+14"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+226"/>
         <source>theZzz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+143"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+42"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+1"/>
         <source>Git</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+17"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="-42"/>
+        <location line="+10"/>
+        <source>Request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../mainwindow.cpp" line="+153"/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
+        <location filename="../mainwindow.cpp" line="+162"/>
         <source>New Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Shift+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Open Workspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Shift+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Commit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Alt+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Push</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Alt+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Pull</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Alt+Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Checkout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+Alt+.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
+        <location line="+9"/>
         <source>Close Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <location/>
-        <location filename="../../../build-theZzz-Desktop_ARM-Debug/application/thezzz_autogen/include/ui_mainwindow.h" line="+2"/>
         <source>Ctrl+W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ctrl+Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -217,13 +174,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>No Git Repository Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This workspace file is not in a Git repository. Init a Git repository, and then try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow-mac.mm" line="+40"/>
+        <source>Send Request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+66"/>
+        <source>Verb</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

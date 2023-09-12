@@ -17,6 +17,8 @@ class LIBTHEZZZ_EXPORT ZzzRequestEditor : public QWidget {
         explicit ZzzRequestEditor(ZzzRequestTreeItemPtr request, QWidget* parent = nullptr);
         ~ZzzRequestEditor();
 
+        ZzzRequestTreeItemPtr currentRequest();
+
         void executeRequest();
 
     signals:

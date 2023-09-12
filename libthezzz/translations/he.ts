@@ -5,13 +5,11 @@
     <name>BodyProviderEditor</name>
     <message>
         <location filename="../widgets/providereditor/bodyprovidereditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+35"/>
-        <location/>
         <source>Body</source>
         <translation></translation>
     </message>
@@ -76,20 +74,17 @@
     <name>DescriptionProviderEditor</name>
     <message>
         <location filename="../widgets/providereditor/descriptionprovidereditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+22"/>
-        <location/>
         <source>Description</source>
         <translation></translation>
     </message>
     <message>
         <location line="-7"/>
-        <location/>
         <source>Title</source>
         <translation></translation>
     </message>
@@ -104,55 +99,46 @@
     <name>EndpointProviderEditor</name>
     <message>
         <location filename="../widgets/endpointprovidereditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+34"/>
-        <location/>
         <source>GET</source>
         <translation></translation>
     </message>
     <message>
         <location line="+9"/>
-        <location/>
         <source>POST</source>
         <translation></translation>
     </message>
     <message>
         <location line="+9"/>
-        <location/>
         <source>PUT</source>
         <translation></translation>
     </message>
     <message>
         <location line="+9"/>
-        <location/>
         <source>PATCH</source>
         <translation></translation>
     </message>
     <message>
         <location line="+9"/>
-        <location/>
         <source>DELETE</source>
         <translation></translation>
     </message>
     <message>
         <location line="+9"/>
-        <location/>
         <source>OPTIONS</source>
         <translation></translation>
     </message>
     <message>
         <location line="+9"/>
-        <location/>
         <source>HEAD</source>
         <translation></translation>
     </message>
     <message>
         <location line="+21"/>
-        <location/>
         <source>Endpoint</source>
         <translation></translation>
     </message>
@@ -170,19 +156,16 @@
     <name>EnvironmentProviderEditor</name>
     <message>
         <location filename="../widgets/providereditor/environmentprovidereditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+38"/>
-        <location/>
         <source>Environment</source>
         <translation></translation>
     </message>
     <message>
         <location line="+7"/>
-        <location/>
         <source>Environment Variables allow you to set common variables and set secrets that can be used by other requests in this workspace.</source>
         <translation></translation>
     </message>
@@ -190,75 +173,63 @@
         <location line="+22"/>
         <location line="+5"/>
         <location line="+5"/>
-        <location/>
         <source>Var</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="+42"/>
         <source>Variable</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="+1"/>
         <source>Secret?</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>Production</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>Staging</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>baseUrl</source>
         <translation></translation>
     </message>
     <message>
         <location line="+22"/>
-        <location/>
         <source>envthing</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>envthing2</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>token</source>
         <translation></translation>
     </message>
     <message>
         <location line="+22"/>
-        <location/>
         <source>password</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>password2</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <location filename="../widgets/providereditor/environmentprovidereditor.cpp" line="+43"/>
         <location line="+20"/>
         <source>New Variable...</source>
@@ -266,13 +237,11 @@
     </message>
     <message>
         <location line="+42"/>
-        <location/>
         <source>Actions</source>
         <translation></translation>
     </message>
     <message>
         <location line="+7"/>
-        <location/>
         <source>Create New Environment</source>
         <translation></translation>
     </message>
@@ -339,25 +308,21 @@
     <name>HeaderProviderEditor</name>
     <message>
         <location filename="../widgets/providereditor/headerprovidereditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+38"/>
-        <location/>
         <source>Headers</source>
         <translation></translation>
     </message>
     <message>
         <location line="+22"/>
-        <location/>
         <source>Header</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>Value</source>
         <translation></translation>
     </message>
@@ -399,13 +364,11 @@ at %2</source>
     <name>ReplyBodyWidget</name>
     <message>
         <location filename="../widgets/replyinspector/replybodywidget.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+23"/>
-        <location/>
         <source>Raw Body</source>
         <translation></translation>
     </message>
@@ -420,25 +383,21 @@ at %2</source>
     <name>ReplyHeadersWidget</name>
     <message>
         <location filename="../widgets/replyinspector/replyheaderswidget.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+38"/>
-        <location/>
         <source>Headers</source>
         <translation></translation>
     </message>
     <message>
         <location line="+22"/>
-        <location/>
         <source>Header</source>
         <translation></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location/>
         <source>Value</source>
         <translation></translation>
     </message>
@@ -476,13 +435,11 @@ at %2</source>
     <name>ZzzReplyInspector</name>
     <message>
         <location filename="../widgets/zzzreplyinspector.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+80"/>
-        <location/>
         <source>Unable to send request</source>
         <translation></translation>
     </message>
@@ -509,13 +466,11 @@ at %2</source>
     <name>ZzzReplyViewer</name>
     <message>
         <location filename="../widgets/zzzreplyviewer.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+21"/>
-        <location/>
         <source>Responses</source>
         <translation></translation>
     </message>
@@ -533,12 +488,11 @@ at %2</source>
     <name>ZzzRequestEditor</name>
     <message>
         <location filename="../widgets/zzzrequesteditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../widgets/zzzrequesteditor.cpp" line="+75"/>
+        <location filename="../widgets/zzzrequesteditor.cpp" line="+79"/>
         <source>Environment Incomplete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -569,14 +523,12 @@ at %2</source>
     <name>ZzzWorkspaceEditor</name>
     <message>
         <location filename="../widgets/zzzworkspaceeditor.ui" line="+14"/>
-        <location/>
         <source>Form</source>
         <translation></translation>
     </message>
     <message>
         <location line="+63"/>
-        <location/>
-        <location filename="../widgets/zzzworkspaceeditor.cpp" line="+270"/>
+        <location filename="../widgets/zzzworkspaceeditor.cpp" line="+281"/>
         <source>New Request</source>
         <translation></translation>
     </message>

@@ -19,11 +19,13 @@
 #include <widgets/zzzworkspaceeditor.h>
 #include <workspacefile.h>
 #include <zzzreplymanager.h>
+#include <zzzrequest.h>
 
 struct MainWindowPrivate {
         tCsdTools csd;
 
         QMap<ZzzWorkspaceEditor*, tWindowTabberButton*> tabButtons;
+        ZzzRequestTreeItemPtr currentRequest;
 };
 
 MainWindow::MainWindow(QWidget* parent) :
@@ -71,6 +73,10 @@ MainWindow::MainWindow(QWidget* parent) :
     ui->menuButton->setMenu(menu);
 #endif
 
+#ifdef Q_OS_MAC
+    setupMacOs();
+#endif
+
     auto landingPage = new LandingPage(this);
     connect(landingPage, &LandingPage::newWorkspace, this, [this] {
         ui->actionNew_Workspace->trigger();
@@ -90,6 +96,9 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 MainWindow::~MainWindow() {
+#ifdef Q_OS_MAC
+    destroyMacOs();
+#endif
     delete ui;
 }
 
@@ -154,11 +163,13 @@ ZzzWorkspaceEditor* MainWindow::newTab() {
 
     ui->stackedWidget->addWidget(browser);
     connect(browser, &ZzzWorkspaceEditor::addReply, ui->replyViewer->replyManager().data(), &ZzzReplyManager::pushReply);
-    connect(browser->workspace().data(), &WorkspaceFile::dataChanged, this, [browser, initialBrowserTab] {
+    connect(browser, &ZzzWorkspaceEditor::currentRequestChanged, this, &MainWindow::updateContext);
+    connect(browser->workspace().data(), &WorkspaceFile::dataChanged, this, [browser, initialBrowserTab, this] {
         initialBrowserTab->setText(browser->workspace()->workspaceFileTitle());
 
         auto currentEnvironment = browser->workspace()->currentEnvironment();
         initialBrowserTab->setSupplementaryText(browser->workspace()->environmentName(currentEnvironment));
+        this->updateContext();
     });
 
     ui->windowTabber->addButton(initialBrowserTab);
@@ -235,4 +246,49 @@ void MainWindow::updateMenuItems() {
     ui->actionPush->setEnabled(enabled);
     ui->actionPull->setEnabled(enabled);
     ui->actionClose_Tab->setEnabled(enabled);
+
+    this->updateContext();
 }
+
+void MainWindow::updateContext() {
+    ZzzRequestTreeItemPtr request = this->currentRequest();
+
+    if (request) {
+        if (request.dynamicCast<ZzzRequest>()) {
+            ui->actionSend->setEnabled(true);
+        } else {
+            ui->actionSend->setEnabled(false);
+        }
+    } else {
+        ui->actionSend->setEnabled(false);
+    }
+
+#ifdef Q_OS_MAC
+    this->updateContextMacOs();
+#endif
+}
+
+ZzzRequestTreeItemPtr MainWindow::currentRequest() {
+    ZzzRequestTreeItemPtr request;
+    auto browser = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+    if (browser) {
+        return browser->currentRequest();
+    }
+    return {};
+}
+
+void MainWindow::on_stackedWidget_currentChanged(int arg1) {
+    this->updateContext();
+}
+
+void MainWindow::on_actionSend_triggered() {
+    this->executeCurrentRequest();
+}
+
+void MainWindow::executeCurrentRequest() {
+    auto browser = qobject_cast<ZzzWorkspaceEditor*>(ui->stackedWidget->currentWidget());
+    if (browser) {
+        browser->executeCurrentRequest();
+    }
+}
+

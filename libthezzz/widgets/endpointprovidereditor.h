@@ -32,6 +32,8 @@ class LIBTHEZZZ_EXPORT EndpointProviderEditor : public QWidget {
     private:
         Ui::EndpointProviderEditor* ui;
         EndpointProviderEditorPrivate* d;
+
+        void updateData();
 };
 
 #endif // ENDPOINTPROVIDEREDITOR_H

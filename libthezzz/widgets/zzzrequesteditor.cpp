@@ -58,6 +58,10 @@ ZzzRequestEditor::~ZzzRequestEditor() {
     delete ui;
 }
 
+ZzzRequestTreeItemPtr ZzzRequestEditor::currentRequest() {
+    return d->request;
+}
+
 void ZzzRequestEditor::executeRequest() {
     auto request = d->request.dynamicCast<ZzzRequest>();
     if (!request) return;

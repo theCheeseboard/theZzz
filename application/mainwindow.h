@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "forwarddeclares.h"
 #include <QCoroTask>
 #include <QMainWindow>
 #include <objects/repository.h>
@@ -12,16 +13,20 @@ namespace Ui {
 class ZzzWorkspaceEditor;
 class RepositoryBrowser;
 struct MainWindowPrivate;
+struct MainWindowMacPrivate;
 class MainWindow : public QMainWindow {
         Q_OBJECT
 
-    public:
+      public:
         explicit MainWindow(QWidget* parent = nullptr);
         ~MainWindow();
 
         void openRepo(QString path);
 
         RepositoryBrowser* openNextTab();
+
+        void executeCurrentRequest();
+        ZzzRequestTreeItemPtr currentRequest();
 
     private slots:
         void on_actionExit_triggered();
@@ -44,6 +49,10 @@ class MainWindow : public QMainWindow {
 
         void on_actionClose_Tab_triggered();
 
+        void on_stackedWidget_currentChanged(int arg1);
+
+        void on_actionSend_triggered();
+
     private:
         Ui::MainWindow* ui;
         MainWindowPrivate* d;
@@ -51,6 +60,15 @@ class MainWindow : public QMainWindow {
         ZzzWorkspaceEditor* newTab();
 
         void updateMenuItems();
+        void updateContext();
+
+#ifdef Q_OS_MAC
+        MainWindowMacPrivate* md;
+
+        void setupMacOs();
+        void updateContextMacOs();
+        void destroyMacOs();
+#endif
 
         QCoro::Task<RepositoryPtr> currentFileGitRepository();
 };

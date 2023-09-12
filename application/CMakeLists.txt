@@ -6,15 +6,29 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary REQUIRED)
 find_package(libthebranch REQUIRED)
 
-set(SOURCES
+cntp_sourcelist(
+    OUTPUT SOURCES
+    OUTPUT_ALL ALL_SOURCES
+    FILES
         main.cpp
         mainwindow.cpp mainwindow.ui
         landingpage.cpp landingpage.ui
 )
 
-set(HEADERS
+cntp_sourcelist(
+    OUTPUT HEADERS
+    OUTPUT_ALL ALL_HEADERS
+    FILES
         mainwindow.h
         landingpage.h
+)
+
+cntp_sourcelist(
+    OUTPUT SOURCES
+    OUTPUT_ALL ALL_SOURCES
+    TARGET_SYSTEM_NAME "Darwin"
+    FILES
+        mainwindow-mac.mm
 )
 
 # Find Apple lproj files
@@ -39,6 +53,7 @@ set_target_properties(thezzz PROPERTIES
         MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in
         MACOSX_BUNDLE_GUI_IDENTIFIER com.vicr123.thezzz
         WIN32_EXECUTABLE TRUE
+        TRANSLATION_SOURCES "${ALL_SOURCES};${ALL_HEADERS}"
         CNTP_DATA_SUBDIR thezzz)
 
 cntp_init(thezzz 20)
