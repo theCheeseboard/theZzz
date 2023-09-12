@@ -10,6 +10,7 @@ struct TouchBarButton {
     QString identifier;
     QString text;
     std::function<void(MainWindow*)> handler;
+    QIcon icon;
 };
 
 struct MainWindowTouchBarHelper {
@@ -41,7 +42,8 @@ QMap<QString, TouchBarButton> MainWindowTouchBarHelper::touchBarButtons = {
             MainWindow::tr("Send Request"),
             [](MainWindow* mainWin) {
                 mainWin->executeCurrentRequest();
-            }
+            },
+            QIcon::fromTheme("mail-send")
         }
     },
     THEZZZ_TOUCH_BAR_VERB_BUTTON("get"),
@@ -140,9 +142,13 @@ static NSTouchBarItemIdentifier verbIdentifier = @"com.vicr123.thezzz.verb";
         auto button = [NSButton buttonWithTitle:buttonDetails.text.toNSString() target:self action:@selector(touchBarActionClicked:)];
         [button setIdentifier:identifier];
 
-        //        if (haveImage) {
-        //            [button setImage:[NSImage imageNamed:image]];
-        //        }
+        if (!buttonDetails.icon.isNull()) {
+            auto image = buttonDetails.icon.pixmap(QSize(64, 64)).toImage();
+            libContemporaryCommon::tintImage(image, Qt::white);
+            auto cgImage = image.toCGImage();
+            auto nsimage = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){24, 24}];
+            [button setImage:nsimage];
+        }
 
         [item setView:button];
         return item;
@@ -207,15 +213,14 @@ void MainWindow::updateContextMacOs() {
 
           auto verbButton = (NSButton*)[verbTouchBarItem view];
           auto icon = ZzzHelpers::iconForVerb(request->verb());
+          [verbButton setTitle:request->verb().left(10).toNSString()];
           if (!icon.isNull()) {
               auto cgImage = icon.pixmap(QSize(64, 64)).toImage().toCGImage();
               auto image = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){24, 24}];
               [verbButton setImage:image];
-              [verbButton setTitle:@""];
-//              [verbButton setImagePosition:NSImageLeading];
+              [verbButton setImagePosition:NSImageOnly];
           } else {
               [verbButton setImage:nil];
-              [verbButton setTitle:request->verb().left(10).toNSString()];
           }
         } else {
           [[sendTouchBarItem view] setHidden:YES];
