@@ -3,7 +3,7 @@
 
 #include "zzzreply.h"
 #include <QJsonDocument>
-#include <ttexteditor/texteditor.h>
+#include <texteditor.h>
 
 JsonBodyWidget::JsonBodyWidget(ZzzReplyPtr reply, QWidget* parent) :
     ReplyInspectorWidget(std::move(reply), parent),

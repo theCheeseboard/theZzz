@@ -156,7 +156,7 @@
   <customwidget>
    <class>CompleteTextEditor</class>
    <extends>QWidget</extends>
-   <header>ttexteditor/completetexteditor.h</header>
+   <header location="global">completetexteditor.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

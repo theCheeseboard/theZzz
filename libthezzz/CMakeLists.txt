@@ -6,7 +6,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary REQUIRED)
 find_package(ttexteditor REQUIRED)
 
-
 cntp_sourcelist(
     OUTPUT HEADERS
     OUTPUT_ALL ALL_HEADERS

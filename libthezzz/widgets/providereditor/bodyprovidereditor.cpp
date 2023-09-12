@@ -5,8 +5,8 @@
 #include "workspacefile.h"
 #include <QActionGroup>
 #include <QMenu>
+#include <texteditor.h>
 #include <tinputdialog.h>
-#include <ttexteditor/texteditor.h>
 
 struct BodyProviderEditorPrivate {
         BodyProvider* provider;

@@ -3,7 +3,7 @@
 
 #include "zzzreply.h"
 #include <QFontDatabase>
-#include <ttexteditor/texteditor.h>
+#include <texteditor.h>
 
 struct ReplyBodyWidgetPrivate {
 };
