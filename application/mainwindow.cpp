@@ -5,11 +5,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "commandpalette/commandpaletterequestsscope.h"
 #include "landingpage.h"
 #include <QCoroCore>
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <tapplication.h>
+#include <tcommandpalette/tcommandpaletteactionscope.h>
+#include <tcommandpalette/tcommandpalettecontroller.h>
+#include <tcommandpalette/tcommandpalettedocumentspecificscope.h>
 #include <tcsdtools.h>
 #include <thelpmenu.h>
 #include <tjobmanager.h>
@@ -26,6 +30,8 @@ struct MainWindowPrivate {
 
         QMap<ZzzWorkspaceEditor*, tWindowTabberButton*> tabButtons;
         ZzzRequestTreeItemPtr currentRequest;
+
+        tCommandPaletteDocumentSpecificScope* requestsScope;
 };
 
 MainWindow::MainWindow(QWidget* parent) :
@@ -47,8 +53,15 @@ MainWindow::MainWindow(QWidget* parent) :
 
     this->resize(this->size());
 
+    tCommandPaletteActionScope* commandPaletteActionScope;
+    auto commandPalette = tCommandPaletteController::defaultController(this, &commandPaletteActionScope);
+
+    d->requestsScope = new tCommandPaletteDocumentSpecificScope();
+    commandPalette->addScope(d->requestsScope);
+
+    ui->menubar->addMenu(new tHelpMenu(this, commandPalette));
+
 #ifdef Q_OS_MAC
-    ui->menubar->addMenu(new tHelpMenu(this));
     ui->menuButton->setVisible(false);
 #else
     ui->menubar->setVisible(false);
@@ -175,6 +188,12 @@ ZzzWorkspaceEditor* MainWindow::newTab() {
     ui->windowTabber->addButton(initialBrowserTab);
     d->tabButtons.insert(browser, initialBrowserTab);
 
+    auto requestsScope = new CommandPaletteRequestsScope(browser, this);
+    connect(requestsScope, &CommandPaletteRequestsScope::showWorkspace, this, [browser, this] {
+        ui->stackedWidget->setCurrentWidget(browser);
+    });
+    d->requestsScope->registerScope(browser, requestsScope);
+
     ui->stackedWidget->addWidget(browser);
     return browser;
 }
@@ -291,4 +310,3 @@ void MainWindow::executeCurrentRequest() {
         browser->executeCurrentRequest();
     }
 }
-

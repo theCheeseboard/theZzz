@@ -13,6 +13,8 @@ cntp_sourcelist(
         main.cpp
         mainwindow.cpp mainwindow.ui
         landingpage.cpp landingpage.ui
+
+        commandpalette/commandpaletterequestsscope.cpp
 )
 
 cntp_sourcelist(
@@ -21,6 +23,8 @@ cntp_sourcelist(
     FILES
         mainwindow.h
         landingpage.h
+
+        commandpalette/commandpaletterequestsscope.h
 )
 
 cntp_sourcelist(

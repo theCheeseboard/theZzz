@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>CommandPaletteRequestsScope</name>
+    <message>
+        <location filename="../commandpalette/commandpaletterequestsscope.cpp" line="+64"/>
+        <source>Requests</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LandingPage</name>
     <message>
         <location filename="../landingpage.ui" line="+14"/>
@@ -68,7 +76,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../mainwindow.cpp" line="+162"/>
+        <location filename="../mainwindow.cpp" line="+175"/>
         <source>New Workspace</source>
         <translation type="unfinished"></translation>
     </message>
@@ -174,7 +182,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+62"/>
+        <location line="+68"/>
         <source>No Git Repository Available</source>
         <translation type="unfinished"></translation>
     </message>
