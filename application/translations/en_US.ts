@@ -184,7 +184,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow-mac.mm" line="+40"/>
+        <location filename="../mainwindow-mac.mm" line="+41"/>
         <source>Send Request</source>
         <translation type="unfinished"></translation>
     </message>

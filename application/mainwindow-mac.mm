@@ -3,6 +3,7 @@
 
 #import <AppKit/AppKit.h>
 
+#include <CoreGraphics/CGDataProvider.h>
 #include <zzzrequest.h>
 
 struct TouchBarButton {
@@ -204,7 +205,18 @@ void MainWindow::updateContextMacOs() {
           [[sendTouchBarItem view] setHidden:NO];
           [[verbTouchBarItem view] setHidden:NO];
 
-          [(NSButton*)[verbTouchBarItem view] setTitle:request->verb().left(10).toNSString()];
+          auto verbButton = (NSButton*)[verbTouchBarItem view];
+          auto icon = ZzzHelpers::iconForVerb(request->verb());
+          if (!icon.isNull()) {
+              auto cgImage = icon.pixmap(QSize(64, 64)).toImage().toCGImage();
+              auto image = [[NSImage alloc] initWithCGImage:cgImage size:(NSSize){24, 24}];
+              [verbButton setImage:image];
+              [verbButton setTitle:@""];
+//              [verbButton setImagePosition:NSImageLeading];
+          } else {
+              [verbButton setImage:nil];
+              [verbButton setTitle:request->verb().left(10).toNSString()];
+          }
         } else {
           [[sendTouchBarItem view] setHidden:YES];
           [[verbTouchBarItem view] setHidden:YES];
