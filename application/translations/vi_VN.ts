@@ -76,7 +76,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../mainwindow.cpp" line="+175"/>
+        <location filename="../mainwindow.cpp" line="+177"/>
         <source>New Workspace</source>
         <translation>Bàn làm việc mới</translation>
     </message>

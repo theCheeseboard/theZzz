@@ -2,13 +2,14 @@
 #define REQUESTCONTAINERPROVIDER_H
 
 #include "forwarddeclares.h"
+#include "libthezzz_global.h"
 #include "zzzprovider.h"
 #include "zzzrequesttreeitem.h"
 
 struct RequestContainerProviderPrivate;
 
 class WorkspaceFile;
-class RequestContainerProvider : public ZzzProvider<RequestContainerProvider> {
+class LIBTHEZZZ_EXPORT RequestContainerProvider : public ZzzProvider<RequestContainerProvider> {
     public:
         RequestContainerProvider(WorkspaceFile* parent);
         ~RequestContainerProvider();

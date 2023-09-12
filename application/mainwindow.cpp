@@ -78,13 +78,15 @@ MainWindow::MainWindow(QWidget* parent) :
     menu->addMenu(ui->menuGit);
     menu->addSeparator();
     menu->addAction(ui->actionClose_Tab);
+    menu->addAction(commandPalette->commandPaletteAction());
     menu->addMenu(helpMenu);
     menu->addAction(ui->actionExit);
 
     ui->menuButton->setIcon(tApplication::applicationIcon());
-    ui->menuButton->setIconSize(SC_DPI_T(QSize(24, 24), QSize));
+    ui->menuButton->setIconSize(QSize(24, 24));
     ui->menuButton->setMenu(menu);
 #endif
+    commandPaletteActionScope->addMenuBar(ui->menubar);
 
 #ifdef Q_OS_MAC
     setupMacOs();
