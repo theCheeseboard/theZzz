@@ -22,6 +22,8 @@ int main(int argc, char* argv[]) {
     a.setCopyrightHolder("Victor Tran");
     a.setCopyrightYear("2023");
     a.setOrganizationName("theCheeseboard");
+    a.setApplicationUrl(tApplication::Sources, QUrl("http://github.com/theCheeseboard/theZzz"));
+    a.setApplicationUrl(tApplication::FileBug, QUrl("http://github.com/theCheeseboard/theZzz/issues"));
     a.setApplicationName(T_APPMETA_READABLE_NAME);
     a.setDesktopFileName(T_APPMETA_DESKTOP_ID);
 
