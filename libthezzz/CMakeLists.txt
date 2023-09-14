@@ -28,6 +28,7 @@ cntp_sourcelist(
         providers/bodyprovider.cpp
         providers/descriptionprovider.cpp
         providers/environmentprovider.cpp
+        providers/settingsprovider.cpp
 
         widgets/zzzworkspaceeditor.cpp widgets/zzzworkspaceeditor.ui
         widgets/zzzrequesteditor.cpp widgets/zzzrequesteditor.ui
@@ -46,6 +47,7 @@ cntp_sourcelist(
         widgets/providereditor/headerprovidereditor.cpp widgets/providereditor/headerprovidereditor.ui
         widgets/providereditor/descriptionprovidereditor.cpp widgets/providereditor/descriptionprovidereditor.ui
         widgets/providereditor/environmentprovidereditor.cpp widgets/providereditor/environmentprovidereditor.ui
+        widgets/providereditor/settingsprovidereditor.cpp widgets/providereditor/settingsprovidereditor.ui
 
         libthezzz_icons.qrc
     )
@@ -75,6 +77,7 @@ cntp_sourcelist(
         providers/bodyprovider.h
         providers/descriptionprovider.h
         providers/environmentprovider.h
+        providers/settingsprovider.h
 
         widgets/zzzworkspaceeditor.h
         widgets/zzzrequesteditor.h
@@ -93,6 +96,7 @@ cntp_sourcelist(
         widgets/providereditor/descriptionprovidereditor.h
         widgets/providereditor/environmentprovidereditor.h
         widgets/replyinspector/jsonbodywidget.h
+        widgets/providereditor/settingsprovidereditor.h
     )
 
 set(PRIVATE_HEADERS

@@ -7,11 +7,12 @@
 #include "providers/descriptionprovider.h"
 #include "providers/endpointprovider.h"
 #include "providers/headersprovider.h"
+#include "providers/settingsprovider.h"
 #include "providers/zzzprovides.h"
 #include "zzzrequesttreeitem.h"
 #include <QObject>
 
-typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider, DescriptionProvider> ZzzRequestZzzProvides;
+typedef ZzzProvides<HeadersProvider, EndpointProvider, BodyProvider, DescriptionProvider, SettingsProvider> ZzzRequestZzzProvides;
 
 class QNetworkReply;
 struct ZzzRequestPrivate;

@@ -49,6 +49,14 @@ ZzzReplyPtr ZzzRequest::execute() {
         request.setRawHeader(header.first, d->workspace->substituteEnvironment(header.second, &missingEnvironmentVariables).toUtf8());
     }
 
+    missingEnvironmentVariables = tRange(missingEnvironmentVariables).unique<QUuid>([](ZzzVariable variable) {
+                                                                         return std::get<0>(variable);
+                                                                     })
+                                      .toList();
+    if (!missingEnvironmentVariables.isEmpty()) {
+        throw EnvironmentIncompleteException(missingEnvironmentVariables);
+    }
+
     QNetworkReply* networkReply;
     if (this->verb() == "GET") {
         networkReply = mgr->get(request);
@@ -62,13 +70,12 @@ ZzzReplyPtr ZzzRequest::execute() {
         networkReply = mgr->sendCustomRequest(request, this->verb().toUtf8(), this->body());
     }
 
-    missingEnvironmentVariables = tRange(missingEnvironmentVariables).unique<QUuid>([](ZzzVariable variable) {
-                                                                         return std::get<0>(variable);
-                                                                     })
-                                      .toList();
-    if (!missingEnvironmentVariables.isEmpty()) {
-        throw EnvironmentIncompleteException(missingEnvironmentVariables);
-    }
+    bool skipTlsVerification = this->skipTlsVerification();
+    connect(networkReply, &QNetworkReply::sslErrors, [skipTlsVerification, networkReply] {
+        if (skipTlsVerification) {
+            networkReply->ignoreSslErrors();
+        }
+    });
 
     auto reply = new ZzzReply(this->verb(), request, networkReply);
     return reply->sharedFromThis();

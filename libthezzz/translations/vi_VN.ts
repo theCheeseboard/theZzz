@@ -444,6 +444,30 @@ at %2</source>
     </message>
 </context>
 <context>
+    <name>SettingsProviderEditor</name>
+    <message>
+        <location filename="../widgets/providereditor/settingsprovidereditor.ui" line="+14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Skip TLS Verification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/providereditor/settingsprovidereditor.cpp" line="+25"/>
+        <source>Stgs</source>
+        <comment>Short for Settings</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WorkspaceFile</name>
     <message>
         <location filename="../workspacefile.cpp" line="+87"/>
